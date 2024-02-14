@@ -46,11 +46,12 @@ class VerifyEmailScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
+
+            const SizedBox(height: 20),
+
             Column(
               children: [
+
                 ///Verification_Continue_Button
                 Padding(
                   padding: const EdgeInsets.all(6.0),
