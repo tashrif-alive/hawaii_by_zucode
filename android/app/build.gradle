@@ -27,7 +27,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 31 // Update to the latest SDK version
+    compileSdkVersion 33 // Update to the latest SDK version
     buildToolsVersion "31.0.0" // Update to the latest build tools version
 
     defaultConfig {
@@ -41,7 +41,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false // Disable code shrinking for now
+            minifyEnabled true // Disable code shrinking for now
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
