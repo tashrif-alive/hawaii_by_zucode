@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "388019942711",
+    "project_id": "hawaii-by-zucode",
+    "storage_bucket": "hawaii-by-zucode.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388019942711:android:d9dbda2cc960ceaeb896b2",
+        "android_client_info": {
+          "package_name": "com.example.hawaii_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOJPey_g2UpkiB4G2gUcFfd4OI1so1y2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
