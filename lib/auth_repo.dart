@@ -8,24 +8,25 @@ class AuthRepository {
 
   Future<void> signUp(AppUser user) async {
     try {
-      UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+      UserCredential userCredential = await _firebaseAuth
+          .createUserWithEmailAndPassword(
         email: user.email!,
         password: user.password!,
       );
       String uid = userCredential.user!.uid;
-      if (user.isAdmin) {
-        await _firestore.collection('admin').doc(uid).set({
-          'name': user.name,
-          'email': user.email,
-          'phoneNumber': user.phoneNumber,
-        });
-      } else {
-        await _firestore.collection('users').doc(uid).set({
-          'name': user.name,
-          'email': user.email,
-          'phoneNumber': user.phoneNumber,
-        });
-      }
+
+      // Determine the collection based on isAdmin value
+      String collectionName = user.isAdmin == true ? 'admin' : 'users';
+
+      // Store user data in Firestore
+      await _firestore.collection(collectionName).doc(uid).set({
+        'name': user.name,
+        'email': user.email,
+        'phoneNumber': user.phoneNumber,
+        'isAdmin': user.isAdmin,
+        // Optionally store isAdmin field
+        // 'password': user.password, // Avoid storing password in plaintext (use Firebase Authentication)
+      });
     } catch (e) {
       throw e;
     }

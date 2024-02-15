@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hawaii_app/src/signup/signup_controller.dart';
 
-class SignUpView extends StatelessWidget {
+class SignUpView extends StatefulWidget {
+  @override
+  _SignUpViewState createState() => _SignUpViewState();
+}
+
+class _SignUpViewState extends State<SignUpView> {
   final SignUpController controller = SignUpController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -44,7 +49,9 @@ class SignUpView extends StatelessWidget {
                 Switch(
                   value: isAdmin,
                   onChanged: (value) {
-                    isAdmin = value;
+                    setState(() {
+                      isAdmin = value;
+                    });
                   },
                 ),
               ],
