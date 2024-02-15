@@ -37,13 +37,8 @@ class AppUser {
 
   Future<void> registerInFirestore() async {
     try {
-      // Convert AppUser object to JSON
       Map<String, dynamic> userData = toJson();
-
-      // Determine the collection to store the user data based on isAdmin value
       String collectionName = isAdmin == true ? 'admin' : 'normal_user';
-
-      // Add user data to Firestore
       await FirebaseFirestore.instance.collection(collectionName).add(userData);
     } catch (e) {
       print('Error registering user in Firestore: $e');

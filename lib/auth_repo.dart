@@ -24,8 +24,7 @@ class AuthRepository {
         'email': user.email,
         'phoneNumber': user.phoneNumber,
         'isAdmin': user.isAdmin,
-        // Optionally store isAdmin field
-        // 'password': user.password, // Avoid storing password in plaintext (use Firebase Authentication)
+        'password': user.password, // Avoid storing password in plaintext (use Firebase Authentication)
       });
     } catch (e) {
       throw e;
