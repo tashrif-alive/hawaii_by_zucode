@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'login_model.dart';
+import '../models/login_model.dart';
 
-class AuthController {
-  final AuthModel _model = AuthModel();
+class UserLoginController {
+  final UserLoginModel _model = UserLoginModel();
   final BuildContext context;
 
-  AuthController(this.context);
+  UserLoginController(this.context);
 
   void loginUser(String email, String password, Function() navigateToDummyPage) async {
     String? errorMessage = await _model.signInWithEmailAndPassword(email, password);
@@ -18,7 +18,7 @@ class AuthController {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(errorMessage),
-          duration: Duration(seconds: 3),
+          duration: const Duration(seconds: 3),
         ),
       );
     }

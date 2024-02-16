@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hawaii_app/src/signup/user_model.dart';
+import 'package:hawaii_app/src/features/signup/models/user_model.dart';
 
 class AuthRepository {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -24,7 +24,7 @@ class AuthRepository {
         'email': user.email,
         'phoneNumber': user.phoneNumber,
         'isAdmin': user.isAdmin,
-        'password': user.password, // Avoid storing password in plaintext (use Firebase Authentication)
+        'password': user.password,
       });
     } catch (e) {
       throw e;

@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../commons/dummy.dart';
-import 'admin_model.dart';
+import 'package:hawaii_app/src/widgets/menus/admin_navigation_menu.dart';
+import '../models/admin_model.dart';
 
 class AdminLoginController {
-  final AdminModel _model = AdminModel();
+  final AdminLoginModel _model = AdminLoginModel();
   final BuildContext _context;
 
   AdminLoginController(this._context);
@@ -16,7 +15,7 @@ class AdminLoginController {
       // Login successful, navigate to dummy page
       Navigator.pushReplacement(
         _context,
-        MaterialPageRoute(builder: (context) => DummyPage()),
+        MaterialPageRoute(builder: (context) => AdminBottomBar()),
       );
     } else {
       // Show error message

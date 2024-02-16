@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:hawaii_app/src/Signin/common_login_page.dart';
-import 'package:hawaii_app/src/Signin/login_controller.dart';
-import 'package:hawaii_app/src/Signin/login_view.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:hawaii_app/src/features/login/view/signin_screen.dart';
+import 'package:hawaii_app/src/features/login/controllers/user_login_controller.dart';
+import 'package:hawaii_app/src/features/login/view/user_login_screen.dart';
 import 'package:hawaii_app/src/commons/dummy.dart';
-import 'package:hawaii_app/src/signup/sign_up_form.dart';
+import 'package:hawaii_app/src/signup/signup_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,12 +16,29 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Login Demo',
+    MaterialColor blackSwatch = const MaterialColor(
+      0xFF000000, // The primary value
+      <int, Color>{
+        50: Colors.black, // You can define shades as needed
+        100: Colors.black,
+        200: Colors.black,
+        300: Colors.black,
+        400: Colors.black,
+        500: Colors.black, // This is the primary color
+        600: Colors.black,
+        700: Colors.black,
+        800: Colors.black,
+        900: Colors.black,
+      },
+    );
+
+    return GetMaterialApp(
+      title: 'hawaii',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: blackSwatch,
       ),
-      home: UserTypeSelectionPage(),
+      home: const LoginScreen(),
     );
   }
 }

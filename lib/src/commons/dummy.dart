@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hawaii_app/src/features/login/view/admin_login_screen.dart';
+
+import '../features/login/controllers/admin_login_controller.dart';
 
 class DummyPage extends StatelessWidget {
   @override
@@ -7,10 +10,16 @@ class DummyPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Dummy Page'),
       ),
-      body: Center(
-        child: Text(
-          'Welcome to the Dummy Page!',
-          style: TextStyle(fontSize: 24),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+
+            AdminLoginScreen( // Assuming you have AdminLoginView defined
+              onLogin: (String email, String password) {
+                AdminLoginController(context).loginUser(email, password); // Use AdminLoginController
+              },
+            ),
+          ],
         ),
       ),
     );
