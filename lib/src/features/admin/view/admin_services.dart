@@ -17,13 +17,42 @@ class AdminServicesScreen extends StatefulWidget {
 
 class _AdminServicesScreenState extends State<AdminServicesScreen> {
   final List<Map<String, dynamic>> services = [
-    {"icon": Icons.flight, "color": Colors.purple, "title": "Flight", "screen": FlightScreen()},
-    {"icon": Icons.hotel, "color": Colors.brown, "title": "Hotel", "screen": const HotelScreen()},
-    {"icon": Icons.directions_bus, "color": Colors.cyan, "title": "Bus","screen": const BusScreen()},
-    {"icon": Icons.car_rental, "color": Colors.deepOrange, "title": "Cars","screen": const CabScreen()},
-    {"icon": Icons.my_library_books, "color": Colors.blueGrey, "title": "Package","screen": const PackageScreen()},
-    {"icon": Icons.menu_book_sharp, "color": Colors.green, "title": "E-Visa","screen": const VisaScreen()},
-
+    {
+      "icon": Icons.flight,
+      "color": Colors.purple,
+      "title": "Flight",
+      "screen": FlightScreen()
+    },
+    {
+      "icon": Icons.hotel,
+      "color": Colors.brown,
+      "title": "Hotel",
+      "screen": const HotelScreen()
+    },
+    {
+      "icon": Icons.directions_bus,
+      "color": Colors.cyan,
+      "title": "Bus",
+      "screen": const BusScreen()
+    },
+    {
+      "icon": Icons.car_rental,
+      "color": Colors.deepOrange,
+      "title": "Cars",
+      "screen": const CabScreen()
+    },
+    {
+      "icon": Icons.my_library_books,
+      "color": Colors.blueGrey,
+      "title": "Package",
+      "screen": const PackageScreen()
+    },
+    {
+      "icon": Icons.menu_book_sharp,
+      "color": Colors.green,
+      "title": "E-Visa",
+      "screen": const VisaScreen()
+    },
   ];
 
   @override
@@ -73,7 +102,6 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-
                       Get.to(services[index]['screen']);
                     },
                     child: Container(
@@ -106,7 +134,9 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
                 },
               ),
               SizedBox(height: 12),
-              Divider(thickness: 1,),
+              Divider(
+                thickness: 1,
+              ),
               SizedBox(height: 20),
               Text(
                 "Transactions",
