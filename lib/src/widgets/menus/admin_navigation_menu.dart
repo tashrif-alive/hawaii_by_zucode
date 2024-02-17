@@ -51,19 +51,25 @@ class _AdminBottomBarState extends State<AdminBottomBar> {
               ),
               label: 'Services',
             ),
-            const NavigationDestination(
-              icon: Icon( Icons.notifications_none_outlined,size: 40,),
-              selectedIcon: Icon( Icons.notifications,size: 40,),
-              label: 'Notifications',
+             NavigationDestination(
+              icon: SvgPicture.asset(
+                'assets/icons/controls.svg',
+                height: 41,
+              ),
+              selectedIcon: SvgPicture.asset(
+                'assets/icons/controls.svg',
+                height: 41,
+              ),
+              label: 'Controls',
             ),
             NavigationDestination(
               icon: SvgPicture.asset(
                 'assets/icons/more.svg',
-                height: 41, // Replace with the desired width
+                height: 41,
               ),
               selectedIcon: SvgPicture.asset(
                 'assets/icons/more_active.svg',
-                height: 41, // Replace with the desired height
+                height: 41,
               ),
               label: 'More',
             ),

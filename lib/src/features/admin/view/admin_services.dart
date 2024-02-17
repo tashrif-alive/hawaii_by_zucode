@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../services/categories/airline/view/flight_screen.dart';
+import '../services/categories/hotel/view/hotel_screen.dart';
 
 class AdminServicesScreen extends StatefulWidget {
   const AdminServicesScreen({Key? key});
@@ -11,11 +13,13 @@ class AdminServicesScreen extends StatefulWidget {
 
 class _AdminServicesScreenState extends State<AdminServicesScreen> {
   final List<Map<String, dynamic>> services = [
-    {"icon": Icons.flight, "color": Colors.purple, "title": "Flight"},
-    {"icon": Icons.hotel, "color": Colors.brown, "title": "Hotel"},
-    {"icon": Icons.directions_bus, "color": Colors.cyan, "title": "Bus"},
-    {"icon": Icons.car_rental, "color": Colors.deepOrange, "title": "Cars"},
-    {"icon": Icons.my_library_books, "color": Colors.blueGrey, "title": "Package"},
+    {"icon": Icons.flight, "color": Colors.purple, "title": "Flight", "screen": FlightScreen()},
+    {"icon": Icons.hotel, "color": Colors.brown, "title": "Hotel", "screen": HotelScreen()},
+    {"icon": Icons.directions_bus, "color": Colors.cyan, "title": "Bus","screen": FlightScreen()},
+    {"icon": Icons.car_rental, "color": Colors.deepOrange, "title": "Cars","screen": FlightScreen()},
+    {"icon": Icons.my_library_books, "color": Colors.blueGrey, "title": "Package","screen": FlightScreen()},
+    {"icon": Icons.menu_book_sharp, "color": Colors.red, "title": "E-Visa","screen": FlightScreen()},
+    // Add other services with their corresponding screens
   ];
 
   @override
@@ -51,21 +55,22 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
                 style: GoogleFonts.poppins(
                     fontSize: 18, fontWeight: FontWeight.w700),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               GridView.builder(
                 shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
-                  crossAxisSpacing: 16.0,
-                  mainAxisSpacing: 16.0,
+                  crossAxisSpacing: 18.0,
+                  mainAxisSpacing: 18.0,
                 ),
                 itemCount: services.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      print("${services[index]['title']} tapped");
+                      // Navigate to the corresponding screen when a service is tapped
+                      Get.to(services[index]['screen']);
                     },
                     child: Container(
                       padding: EdgeInsets.all(6),
@@ -104,7 +109,6 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
                 style: GoogleFonts.poppins(
                     fontSize: 18, fontWeight: FontWeight.w700),
               ),
-
             ],
           ),
         ),
