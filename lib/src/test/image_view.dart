@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'image_controller.dart';
 
@@ -12,23 +13,26 @@ class _ImageViewState extends State<ImageView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Upload Image'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            _imageController.uploadImage().then((imageUrl) {
-              // Handle the uploaded image URL as needed (e.g., save to Firestore)
-              print('Image uploaded: $imageUrl');
-            }).catchError((error) {
-              // Handle errors
-              print('Error uploading image: $error');
-            });
-          },
-          child: Text('Upload Image'),
+    return ElevatedButton(
+
+      onPressed: () {
+        _imageController.uploadImage().then((imageUrl) {
+          print('Image uploaded: $imageUrl');
+        }).catchError((error) {
+          // Handle errors
+          print('Error uploading image: $error');
+        });
+      },
+      style: ElevatedButton.styleFrom(
+        primary: Colors.grey.shade50,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+
         ),
+      ),
+      child: Text(
+        'Upload-Logo',
+        style: GoogleFonts.poppins(fontWeight: FontWeight.w400,color: Colors.black),
       ),
     );
   }

@@ -35,6 +35,6 @@ class FlightController {
 
   String _generateRandomId() {
     Random random = Random();
-    return random.nextInt(1000000).toString(); // Generates a random 6-digit number
+    return random.nextInt(1000000).toString();
   }
 }
