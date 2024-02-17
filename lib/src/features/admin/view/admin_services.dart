@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hawaii_app/src/features/admin/services/categories/bus/view/bus_screen.dart';
+import 'package:hawaii_app/src/features/admin/services/categories/e_visa/view/e_visa_screen.dart';
+import 'package:hawaii_app/src/features/admin/services/categories/package/view/package_screen.dart';
 import '../services/categories/airline/view/flight_screen.dart';
 import '../services/categories/hotel/view/hotel_screen.dart';
+import '../services/categories/rent_a_car/view/car_screen.dart';
 
 class AdminServicesScreen extends StatefulWidget {
   const AdminServicesScreen({Key? key});
@@ -14,12 +18,12 @@ class AdminServicesScreen extends StatefulWidget {
 class _AdminServicesScreenState extends State<AdminServicesScreen> {
   final List<Map<String, dynamic>> services = [
     {"icon": Icons.flight, "color": Colors.purple, "title": "Flight", "screen": FlightScreen()},
-    {"icon": Icons.hotel, "color": Colors.brown, "title": "Hotel", "screen": HotelScreen()},
-    {"icon": Icons.directions_bus, "color": Colors.cyan, "title": "Bus","screen": FlightScreen()},
-    {"icon": Icons.car_rental, "color": Colors.deepOrange, "title": "Cars","screen": FlightScreen()},
-    {"icon": Icons.my_library_books, "color": Colors.blueGrey, "title": "Package","screen": FlightScreen()},
-    {"icon": Icons.menu_book_sharp, "color": Colors.red, "title": "E-Visa","screen": FlightScreen()},
-    // Add other services with their corresponding screens
+    {"icon": Icons.hotel, "color": Colors.brown, "title": "Hotel", "screen": const HotelScreen()},
+    {"icon": Icons.directions_bus, "color": Colors.cyan, "title": "Bus","screen": const BusScreen()},
+    {"icon": Icons.car_rental, "color": Colors.deepOrange, "title": "Cars","screen": const CabScreen()},
+    {"icon": Icons.my_library_books, "color": Colors.blueGrey, "title": "Package","screen": const PackageScreen()},
+    {"icon": Icons.menu_book_sharp, "color": Colors.green, "title": "E-Visa","screen": const VisaScreen()},
+
   ];
 
   @override
@@ -69,7 +73,7 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      // Navigate to the corresponding screen when a service is tapped
+
                       Get.to(services[index]['screen']);
                     },
                     child: Container(

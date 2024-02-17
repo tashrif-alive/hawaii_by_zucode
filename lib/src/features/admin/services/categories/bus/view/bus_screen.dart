@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HotelScreen extends StatelessWidget {
-  const HotelScreen({super.key});
+class BusScreen extends StatelessWidget {
+  const BusScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
