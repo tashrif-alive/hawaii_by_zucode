@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hawaii_app/src/features/login/widgets/user_signin-footer_widgets.dart';
 import 'package:hawaii_app/src/features/login/widgets/user_signin_header_widgets.dart';
-import '../../../signup/signup_screen.dart';
+import '../../signup/view/signup_screen.dart';
 
 class UserLoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();

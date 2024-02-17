@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:hawaii_app/src/features/admin/view/admin_dashboard.dart';
+import 'package:hawaii_app/src/features/admin/view/admin_services.dart';
 
 class AdminBottomBar extends StatefulWidget {
   static String routeName = 'AdminBottomBar';
@@ -49,16 +51,10 @@ class _AdminBottomBarState extends State<AdminBottomBar> {
               ),
               label: 'Services',
             ),
-            NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/payment.svg',
-                height: 41, // Replace with the desired height
-              ),
-              selectedIcon: SvgPicture.asset(
-                'assets/icons/contact_active.svg',
-                height: 41, // Replace with the desired height
-              ),
-              label: 'Transaction',
+            const NavigationDestination(
+              icon: Icon( Icons.notifications_none_outlined,size: 40,),
+              selectedIcon: Icon( Icons.notifications,size: 40,),
+              label: 'Notifications',
             ),
             NavigationDestination(
               icon: SvgPicture.asset(
@@ -79,12 +75,12 @@ class _AdminBottomBarState extends State<AdminBottomBar> {
   }
 }
 
-//..................AdminBottomBarController....................
+///..................AdminBottomBarController....................///
 class AdminBottomBarController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
-    Container(color: Colors.lightBlue,child: const Center(child: Text("HI Admin"))),
-    Container(color: Colors.brown,),
+    const AdminDashboard(),
+    const AdminServicesScreen(),
     Container(color: Colors.purple,),
     Container(color: Colors.white10,),
   ];

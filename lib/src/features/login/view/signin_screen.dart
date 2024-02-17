@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hawaii_app/src/widgets/menus/admin_navigation_menu.dart';
 import 'package:hawaii_app/src/widgets/menus/user_navigation_menu.dart';
-import '../../../signup/signup_screen.dart';
+import '../../signup/view/signup_screen.dart';
 import '../controllers/admin_login_controller.dart';
 import 'admin_login_screen.dart';
 import '../controllers/user_login_controller.dart';

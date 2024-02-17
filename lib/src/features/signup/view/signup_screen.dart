@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hawaii_app/src/features/signup/controllers/signup_controller.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../features/signup/widgets/signup_footer_widgets.dart';
-import '../features/signup/widgets/signup_header_widgets.dart';
+import '../widgets/signup_footer_widgets.dart';
+import '../widgets/signup_header_widgets.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override

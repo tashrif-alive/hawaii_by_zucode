@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hawaii_app/src/features/signup/models/user_model.dart';
-import '../../../../auth_repo.dart';
+import '../../authentications/auth/auth_repo.dart';
 
 class SignUpController {
   final AuthRepository _authRepository = AuthRepository();
