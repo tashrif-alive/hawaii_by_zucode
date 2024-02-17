@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hawaii_app/src/features/admin/Airlines/airline_view.dart';
 import '../services/categories/airline/view/flight_screen.dart';
 import '../services/categories/hotel/view/hotel_screen.dart';
 
@@ -13,7 +14,7 @@ class AdminServicesScreen extends StatefulWidget {
 
 class _AdminServicesScreenState extends State<AdminServicesScreen> {
   final List<Map<String, dynamic>> services = [
-    {"icon": Icons.flight, "color": Colors.purple, "title": "Flight", "screen": FlightScreen()},
+    {"icon": Icons.flight, "color": Colors.purple, "title": "Flight", "screen": FlightFormView()},
     {"icon": Icons.hotel, "color": Colors.brown, "title": "Hotel", "screen": HotelScreen()},
     {"icon": Icons.directions_bus, "color": Colors.cyan, "title": "Bus","screen": FlightScreen()},
     {"icon": Icons.car_rental, "color": Colors.deepOrange, "title": "Cars","screen": FlightScreen()},

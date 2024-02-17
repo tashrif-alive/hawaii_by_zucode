@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../Airlines/airline_view.dart';
+
 class FlightScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -8,7 +10,11 @@ class FlightScreen extends StatelessWidget {
         title: Text('Flight Service'),
       ),
       body: Center(
-        child: Text('Flight Service Screen'),
+        child:Column(
+          children: [
+            FlightFormView(),
+          ],
+        )
       ),
     );
   }
