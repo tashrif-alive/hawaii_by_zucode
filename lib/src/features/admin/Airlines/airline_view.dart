@@ -53,9 +53,6 @@ class FlightFormView extends StatelessWidget {
                       fontSize: 18, fontWeight: FontWeight.w700),
                 ),
               ),
-              const SizedBox(
-                height: 4,
-              ),
               ///AirlineName
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8, top: 8),
