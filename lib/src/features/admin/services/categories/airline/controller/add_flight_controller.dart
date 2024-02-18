@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'airline_model.dart';
+import '../model/add_flight_model.dart';
 
 class FlightController {
   final CollectionReference flights = FirebaseFirestore.instance.collection('flights');
