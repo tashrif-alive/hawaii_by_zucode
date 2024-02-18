@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hawaii_app/src/features/admin/services/categories/bus/view/bus_screen.dart';
 import 'package:hawaii_app/src/features/admin/services/categories/e_visa/view/e_visa_screen.dart';
+import 'package:hawaii_app/src/features/admin/services/categories/hotel/view/add_hotel_screen.dart';
 import 'package:hawaii_app/src/features/admin/services/categories/package/view/package_screen.dart';
 import '../services/categories/airline/view/add_flight_screen.dart';
 import '../services/categories/airline/view/flight_screen.dart';
@@ -28,7 +29,7 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
       "icon": Icons.hotel,
       "color": Colors.brown,
       "title": "Hotel",
-      "screen": const HotelScreen()
+      "screen": AddHotelForm()
     },
     {
       "icon": Icons.directions_bus,
