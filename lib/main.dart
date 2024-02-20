@@ -6,6 +6,7 @@ import 'package:hawaii_app/src/features/login/controllers/user_login_controller.
 import 'package:hawaii_app/src/features/login/view/user_login_screen.dart';
 import 'package:hawaii_app/src/commons/dummy.dart';
 import 'package:hawaii_app/src/features/signup/view/signup_screen.dart';
+import 'package:hawaii_app/src/features/user/user_profile/user_profile%20screen.dart';
 import 'package:hawaii_app/src/widgets/menus/admin_navigation_menu.dart';
 
 void main() async {
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: blackSwatch,
       ),
-      home: const AdminBottomBar(),
+      home: const UserProfileScreen(),
     );
   }
 }
