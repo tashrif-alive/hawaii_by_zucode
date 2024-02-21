@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: blackSwatch,
       ),
-      home: const UserProfileScreen(),
+      home: const LoginScreen(),
     );
   }
 }

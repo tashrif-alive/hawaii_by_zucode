@@ -27,6 +27,7 @@ class ProfileWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: SizedBox(
+
             height: MediaQuery.of(context).size.height * 0.09,
             child: Row(
               children: [

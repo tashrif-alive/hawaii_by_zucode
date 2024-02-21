@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hawaii_app/src/features/user/user_profile/profile_widget.dart';
 import 'package:iconsax/iconsax.dart';
+import '../../settings/user_settings/app_user_setting_screen.dart';
 
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({Key? key}) : super(key: key);
@@ -15,17 +18,19 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile',style: GoogleFonts.poppins(
-            fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),),
+        title: Text(
+          'Profile',
+          style: GoogleFonts.poppins(
+              fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),
+        ),
         elevation: 0,
         centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {
-              // Add your navigation logic here
+              Get.to(const UserSettings());
             },
             icon: Icon(Icons.settings, color: Colors.black),
-
           ),
         ],
         backgroundColor: Colors.blueGrey.shade50,
@@ -85,92 +90,90 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 width: double.infinity,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children:  [
+                  children: [
                     SizedBox(
-                      height: 12,
+                      height: 12),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                      child: ProfileWidget(
+                        title: 'Update Account',
+                        subtitle: 'Account Details',
+                        icon: Icons.manage_accounts_rounded,
+                        onTap: () {},
+                      ),
                     ),
+
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 18.0),
                       child: ProfileWidget(
                         title: 'Location',
                         icon: Icons.location_on_sharp,
                         subtitle: 'Uttara',
-                        onTap: (){},
+                        onTap: () {},
                       ),
                     ),
-                    Divider(
-                      thickness: 0.1,
-                    ),
+
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 18.0),
                       child: ProfileWidget(
                         title: 'My Bookings',
                         icon: Icons.card_travel_rounded,
                         subtitle: 'Uttara',
-                        onTap: (){},
+                        onTap: () {},
                       ),
                     ),
-                    Divider(
-                      thickness: 0.1,
-                    ),
+
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 18.0),
                       child: ProfileWidget(
                         title: 'My Tickets',
                         icon: Icons.airplane_ticket_outlined,
                         subtitle: 'Uttara',
-                        onTap: (){},
+                        onTap: () {},
                       ),
                     ),
-                    Divider(
-                      thickness: 0.1,
-                    ),
+
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 18.0),
                       child: ProfileWidget(
                         title: 'Wishlist',
                         icon: Icons.favorite,
                         subtitle: 'Uttara',
-                        onTap: (){},
+                        onTap: () {},
                       ),
                     ),
-                    Divider(
-                      thickness: 0.1,
-                    ),
+
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 18.0),
                       child: ProfileWidget(
                         title: 'Memories',
                         icon: Icons.access_time,
                         subtitle: 'Uttara',
-                        onTap: (){},
+                        onTap: () {},
                       ),
                     ),
-                    Divider(
-                      thickness: 0.1,
-                    ),Padding(
+
+                    Padding(
                       padding: EdgeInsets.symmetric(horizontal: 18.0),
                       child: ProfileWidget(
                         title: 'Add Card',
                         icon: Icons.add_card,
                         subtitle: 'Uttara',
-                        onTap: (){},
+                        onTap: () {},
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical: 5),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 5),
                       child: SizedBox(
                         height: 45,
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {
-
-                          },
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black87,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  10.0),
+                              borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
                           child: Text('Log out'),
