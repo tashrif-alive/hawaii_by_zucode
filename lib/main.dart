@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:hawaii_app/src/features/admin/view/admin_dashboard.dart';
 import 'package:hawaii_app/src/features/login/view/signin_screen.dart';
 import 'package:hawaii_app/src/features/login/controllers/user_login_controller.dart';
 import 'package:hawaii_app/src/features/login/view/user_login_screen.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: blackSwatch,
       ),
-      home: const LoginScreen(),
+      home: const AdminDashboard(),
     );
   }
 }
