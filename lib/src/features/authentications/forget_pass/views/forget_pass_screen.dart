@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hawaii_app/src/features/authentications/forget_pass/views/reset_pass_mail.dart';
 import '../models/forget_pass_email.dart';
 import '../models/forget_password_text.dart';
 import '../widgets/forget_pass_btn_widgets.dart';
@@ -46,7 +47,7 @@ class ForgetPassScreen{
               subtitle: 'Reset via mail verification',
               onTap: () {
                 Navigator.pop(context);
-                Get.to(() => const VerifyEmailScreen());
+                Get.to(() => const ResetPasswordMailScreen());
               },
             ),
             const SizedBox(height: 10),
@@ -56,7 +57,7 @@ class ForgetPassScreen{
               subtitle: 'Reset via text message',
               onTap: () {
                 Navigator.pop(context);
-                Get.to(() => const ForgetPasswordMailScreen());
+                Get.to(() => const VerifyEmailScreen());
               },
             ),
           ],

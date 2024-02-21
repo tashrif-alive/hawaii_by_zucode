@@ -22,22 +22,19 @@ class FormFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller, // Assign the TextEditingController to the TextFormField
       decoration: InputDecoration(
         prefixIcon: Icon(prefixIcon),
+        iconColor: Colors.black54,
         hintText: hintText,
+        contentPadding: EdgeInsets.symmetric(vertical: 16),
+        // Adjusting the vertical padding
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide.none,
         ),
-        fillColor: fillColor,
-        filled: filled,
-        suffixIcon: suffixIcon != null
-            ? IconButton(
-          onPressed: null,
-          icon: Icon(suffixIcon),
-        )
-            : null,
+        fillColor: Colors.grey.shade50,
+        filled: true,
+        suffixIcon: Icon(suffixIcon),
       ),
     );
   }
