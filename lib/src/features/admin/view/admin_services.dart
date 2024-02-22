@@ -6,6 +6,8 @@ import 'package:hawaii_app/src/features/admin/services/categories/hotel/view/add
 import 'package:hawaii_app/src/features/admin/services/categories/package/view/package_screen.dart';
 import '../services/categories/airline/view/add_flight_screen.dart';
 import '../services/categories/bus/view/add_buses_screen.dart';
+import '../services/categories/rent_a_car/view/add_car_screen.dart';
+import '../services/categories/rent_a_car/view/add_driver_details screens.dart';
 import '../services/categories/rent_a_car/view/car_screen.dart';
 
 class AdminServicesScreen extends StatefulWidget {
@@ -39,13 +41,13 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
       "icon": Icons.car_rental,
       "color": Colors.deepOrange,
       "title": "Cars",
-      "screen": const CabScreen()
+      "screen":  AddDriverView()
     },
     {
       "icon": Icons.my_library_books,
       "color": Colors.blueGrey,
       "title": "Package",
-      "screen": const PackageScreen()
+      "screen": AddCarScreen()
     },
     {
       "icon": Icons.menu_book_sharp,
