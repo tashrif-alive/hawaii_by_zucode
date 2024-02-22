@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: blackSwatch,
       ),
-      home: const AdminDashboard(),
+      home: const LoginScreen(),
     );
   }
 }

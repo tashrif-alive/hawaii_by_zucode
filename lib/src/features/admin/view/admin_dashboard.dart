@@ -3,10 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hawaii_app/src/features/admin/services/categories/airline/flight_list_screen.dart';
+import 'package:hawaii_app/src/features/admin/services/categories/airline/view/flight_list_screen.dart';
 import 'package:hawaii_app/src/features/admin/services/categories/hotel/hotel_list.dart';
 import '../../login/view/signin_screen.dart';
 import '../../user/user_profile_widget.dart';
+import '../services/categories/bus/view/bus_list.dart';
 
 class AdminDashboard extends StatefulWidget {
   static String routeName = 'AdminDashboard';
@@ -93,6 +94,15 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 );
               },
               child: Text('View hotel list'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BusListScreen()),
+                );
+              },
+              child: Text('View buses list'),
             ),
 
           ],

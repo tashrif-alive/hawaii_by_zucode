@@ -19,7 +19,7 @@ class FlightDetailScreen extends StatelessWidget {
           children: [
             Text(
               'Airline Name: ${flightData['airlineName']}',
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
             SizedBox(height: 8),
             Text(

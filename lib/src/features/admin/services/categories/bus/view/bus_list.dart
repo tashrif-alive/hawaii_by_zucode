@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'hotel_details.dart';
+import 'bus_details.dart';
 
-class HotelListScreen extends StatelessWidget {
+
+class BusListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hotel List'),
+        title: Text('Bus List'),
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('hotels').snapshots(),
+        stream: FirebaseFirestore.instance.collection('buses').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return Center(
@@ -20,36 +21,31 @@ class HotelListScreen extends StatelessWidget {
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(),
             );
           }
 
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
-              Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-              return InkWell(
+              Map<String, dynamic> data =
+              document.data() as Map<String, dynamic>;
+              return GestureDetector(
                 onTap: () {
-                  // Navigate to detailed hotel page
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => HotelDetailScreen(data: data),
+                      builder: (context) => BusDetailScreen(
+                        busData: data,
+                      ),
                     ),
                   );
                 },
                 child: Card(
                   child: ListTile(
-                    title: Text(data['hotelName']),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Location: ${data['location']}'),
-                        Text('Type: ${data['hotelType']}'),
-                        Text('Cost: ${data['hotelCost']}'),
-                        // Add more fields as needed
-                      ],
-                    ),
+                    title: Text(data['busCompany'] ?? ''),
+                    subtitle: Text(data['date'] ?? ''),
+                    // Add more fields as needed
                   ),
                 ),
               );

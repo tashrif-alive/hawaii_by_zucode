@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hawaii_app/src/features/admin/services/categories/bus/view/bus_screen.dart';
 import 'package:hawaii_app/src/features/admin/services/categories/e_visa/view/e_visa_screen.dart';
 import 'package:hawaii_app/src/features/admin/services/categories/hotel/view/add_hotel_screen.dart';
 import 'package:hawaii_app/src/features/admin/services/categories/package/view/package_screen.dart';
 import '../services/categories/airline/view/add_flight_screen.dart';
-import '../services/categories/airline/view/flight_screen.dart';
-import '../services/categories/hotel/view/hotel_screen.dart';
+import '../services/categories/bus/view/add_buses_screen.dart';
 import '../services/categories/rent_a_car/view/car_screen.dart';
 
 class AdminServicesScreen extends StatefulWidget {
@@ -35,7 +33,7 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
       "icon": Icons.directions_bus,
       "color": Colors.cyan,
       "title": "Bus",
-      "screen": const BusScreen()
+      "screen": AddBusView()
     },
     {
       "icon": Icons.car_rental,
