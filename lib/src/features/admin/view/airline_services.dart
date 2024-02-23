@@ -129,12 +129,7 @@ class _AirLineServicesState extends State<AirLineServices> {
               ),
               SizedBox(height: 12,),
               SearchBarWidget(),
-              Container(
-                width: MediaQuery.of(context).size.width*0.9,
-                color: Colors.grey.shade50,
-                child: FlightListScreen(),
-
-              )
+              FlightListScreen()
             ],
           ),
         ),
