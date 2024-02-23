@@ -18,7 +18,9 @@ class FlightController {
       bool refundable,
       bool insurance,
       String baggage,
-      String flightClass, // New parameter for flight class
+      String flightClass,
+      double regularPrice,
+      double ourPrice,
       ) async {
     try {
       String id = _generateRandomId();
@@ -36,7 +38,9 @@ class FlightController {
           refundable: refundable,
           insurance: insurance,
           baggage: baggage,
-          flightClass: flightClass, // Assigning the flight class
+          flightClass: flightClass,
+          regularPrice: regularPrice,
+          ourPrice: ourPrice,
         ).toMap(),
       );
     } catch (e) {

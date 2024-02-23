@@ -14,7 +14,7 @@ class AirLineServices extends StatefulWidget {
 }
 
 class _AirLineServicesState extends State<AirLineServices> {
-  final List<Map<String, dynamic>> services = [
+  final List<Map<String, dynamic>> airlineServices = [
     {
       "image": "assets/icons/logos/flight_add.png",
       "color": Colors.orange,
@@ -80,33 +80,33 @@ class _AirLineServicesState extends State<AirLineServices> {
                   crossAxisSpacing: 15.0,
                   mainAxisSpacing: 15.0,
                 ),
-                itemCount: services.length,
+                itemCount: airlineServices.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Get.to(services[index]['screen']);
+                      Get.to(airlineServices[index]['screen']);
                     },
                     child: Container(
-                      padding: EdgeInsets.all(6),
+                      padding: EdgeInsets.symmetric(horizontal: 8,vertical: 6),
                       decoration: BoxDecoration(
-                        color: services[index]['color'][50],
+                        color: airlineServices[index]['color'][50],
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            services[index]['image'],
+                            airlineServices[index]['image'],
                             width: 70, // Adjust image width here
                             height: 70,
                             fit: BoxFit.cover,// Adjust image height here
                           ),
 
                           Text(
-                            services[index]['title'],
+                            airlineServices[index]['title'],
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w500,
-                              color: services[index]['color'],
+                              color: airlineServices[index]['color'],
                               fontSize: 11, // Adjust text size here
                             ),
                           ),

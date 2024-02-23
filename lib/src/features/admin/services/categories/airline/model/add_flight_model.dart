@@ -11,7 +11,9 @@ class Flight {
   final bool refundable;
   final bool insurance;
   final String baggage;
-  final String flightClass; // New attribute
+  final String flightClass;
+  final double regularPrice;
+  final double ourPrice;
 
   Flight({
     required this.id,
@@ -26,7 +28,9 @@ class Flight {
     required this.refundable,
     required this.insurance,
     required this.baggage,
-    required this.flightClass, // Updated constructor
+    required this.flightClass,
+    required this.regularPrice,
+    required this.ourPrice,
   });
 
   Map<String, dynamic> toMap() {
@@ -43,7 +47,9 @@ class Flight {
       'refundable': refundable,
       'insurance': insurance,
       'baggage': baggage,
-      'flightClass': flightClass, // Updated toMap method
+      'flightClass': flightClass,
+      'regularPrice': regularPrice,
+      'ourPrice': ourPrice,
     };
   }
 
@@ -61,7 +67,9 @@ class Flight {
       refundable: map['refundable'],
       insurance: map['insurance'],
       baggage: map['baggage'],
-      flightClass: map['flightClass'], // Updated fromMap method
+      flightClass: map['flightClass'],
+      regularPrice: map['regularPrice'],
+      ourPrice: map['ourPrice'],
     );
   }
 }
