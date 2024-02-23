@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../../../test/image_view.dart';
 import '../controller/add_flight_controller.dart';
 
 class FlightFormView extends StatefulWidget {
@@ -21,6 +22,7 @@ class _FlightFormViewState extends State<FlightFormView> {
   String _toPlace = '';
   String _planeModel = '';
   String _baggage = '';
+  String _imgUrl = '';
   double _ourPrice = 0;
   double _regularPrice = 0;
   bool _refundable = false;
@@ -47,6 +49,7 @@ class _FlightFormViewState extends State<FlightFormView> {
         _flightClassValue,
         _regularPrice,
         _ourPrice,
+        _imgUrl
       );
       Navigator.pop(context); // Navigate back after adding flight
     }
@@ -495,6 +498,9 @@ class _FlightFormViewState extends State<FlightFormView> {
                     ],
                   ),
                 ),
+                ImageView(onUploadSuccess:(String url){
+                  _imgUrl=url;
+                }),
                 // Checkbox for Insurance
                 Padding(
                   padding:

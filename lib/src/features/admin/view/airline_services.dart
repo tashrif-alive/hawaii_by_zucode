@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hawaii_app/src/features/admin/services/categories/hotel/view/add_hotel_screen.dart';
 import '../services/categories/airline/view/add_flight_form.dart';
+import '../services/categories/airline/view/flight_list_screen.dart';
 import '../services/categories/bus/view/add_buses_screen.dart';
+import '../widgets/search_bar_widget.dart';
 
 
 class AirLineServices extends StatefulWidget {
@@ -25,13 +27,13 @@ class _AirLineServicesState extends State<AirLineServices> {
       "image": "assets/icons/logos/manage_flight.png",
       "color": Colors.lightGreen,
       "title": "Manage Flights",
-      "screen": AddHotelForm()
+      "screen": (){}
     },
     {
       "image": "assets/icons/logos/flight_requ.png",
       "color": Colors.cyan,
       "title": "Booking Request",
-      "screen": AddBusView()
+      "screen": (){}
     },
   ];
 
@@ -121,10 +123,18 @@ class _AirLineServicesState extends State<AirLineServices> {
                 thickness: 1,
               ),
               Text(
-                "Flights Details",
+                "Available Flights",
                 style: GoogleFonts.poppins(
                     fontSize: 16, fontWeight: FontWeight.w700),
               ),
+              SizedBox(height: 12,),
+              SearchBarWidget(),
+              Container(
+                width: MediaQuery.of(context).size.width*0.9,
+                color: Colors.grey.shade50,
+                child: FlightListScreen(),
+
+              )
             ],
           ),
         ),

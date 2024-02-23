@@ -14,6 +14,7 @@ class Flight {
   final String flightClass;
   final double regularPrice;
   final double ourPrice;
+  final String imgUrl;
 
   Flight({
     required this.id,
@@ -31,6 +32,7 @@ class Flight {
     required this.flightClass,
     required this.regularPrice,
     required this.ourPrice,
+    required this.imgUrl,
   });
 
   Map<String, dynamic> toMap() {
@@ -50,6 +52,7 @@ class Flight {
       'flightClass': flightClass,
       'regularPrice': regularPrice,
       'ourPrice': ourPrice,
+      'imgUrl': imgUrl,
     };
   }
 
@@ -70,6 +73,7 @@ class Flight {
       flightClass: map['flightClass'],
       regularPrice: map['regularPrice'],
       ourPrice: map['ourPrice'],
+      imgUrl: map['imgUrl'],
     );
   }
 }

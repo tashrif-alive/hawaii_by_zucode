@@ -21,6 +21,7 @@ class FlightController {
       String flightClass,
       double regularPrice,
       double ourPrice,
+      String imgUrl,
       ) async {
     try {
       String id = _generateRandomId();
@@ -40,7 +41,7 @@ class FlightController {
           baggage: baggage,
           flightClass: flightClass,
           regularPrice: regularPrice,
-          ourPrice: ourPrice,
+          ourPrice: ourPrice, imgUrl: imgUrl,
         ).toMap(),
       );
     } catch (e) {

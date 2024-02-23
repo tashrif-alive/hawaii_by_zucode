@@ -12,46 +12,54 @@ class FlightDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Flight Detail'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Airline Name: ${flightData['airlineName']}',
-              style: const TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Date: ${flightData['date']}',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'From Time: ${flightData['fromTime']}',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'To Time: ${flightData['toTime']}',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Duration: ${flightData['duration']}',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'From Place: ${flightData['fromPlace']}',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'To Place: ${flightData['toPlace']}',
-              style: TextStyle(fontSize: 18),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Airline Name: ${flightData['airlineName']}',
+                style: const TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Date: ${flightData['date']}',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'From Time: ${flightData['fromTime']}',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'To Time: ${flightData['toTime']}',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Duration: ${flightData['duration']}',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'From Place: ${flightData['fromPlace']}',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 8),
+
+              Text(
+                'To Place: ${flightData['toPlace']}',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 8),
+               if (flightData['imgUrl']!='')Image.network(flightData['imgUrl']??''),
+              SizedBox(height: 8,
+
+              ),
+            ],
+          ),
         ),
       ),
     );
