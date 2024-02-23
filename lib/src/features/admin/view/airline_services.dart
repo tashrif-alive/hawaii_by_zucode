@@ -1,60 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hawaii_app/src/features/admin/services/categories/e_visa/view/e_visa_screen.dart';
 import 'package:hawaii_app/src/features/admin/services/categories/hotel/view/add_hotel_screen.dart';
-import 'package:hawaii_app/src/features/admin/services/categories/package/view/package_screen.dart';
 import '../services/categories/airline/view/add_flight_form.dart';
 import '../services/categories/bus/view/add_buses_screen.dart';
-import '../services/categories/rent_a_car/view/add_car_screen.dart';
-import '../services/categories/rent_a_car/view/add_driver_details screens.dart';
-import '../services/categories/rent_a_car/view/car_screen.dart';
-import 'airline_services.dart';
 
-class AdminServicesScreen extends StatefulWidget {
-  const AdminServicesScreen({Key? key});
+
+class AirLineServices extends StatefulWidget {
+  const AirLineServices({Key? key});
 
   @override
-  State<AdminServicesScreen> createState() => _AdminServicesScreenState();
+  State<AirLineServices> createState() => _AirLineServicesState();
 }
 
-class _AdminServicesScreenState extends State<AdminServicesScreen> {
+class _AirLineServicesState extends State<AirLineServices> {
   final List<Map<String, dynamic>> services = [
     {
-      "icon": Icons.flight,
-      "color": Colors.purple,
-      "title": "Flight",
-      "screen": const AirLineServices()
+      "image": "assets/icons/logos/flight_add.png",
+      "color": Colors.orange,
+      "title": "Add Flight",
+      "screen": FlightFormView()
     },
     {
-      "icon": Icons.hotel,
-      "color": Colors.brown,
-      "title": "Hotel",
+      "image": "assets/icons/logos/manage_flight.png",
+      "color": Colors.lightGreen,
+      "title": "Manage Flights",
       "screen": AddHotelForm()
     },
     {
-      "icon": Icons.directions_bus,
+      "image": "assets/icons/logos/flight_requ.png",
       "color": Colors.cyan,
-      "title": "Bus",
+      "title": "Booking Request",
       "screen": AddBusView()
-    },
-    {
-      "icon": Icons.car_rental,
-      "color": Colors.deepOrange,
-      "title": "Cars",
-      "screen":  AddDriverView()
-    },
-    {
-      "icon": Icons.my_library_books,
-      "color": Colors.blueGrey,
-      "title": "Package",
-      "screen": AddCarScreen()
-    },
-    {
-      "icon": Icons.menu_book_sharp,
-      "color": Colors.green,
-      "title": "E-Visa",
-      "screen": const AirLineServices()
     },
   ];
 
@@ -65,7 +42,7 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
-          "Services",
+          "Airline Services",
           style: GoogleFonts.poppins(
               fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),
         ),
@@ -89,18 +66,19 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
               Text(
                 "Services",
                 style: GoogleFonts.poppins(
-                    fontSize: 18, fontWeight: FontWeight.w700),
+                    fontSize: 16, fontWeight: FontWeight.w700),
               ),
               const SizedBox(
                 height: 12,
               ),
 
+              ///AirLineServices
               GridView.builder(
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                  crossAxisSpacing: 18.0,
-                  mainAxisSpacing: 18.0,
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 15.0,
+                  mainAxisSpacing: 15.0,
                 ),
                 itemCount: services.length,
                 itemBuilder: (context, index) {
@@ -117,18 +95,19 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            services[index]['icon'],
-                            color: services[index]['color'],
-                            size: 30, // Adjust icon size here
+                          Image.asset(
+                            services[index]['image'],
+                            width: 70, // Adjust image width here
+                            height: 70,
+                            fit: BoxFit.cover,// Adjust image height here
                           ),
-                          SizedBox(height: 3), // Adjust spacing here
+
                           Text(
                             services[index]['title'],
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w500,
                               color: services[index]['color'],
-                              fontSize: 12, // Adjust text size here
+                              fontSize: 11, // Adjust text size here
                             ),
                           ),
                         ],
@@ -141,11 +120,10 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
               Divider(
                 thickness: 1,
               ),
-              SizedBox(height: 20),
               Text(
-                "Transactions",
+                "Flights Details",
                 style: GoogleFonts.poppins(
-                    fontSize: 18, fontWeight: FontWeight.w700),
+                    fontSize: 16, fontWeight: FontWeight.w700),
               ),
             ],
           ),

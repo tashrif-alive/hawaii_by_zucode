@@ -7,6 +7,11 @@ class Flight {
   final String duration;
   final String fromPlace;
   final String toPlace;
+  final String planeModel;
+  final bool refundable;
+  final bool insurance;
+  final String baggage;
+  final String flightClass; // New attribute
 
   Flight({
     required this.id,
@@ -17,6 +22,11 @@ class Flight {
     required this.duration,
     required this.fromPlace,
     required this.toPlace,
+    required this.planeModel,
+    required this.refundable,
+    required this.insurance,
+    required this.baggage,
+    required this.flightClass, // Updated constructor
   });
 
   Map<String, dynamic> toMap() {
@@ -29,6 +39,11 @@ class Flight {
       'duration': duration,
       'fromPlace': fromPlace,
       'toPlace': toPlace,
+      'planeModel': planeModel,
+      'refundable': refundable,
+      'insurance': insurance,
+      'baggage': baggage,
+      'flightClass': flightClass, // Updated toMap method
     };
   }
 
@@ -42,6 +57,11 @@ class Flight {
       duration: map['duration'],
       fromPlace: map['fromPlace'],
       toPlace: map['toPlace'],
+      planeModel: map['planeModel'],
+      refundable: map['refundable'],
+      insurance: map['insurance'],
+      baggage: map['baggage'],
+      flightClass: map['flightClass'], // Updated fromMap method
     );
   }
 }

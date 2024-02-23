@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'add_flight_screen.dart';
+import 'add_flight_form.dart';
 
 class FlightScreen extends StatelessWidget {
   const FlightScreen({super.key});

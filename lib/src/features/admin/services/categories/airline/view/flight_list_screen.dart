@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'flight_detail_screen.dart';
+import 'flight_details_screen.dart';
 
 class FlightListScreen extends StatelessWidget {
   @override
