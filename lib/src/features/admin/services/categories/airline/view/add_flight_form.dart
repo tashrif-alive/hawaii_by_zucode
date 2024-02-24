@@ -6,6 +6,8 @@ import '../../../../../../test/image_view.dart';
 import '../controller/add_flight_controller.dart';
 
 class FlightFormView extends StatefulWidget {
+  const FlightFormView({super.key});
+
   @override
   _FlightFormViewState createState() => _FlightFormViewState();
 }
@@ -15,7 +17,7 @@ class _FlightFormViewState extends State<FlightFormView> {
   final _formKey = GlobalKey<FormState>();
 
   String _airlineName = '';
-  DateTime _selectedDate = DateTime.now(); // Change to DateTime for storing the selected date
+  DateTime _selectedDate = DateTime.now();
   String _fromTime = '';
   String _toTime = '';
   String _duration = '';
@@ -35,14 +37,15 @@ class _FlightFormViewState extends State<FlightFormView> {
   bool _insurance = false;
   String _flightClassValue = 'Economy';
 
-  List<String> _flightClassOptions = ['Economy', 'Business', 'First Class'];
+  final List<String> _flightClassOptions = ['Economy', 'Business', 'First Class'];
 
   void _submitForm(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       await _flightController.addFlight(
           _airlineName,
-          _selectedDate.toString(), // Convert DateTime to String for saving
+          _selectedDate.toString(),
+          // Convert DateTime to String for saving
           _fromTime,
           _toTime,
           _duration,
@@ -61,7 +64,7 @@ class _FlightFormViewState extends State<FlightFormView> {
           _arrivalTerminal,
           _departureAirport,
           _departureTerminal);
-      Navigator.pop(context); // Navigate back after adding flight
+      Navigator.pop(context);
     }
   }
 
@@ -75,10 +78,12 @@ class _FlightFormViewState extends State<FlightFormView> {
     );
     if (picked != null && picked != _selectedDate) {
       setState(() {
-        _selectedDate = DateTime(picked.year, picked.month, picked.day); // Remove time information
+        _selectedDate = DateTime(
+            picked.year, picked.month, picked.day);
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,9 +128,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 12,
-                ),
+                const SizedBox(height: 12),
 
                 ///AirLineName & Model
                 Padding(
@@ -141,7 +144,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                             hintText: "Airline",
                             hintStyle: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w400, fontSize: 14),
-                            contentPadding: EdgeInsets.symmetric(vertical: 16),
+                            contentPadding: const EdgeInsets.symmetric(vertical: 16),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide.none,
@@ -158,9 +161,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                           onSaved: (newValue) => _airlineName = newValue!,
                         ),
                       ),
-                      SizedBox(
-                        width: 8,
-                      ),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: TextFormField(
                           decoration: InputDecoration(
@@ -222,9 +223,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                           onSaved: (newValue) => _fromPlace = newValue!,
                         ),
                       ),
-                      SizedBox(
-                        width: 8,
-                      ),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: TextFormField(
                           decoration: InputDecoration(
@@ -254,7 +253,8 @@ class _FlightFormViewState extends State<FlightFormView> {
                     ],
                   ),
                 ),
-///Airports & terminals
+
+                ///Airports & terminals
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Row(
@@ -268,7 +268,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                             hintStyle: GoogleFonts.poppins(
                                 fontSize: 14, fontWeight: FontWeight.w400),
                             contentPadding:
-                            const EdgeInsets.symmetric(vertical: 16),
+                                const EdgeInsets.symmetric(vertical: 16),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide.none,
@@ -285,9 +285,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                           onSaved: (newValue) => _arrivalAirport = newValue!,
                         ),
                       ),
-                      SizedBox(
-                        width: 8,
-                      ),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: TextFormField(
                           decoration: InputDecoration(
@@ -297,7 +295,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                             hintStyle: GoogleFonts.poppins(
                                 fontSize: 14, fontWeight: FontWeight.w400),
                             contentPadding:
-                            const EdgeInsets.symmetric(vertical: 16),
+                                const EdgeInsets.symmetric(vertical: 16),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide.none,
@@ -330,7 +328,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                             hintStyle: GoogleFonts.poppins(
                                 fontSize: 14, fontWeight: FontWeight.w400),
                             contentPadding:
-                            const EdgeInsets.symmetric(vertical: 16),
+                                const EdgeInsets.symmetric(vertical: 16),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide.none,
@@ -347,9 +345,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                           onSaved: (newValue) => _departureAirport = newValue!,
                         ),
                       ),
-                      SizedBox(
-                        width: 8,
-                      ),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: TextFormField(
                           decoration: InputDecoration(
@@ -359,7 +355,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                             hintStyle: GoogleFonts.poppins(
                                 fontSize: 14, fontWeight: FontWeight.w400),
                             contentPadding:
-                            const EdgeInsets.symmetric(vertical: 16),
+                                const EdgeInsets.symmetric(vertical: 16),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide.none,
@@ -379,38 +375,45 @@ class _FlightFormViewState extends State<FlightFormView> {
                     ],
                   ),
                 ),
+
                 ///Date & Time
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  onTap: () => _selectDate(context), // Show date picker on tap
-                  child: InputDecorator(
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.date_range),
-                      labelText: 'Date',
-                      labelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide.none,
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GestureDetector(
+                        onTap: () => _selectDate(context),
+                        // Show date picker on tap
+                        child: InputDecorator(
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.date_range),
+                            labelText: 'Arrival Date',
+                            labelStyle:  GoogleFonts.poppins(
+                                fontSize: 14, fontWeight: FontWeight.w400),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide.none,
+                            ),
+                            filled: true,
+                            fillColor: Colors.grey.shade50,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                  //DateFormat('yyyy-MM-dd').format(_selectedDate),
+                                  DateFormat("E,dMMM").format(
+                                      _selectedDate),style:  GoogleFonts.poppins(
+                                  fontSize: 14, fontWeight: FontWeight.w400),), // Display selected date
+                              const Icon(Icons.arrow_drop_down),
+                            ],
+                          ),
+                        ),
                       ),
-                      filled: true,
-                      fillColor: Colors.grey.shade50,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(DateFormat('yyyy-MM-dd').format(_selectedDate)), // Display selected date
-                        Icon(Icons.arrow_drop_down),
-                      ],
-                    ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Row(
@@ -441,9 +444,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                           onSaved: (newValue) => _fromTime = newValue!,
                         ),
                       ),
-                      SizedBox(
-                        width: 8,
-                      ),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: TextFormField(
                           decoration: InputDecoration(
@@ -507,9 +508,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                               _regularPrice = double.parse(newValue!),
                         ),
                       ),
-                      SizedBox(
-                        width: 8,
-                      ),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: TextFormField(
                           decoration: InputDecoration(
@@ -608,7 +607,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                         fontWeight: FontWeight.w400,
                         fontSize: 14,
                       ),
-                      contentPadding: EdgeInsets.symmetric(vertical: 16),
+                      contentPadding: const EdgeInsets.symmetric(vertical: 16),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
                         borderSide: BorderSide.none,
@@ -660,7 +659,7 @@ class _FlightFormViewState extends State<FlightFormView> {
 
                 // Checkbox for Refundable
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
                   child: Row(
                     children: [
                       Checkbox(
@@ -709,7 +708,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                     child: ElevatedButton(
                       onPressed: () => _submitForm(context),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.black,
+                        backgroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
