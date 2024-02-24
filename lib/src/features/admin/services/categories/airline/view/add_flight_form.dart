@@ -87,6 +87,32 @@ class _FlightFormViewState extends State<FlightFormView> {
     }
   }
 
+  // Method to show the time picker for departure time
+  Future<void> _selectDepartureTime(BuildContext context) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+    if (picked != null) {
+      setState(() {
+        _fromTime = picked.format(context); // Store the selected departure time
+      });
+    }
+  }
+
+// Method to show the time picker for arrival time
+  Future<void> _selectArrivalTime(BuildContext context) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+    if (picked != null) {
+      setState(() {
+        _toTime = picked.format(context); // Store the selected arrival time
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -300,30 +326,46 @@ class _FlightFormViewState extends State<FlightFormView> {
                   child: Row(
                     children: [
                       Expanded(
-                          child: AdminTextFormField(
-                        hintText: 'Departure Time',
-                        prefixIcon: Icons.access_time,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter departure time';
-                          }
-                          return null;
-                        },
-                        onSaved: (newValue) => _fromTime = newValue!,
-                      )),
+                        child: InkWell(
+                          onTap: () => _selectDepartureTime(context),
+                          child: TextFormField(
+                            enabled: false,
+                            decoration: InputDecoration(
+                              hintText: 'Departure Time',
+                              prefixIcon: Icon(Icons.access_time),
+                            ),
+                            controller: TextEditingController(text: _fromTime),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter departure time';
+                              }
+                              return null;
+                            },
+                            onSaved: (newValue) => _fromTime = newValue!,
+                          ),
+                        ),
+                      ),
                       const SizedBox(width: 8),
                       Expanded(
-                          child: AdminTextFormField(
-                        hintText: 'Arrival Time',
-                        prefixIcon: Icons.access_time,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter arrival time';
-                          }
-                          return null;
-                        },
-                        onSaved: (newValue) => _toTime = newValue!,
-                      )),
+                        child: InkWell(
+                          onTap: () => _selectArrivalTime(context),
+                          child: TextFormField(
+                            enabled: false,
+                            decoration: InputDecoration(
+                              hintText: 'Arrival Time',
+                              prefixIcon: Icon(Icons.access_time),
+                            ),
+                            controller: TextEditingController(text: _toTime),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter arrival time';
+                              }
+                              return null;
+                            },
+                            onSaved: (newValue) => _toTime = newValue!,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
