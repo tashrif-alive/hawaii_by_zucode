@@ -45,7 +45,6 @@ class _FlightFormViewState extends State<FlightFormView> {
       await _flightController.addFlight(
           _airlineName,
           _selectedDate.toString(),
-          // Convert DateTime to String for saving
           _fromTime,
           _toTime,
           _duration,
@@ -571,7 +570,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                       const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
                   child: TextFormField(
                     decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.timer),
+                      prefixIcon: const Icon(Icons.multiple_stop),
                       iconColor: Colors.grey,
                       hintText: "Stoppage",
                       hintStyle: GoogleFonts.poppins(
@@ -657,49 +656,53 @@ class _FlightFormViewState extends State<FlightFormView> {
                   ),
                 ),
 
-                // Checkbox for Refundable
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
-                  child: Row(
-                    children: [
-                      Checkbox(
-                        value: _refundable,
-                        onChanged: (value) {
-                          setState(() {
-                            _refundable = value!;
-                          });
-                        },
+                /// Checkbox for Refundable
+                Row(
+                  children: [
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Checkbox(
+                            value: _refundable,
+                            onChanged: (value) {
+                              setState(() {
+                                _refundable = value!;
+                              });
+                            },
+                          ),
+                          Text('Refundable',
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14, fontWeight: FontWeight.w400)),
+                        ],
                       ),
-                      Text('Refundable',
-                          style: GoogleFonts.poppins(
-                              fontSize: 14, fontWeight: FontWeight.w400)),
-                    ],
-                  ),
-                ),
-                ImageView(onUploadSuccess: (String url) {
-                  _imgUrl = url;
-                }),
-                // Checkbox for Insurance
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
-                  child: Row(
-                    children: [
-                      Checkbox(
-                        value: _insurance,
-                        onChanged: (value) {
-                          setState(() {
-                            _insurance = value!;
-                          });
-                        },
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Checkbox(
+                            value: _insurance,
+                            onChanged: (value) {
+                              setState(() {
+                                _insurance = value!;
+                              });
+                            },
+                          ),
+                          Text('Insurance',
+                              style: GoogleFonts.poppins(
+                                  fontSize: 14, fontWeight: FontWeight.w400)),
+                        ],
                       ),
-                      Text('Insurance',
-                          style: GoogleFonts.poppins(
-                              fontSize: 14, fontWeight: FontWeight.w400)),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                // Add Flight Button
+                ///Upload Image
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: ImageView(onUploadSuccess: (String url) {
+                    _imgUrl = url;
+                  }),
+                ),
+                /// Add Flight Button
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
