@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 class FlightDetailScreen extends StatelessWidget {
   final Map<String, dynamic> flightData;
 
-  FlightDetailScreen({required this.flightData});
+  const FlightDetailScreen({super.key, required this.flightData});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class FlightDetailScreen extends StatelessWidget {
                           ],
                         ),
                         Text(
-                          DateFormat('d MMM yyyy').format(DateTime.parse(flightData['date'])),
+                          DateFormat('E,dMMM').format(DateTime.parse(flightData['date'])),
                           style: GoogleFonts.poppins(
                             fontSize: 12,
                             fontWeight: FontWeight.w300,

@@ -48,7 +48,7 @@ class FlightListScreen extends StatelessWidget {
                   child: ListTile(
                     title: Text(data['airlineName'] ?? ''),
                     subtitle: Text(
-                      DateFormat('d MMM yyyy').format(DateTime.parse(data['date'])),
+                      DateFormat('MMMd, yyyy').format(DateTime.parse(data['date'])),
                       style: GoogleFonts.poppins(
                         fontSize: 12,
                         fontWeight: FontWeight.w300,
