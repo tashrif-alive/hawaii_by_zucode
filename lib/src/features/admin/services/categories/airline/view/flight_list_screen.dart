@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'flight_details_screen.dart';
 
 class FlightListScreen extends StatelessWidget {
-
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,13 @@ class FlightListScreen extends StatelessWidget {
                   elevation: 1,
                   child: ListTile(
                     title: Text(data['airlineName'] ?? ''),
-                    subtitle: Text(data['date'] ?? ''),
+                    subtitle: Text(
+                      DateFormat('d MMM yyyy').format(DateTime.parse(data['date'])),
+                      style: GoogleFonts.poppins(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
                     // Add more fields as needed
                   ),
                 ),
