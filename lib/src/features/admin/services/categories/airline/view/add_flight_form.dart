@@ -79,10 +79,11 @@ class _FlightFormViewState extends State<FlightFormView> {
       initialDate: _selectedDate,
       firstDate: DateTime(2000),
       lastDate: DateTime(2101),
+      initialDatePickerMode: DatePickerMode.day,
     );
     if (picked != null && picked != _selectedDate) {
       setState(() {
-        _selectedDate = DateTime(picked.year, picked.month, picked.day);
+        _selectedDate = picked; // Store the selected date
       });
     }
   }

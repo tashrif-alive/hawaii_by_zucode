@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class FlightDetailScreen extends StatelessWidget {
   final Map<String, dynamic> flightData;
@@ -60,7 +61,7 @@ class FlightDetailScreen extends StatelessWidget {
                           ],
                         ),
                         Text(
-                          '${flightData['date']}',
+                          DateFormat('d MMM yyyy').format(DateTime.parse(flightData['date'])),
                           style: GoogleFonts.poppins(
                             fontSize: 12,
                             fontWeight: FontWeight.w300,
