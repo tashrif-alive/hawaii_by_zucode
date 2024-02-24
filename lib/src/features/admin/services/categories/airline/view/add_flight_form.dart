@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import '../../../../../../test/image_view.dart';
 import '../controller/add_flight_controller.dart';
 
@@ -14,7 +15,7 @@ class _FlightFormViewState extends State<FlightFormView> {
   final _formKey = GlobalKey<FormState>();
 
   String _airlineName = '';
-  String _date = '';
+  DateTime _selectedDate = DateTime.now(); // Change to DateTime for storing the selected date
   String _fromTime = '';
   String _toTime = '';
   String _duration = '';
@@ -41,7 +42,7 @@ class _FlightFormViewState extends State<FlightFormView> {
       _formKey.currentState!.save();
       await _flightController.addFlight(
           _airlineName,
-          _date,
+          _selectedDate.toString(), // Convert DateTime to String for saving
           _fromTime,
           _toTime,
           _duration,
@@ -64,6 +65,20 @@ class _FlightFormViewState extends State<FlightFormView> {
     }
   }
 
+  // Method to show the date picker
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != _selectedDate) {
+      setState(() {
+        _selectedDate = DateTime(picked.year, picked.month, picked.day); // Remove time information
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -365,33 +380,37 @@ class _FlightFormViewState extends State<FlightFormView> {
                   ),
                 ),
                 ///Date & Time
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
-                  child: TextFormField(
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () => _selectDate(context), // Show date picker on tap
+                  child: InputDecorator(
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.date_range),
-                      iconColor: Colors.grey,
-                      hintText: "Date",
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14, fontWeight: FontWeight.w400),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 16),
+                      labelText: 'Date',
+                      labelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
                         borderSide: BorderSide.none,
                       ),
-                      fillColor: Colors.grey.shade50,
                       filled: true,
+                      fillColor: Colors.grey.shade50,
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter a date';
-                      }
-                      return null;
-                    },
-                    onSaved: (newValue) => _date = newValue!,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(DateFormat('yyyy-MM-dd').format(_selectedDate)), // Display selected date
+                        Icon(Icons.arrow_drop_down),
+                      ],
+                    ),
                   ),
                 ),
+              ],
+            ),
+          ),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Row(
