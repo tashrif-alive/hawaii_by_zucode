@@ -173,14 +173,18 @@ class FlightDetailScreen extends StatelessWidget {
                               fontSize: 12, fontWeight: FontWeight.w300),
                         ),
                         Text(
-                          '${flightData['refundable']}',
+                          flightData['refundable'] ? 'Yes' : 'No',
                           style: GoogleFonts.poppins(
-                              fontSize: 12, fontWeight: FontWeight.w300),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300,
+                          ),
                         ),
                         Text(
-                          '${flightData['insurance']}',
+                          flightData['insurance'] ? 'Yes' : 'No',
                           style: GoogleFonts.poppins(
-                              fontSize: 12, fontWeight: FontWeight.w300),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300,
+                          ),
                         ),
                         Column(mainAxisAlignment: MainAxisAlignment.center,
                           children: [
