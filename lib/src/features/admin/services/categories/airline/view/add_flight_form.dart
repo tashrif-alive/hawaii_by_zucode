@@ -23,6 +23,11 @@ class _FlightFormViewState extends State<FlightFormView> {
   String _planeModel = '';
   String _baggage = '';
   String _imgUrl = '';
+  String _stoppage = '';
+  String _arrivalAirport = '';
+  String _arrivalTerminal = '';
+  String _departureAirport = '';
+  String _departureTerminal = '';
   double _ourPrice = 0;
   double _regularPrice = 0;
   bool _refundable = false;
@@ -35,22 +40,26 @@ class _FlightFormViewState extends State<FlightFormView> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       await _flightController.addFlight(
-        _airlineName,
-        _date,
-        _fromTime,
-        _toTime,
-        _duration,
-        _fromPlace,
-        _toPlace,
-        _planeModel,
-        _refundable,
-        _insurance,
-        _baggage,
-        _flightClassValue,
-        _regularPrice,
-        _ourPrice,
-        _imgUrl
-      );
+          _airlineName,
+          _date,
+          _fromTime,
+          _toTime,
+          _duration,
+          _fromPlace,
+          _toPlace,
+          _planeModel,
+          _refundable,
+          _insurance,
+          _baggage,
+          _flightClassValue,
+          _regularPrice,
+          _ourPrice,
+          _imgUrl,
+          _stoppage,
+          _arrivalAirport,
+          _arrivalTerminal,
+          _departureAirport,
+          _departureTerminal);
       Navigator.pop(context); // Navigate back after adding flight
     }
   }
@@ -230,7 +239,131 @@ class _FlightFormViewState extends State<FlightFormView> {
                     ],
                   ),
                 ),
-
+///Airports & terminals
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.location_on),
+                            iconColor: Colors.grey,
+                            hintText: "Arrival Airport",
+                            hintStyle: GoogleFonts.poppins(
+                                fontSize: 14, fontWeight: FontWeight.w400),
+                            contentPadding:
+                            const EdgeInsets.symmetric(vertical: 16),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide.none,
+                            ),
+                            fillColor: Colors.grey.shade50,
+                            filled: true,
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter Arrival Airport';
+                            }
+                            return null;
+                          },
+                          onSaved: (newValue) => _arrivalAirport = newValue!,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Expanded(
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.location_on),
+                            iconColor: Colors.grey,
+                            hintText: "Arrival Terminal",
+                            hintStyle: GoogleFonts.poppins(
+                                fontSize: 14, fontWeight: FontWeight.w400),
+                            contentPadding:
+                            const EdgeInsets.symmetric(vertical: 16),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide.none,
+                            ),
+                            fillColor: Colors.grey.shade50,
+                            filled: true,
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter arrival terminal';
+                            }
+                            return null;
+                          },
+                          onSaved: (newValue) => _arrivalTerminal = newValue!,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.location_on),
+                            iconColor: Colors.grey,
+                            hintText: "Departure Airport",
+                            hintStyle: GoogleFonts.poppins(
+                                fontSize: 14, fontWeight: FontWeight.w400),
+                            contentPadding:
+                            const EdgeInsets.symmetric(vertical: 16),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide.none,
+                            ),
+                            fillColor: Colors.grey.shade50,
+                            filled: true,
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter departure airport';
+                            }
+                            return null;
+                          },
+                          onSaved: (newValue) => _departureAirport = newValue!,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Expanded(
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.location_on),
+                            iconColor: Colors.grey,
+                            hintText: "Departure Terminal",
+                            hintStyle: GoogleFonts.poppins(
+                                fontSize: 14, fontWeight: FontWeight.w400),
+                            contentPadding:
+                            const EdgeInsets.symmetric(vertical: 16),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide.none,
+                            ),
+                            fillColor: Colors.grey.shade50,
+                            filled: true,
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter Departure Terminal';
+                            }
+                            return null;
+                          },
+                          onSaved: (newValue) => _departureTerminal = newValue!,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 ///Date & Time
                 Padding(
                   padding:
@@ -415,6 +548,33 @@ class _FlightFormViewState extends State<FlightFormView> {
                     onSaved: (newValue) => _duration = newValue!,
                   ),
                 ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.timer),
+                      iconColor: Colors.grey,
+                      hintText: "Stoppage",
+                      hintStyle: GoogleFonts.poppins(
+                          fontSize: 14, fontWeight: FontWeight.w400),
+                      contentPadding: const EdgeInsets.symmetric(vertical: 16),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide.none,
+                      ),
+                      fillColor: Colors.grey.shade50,
+                      filled: true,
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter duration';
+                      }
+                      return null;
+                    },
+                    onSaved: (newValue) => _stoppage = newValue!,
+                  ),
+                ),
 
                 Padding(
                   padding:
@@ -498,8 +658,8 @@ class _FlightFormViewState extends State<FlightFormView> {
                     ],
                   ),
                 ),
-                ImageView(onUploadSuccess:(String url){
-                  _imgUrl=url;
+                ImageView(onUploadSuccess: (String url) {
+                  _imgUrl = url;
                 }),
                 // Checkbox for Insurance
                 Padding(

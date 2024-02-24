@@ -118,17 +118,13 @@ class _AirLineServicesState extends State<AirLineServices> {
                   );
                 },
               ),
-              SizedBox(height: 12),
-              Divider(
-                thickness: 1,
-              ),
+              const SizedBox(height: 12),
+              const Divider(thickness: 1),
               Text(
                 "Available Flights",
-                style: GoogleFonts.poppins(
-                    fontSize: 16, fontWeight: FontWeight.w700),
-              ),
-              SizedBox(height: 12,),
-              SearchBarWidget(),
+                style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700)),
+              const SizedBox(height: 12),
+              const SearchBarWidget(),
               FlightListScreen()
             ],
           ),
