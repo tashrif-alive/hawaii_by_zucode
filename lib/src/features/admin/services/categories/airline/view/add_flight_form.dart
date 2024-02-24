@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hawaii_app/src/features/admin/widgets/admin_textform_field.dart';
 import 'package:intl/intl.dart';
 import '../../../../../../test/image_view.dart';
 import '../controller/add_flight_controller.dart';
@@ -37,7 +38,11 @@ class _FlightFormViewState extends State<FlightFormView> {
   bool _insurance = false;
   String _flightClassValue = 'Economy';
 
-  final List<String> _flightClassOptions = ['Economy', 'Business', 'First Class'];
+  final List<String> _flightClassOptions = [
+    'Economy',
+    'Business',
+    'First Class'
+  ];
 
   void _submitForm(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
@@ -77,8 +82,7 @@ class _FlightFormViewState extends State<FlightFormView> {
     );
     if (picked != null && picked != _selectedDate) {
       setState(() {
-        _selectedDate = DateTime(
-            picked.year, picked.month, picked.day);
+        _selectedDate = DateTime(picked.year, picked.month, picked.day);
       });
     }
   }
@@ -130,265 +134,140 @@ class _FlightFormViewState extends State<FlightFormView> {
                 const SizedBox(height: 12),
 
                 ///AirLineName & Model
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon:
-                                const Icon(Icons.airplane_ticket_outlined),
-                            iconColor: Colors.grey,
-                            hintText: "Airline",
-                            hintStyle: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w400, fontSize: 14),
-                            contentPadding: const EdgeInsets.symmetric(vertical: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            fillColor: Colors.grey.shade50,
-                            filled: true,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter an airline';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) => _airlineName = newValue!,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.airplanemode_active),
-                            iconColor: Colors.grey,
-                            hintText: "Plane Model",
-                            hintStyle: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                            contentPadding:
-                                const EdgeInsets.symmetric(vertical: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            fillColor: Colors.grey.shade50,
-                            filled: true,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter plane model';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) => _planeModel = newValue!,
-                        ),
-                      ),
-                    ],
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: AdminTextFormField(
+                      hintText: 'Airline',
+                      prefixIcon: Icons.airplane_ticket,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter an airline';
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) => _airlineName = newValue!,
+                    )),
+                    const SizedBox(width: 8),
+                    Expanded(
+                        child: AdminTextFormField(
+                      hintText: 'Plane Model',
+                      prefixIcon: Icons.local_airport_sharp,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter plane model';
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) => _planeModel = newValue!,
+                    )),
+                  ],
                 ),
 
                 ///Destinations
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.location_on),
-                            iconColor: Colors.grey,
-                            hintText: "From",
-                            hintStyle: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                            contentPadding:
-                                const EdgeInsets.symmetric(vertical: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            fillColor: Colors.grey.shade50,
-                            filled: true,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter departure place';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) => _fromPlace = newValue!,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.location_on),
-                            iconColor: Colors.grey,
-                            hintText: "To",
-                            hintStyle: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                            contentPadding:
-                                const EdgeInsets.symmetric(vertical: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            fillColor: Colors.grey.shade50,
-                            filled: true,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter arrival place';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) => _toPlace = newValue!,
-                        ),
-                      ),
-                    ],
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: AdminTextFormField(
+                      hintText: 'From',
+                      prefixIcon: Icons.place_rounded,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter Departure place';
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) => _fromPlace = newValue!,
+                    )),
+                    const SizedBox(width: 8),
+                    Expanded(
+                        child: AdminTextFormField(
+                      hintText: 'To',
+                      prefixIcon: Icons.place_outlined,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter arrival place';
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) => _toPlace = newValue!,
+                    )),
+                  ],
                 ),
 
                 ///Airports & terminals
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.location_on),
-                            iconColor: Colors.grey,
-                            hintText: "Arrival Airport",
-                            hintStyle: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                            contentPadding:
-                                const EdgeInsets.symmetric(vertical: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            fillColor: Colors.grey.shade50,
-                            filled: true,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter Arrival Airport';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) => _arrivalAirport = newValue!,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.location_on),
-                            iconColor: Colors.grey,
-                            hintText: "Arrival Terminal",
-                            hintStyle: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                            contentPadding:
-                                const EdgeInsets.symmetric(vertical: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            fillColor: Colors.grey.shade50,
-                            filled: true,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter arrival terminal';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) => _arrivalTerminal = newValue!,
-                        ),
-                      ),
-                    ],
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: AdminTextFormField(
+                      hintText: 'Arrival Airport',
+                      prefixIcon: Icons.connecting_airports,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter Arrival Airport';
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) => _arrivalAirport = newValue!,
+                    )),
+                    const SizedBox(width: 8),
+                    Expanded(
+                        child: AdminTextFormField(
+                      hintText: 'Arrival Terminal',
+                      prefixIcon: Icons.transit_enterexit,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter arrival terminal';
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) => _arrivalTerminal = newValue!,
+                    )),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.location_on),
-                            iconColor: Colors.grey,
-                            hintText: "Departure Airport",
-                            hintStyle: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                            contentPadding:
-                                const EdgeInsets.symmetric(vertical: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            fillColor: Colors.grey.shade50,
-                            filled: true,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter departure airport';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) => _departureAirport = newValue!,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.location_on),
-                            iconColor: Colors.grey,
-                            hintText: "Departure Terminal",
-                            hintStyle: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                            contentPadding:
-                                const EdgeInsets.symmetric(vertical: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            fillColor: Colors.grey.shade50,
-                            filled: true,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter Departure Terminal';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) => _departureTerminal = newValue!,
-                        ),
-                      ),
-                    ],
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: AdminTextFormField(
+                      hintText: 'Departure Airport',
+                      prefixIcon: Icons.connecting_airports,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter departure airport';
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) => _departureAirport = newValue!,
+                    )),
+                    const SizedBox(width: 8),
+                    Expanded(
+                        child: AdminTextFormField(
+                      hintText: 'Departure Terminal',
+                      prefixIcon: Icons.transit_enterexit,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter Departure Terminal';
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) => _departureTerminal = newValue!,
+                    )),
+                  ],
                 ),
 
                 ///Date & Time
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       GestureDetector(
                         onTap: () => _selectDate(context),
-                        // Show date picker on tap
                         child: InputDecorator(
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.date_range),
                             labelText: 'Arrival Date',
-                            labelStyle:  GoogleFonts.poppins(
+                            labelStyle: GoogleFonts.poppins(
                                 fontSize: 14, fontWeight: FontWeight.w400),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
@@ -401,10 +280,11 @@ class _FlightFormViewState extends State<FlightFormView> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                  //DateFormat('yyyy-MM-dd').format(_selectedDate),
-                                  DateFormat("E,dMMM").format(
-                                      _selectedDate),style:  GoogleFonts.poppins(
-                                  fontSize: 14, fontWeight: FontWeight.w400),), // Display selected date
+                                //DateFormat('yyyy-MM-dd').format(_selectedDate),
+                                DateFormat("E,dMMM").format(_selectedDate),
+                                style: GoogleFonts.poppins(
+                                    fontSize: 14, fontWeight: FontWeight.w400),
+                              ),
                               const Icon(Icons.arrow_drop_down),
                             ],
                           ),
@@ -413,63 +293,37 @@ class _FlightFormViewState extends State<FlightFormView> {
                     ],
                   ),
                 ),
+
+                ///Departure & Arrival Time
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Row(
                     children: [
                       Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.access_time),
-                            iconColor: Colors.grey,
-                            hintText: "Departure Time",
-                            hintStyle: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                            contentPadding:
-                                const EdgeInsets.symmetric(vertical: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            fillColor: Colors.grey.shade50,
-                            filled: true,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter departure time';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) => _fromTime = newValue!,
-                        ),
-                      ),
+                          child: AdminTextFormField(
+                        hintText: 'Departure Time',
+                        prefixIcon: Icons.access_time,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter departure time';
+                          }
+                          return null;
+                        },
+                        onSaved: (newValue) => _fromTime = newValue!,
+                      )),
                       const SizedBox(width: 8),
                       Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.access_time),
-                            iconColor: Colors.grey,
-                            hintText: "Arrival Time",
-                            hintStyle: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                            contentPadding:
-                                const EdgeInsets.symmetric(vertical: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            fillColor: Colors.grey.shade50,
-                            filled: true,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter arrival time';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) => _toTime = newValue!,
-                        ),
-                      ),
+                          child: AdminTextFormField(
+                        hintText: 'Arrival Time',
+                        prefixIcon: Icons.access_time,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter arrival time';
+                          }
+                          return null;
+                        },
+                        onSaved: (newValue) => _toTime = newValue!,
+                      )),
                     ],
                   ),
                 ),
@@ -481,50 +335,23 @@ class _FlightFormViewState extends State<FlightFormView> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.money),
-                            iconColor: Colors.grey,
-                            hintText: "Regular Price",
-                            hintStyle: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                            contentPadding:
-                                const EdgeInsets.symmetric(vertical: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            fillColor: Colors.grey.shade50,
-                            filled: true,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter regular price';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) =>
-                              _regularPrice = double.parse(newValue!),
-                        ),
-                      ),
+                          child: AdminTextFormField(
+                        hintText: 'Regular Price',
+                        prefixIcon: Icons.attach_money,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter regular price';
+                          }
+                          return null;
+                        },
+                        onSaved: (newValue) =>
+                            _regularPrice = double.parse(newValue!),
+                      )),
                       const SizedBox(width: 8),
                       Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.money),
-                            iconColor: Colors.grey,
-                            hintText: "Our Price",
-                            hintStyle: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400),
-                            contentPadding:
-                                const EdgeInsets.symmetric(vertical: 16),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                              borderSide: BorderSide.none,
-                            ),
-                            fillColor: Colors.grey.shade50,
-                            filled: true,
-                          ),
+                        child: AdminTextFormField(
+                          hintText: 'Our price',
+                          prefixIcon: Icons.attach_money,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter our price';
@@ -539,59 +366,33 @@ class _FlightFormViewState extends State<FlightFormView> {
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.timer),
-                      iconColor: Colors.grey,
-                      hintText: "Duration",
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14, fontWeight: FontWeight.w400),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 16),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide.none,
-                      ),
-                      fillColor: Colors.grey.shade50,
-                      filled: true,
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter duration';
-                      }
-                      return null;
-                    },
-                    onSaved: (newValue) => _duration = newValue!,
-                  ),
-                ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 4),
+                    child: AdminTextFormField(
+                      hintText: 'Duration',
+                      prefixIcon: Icons.watch_later_rounded,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter duration';
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) => _duration = newValue!,
+                    )),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.multiple_stop),
-                      iconColor: Colors.grey,
-                      hintText: "Stoppage",
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14, fontWeight: FontWeight.w400),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 16),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide.none,
-                      ),
-                      fillColor: Colors.grey.shade50,
-                      filled: true,
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter duration';
-                      }
-                      return null;
-                    },
-                    onSaved: (newValue) => _stoppage = newValue!,
-                  ),
-                ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 4),
+                    child: AdminTextFormField(
+                      hintText: 'Others',
+                      prefixIcon: Icons.expand_circle_down,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter Others';
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) => _stoppage = newValue!,
+                    )),
 
                 Padding(
                   padding:
@@ -629,32 +430,19 @@ class _FlightFormViewState extends State<FlightFormView> {
                 ),
 
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.business_center),
-                      iconColor: Colors.grey,
-                      hintText: "Others",
-                      hintStyle: GoogleFonts.poppins(
-                          fontSize: 14, fontWeight: FontWeight.w400),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 16),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide.none,
-                      ),
-                      fillColor: Colors.grey.shade50,
-                      filled: true,
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter baggage details';
-                      }
-                      return null;
-                    },
-                    onSaved: (newValue) => _baggage = newValue!,
-                  ),
-                ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 4),
+                    child: AdminTextFormField(
+                      hintText: 'Baggage',
+                      prefixIcon: Icons.backpack,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter baggage details';
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) => _baggage = newValue!,
+                    )),
 
                 /// Checkbox for Refundable
                 Row(
@@ -695,6 +483,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                     ),
                   ],
                 ),
+
                 ///Upload Image
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -702,6 +491,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                     _imgUrl = url;
                   }),
                 ),
+
                 /// Add Flight Button
                 Padding(
                   padding: const EdgeInsets.all(8.0),
