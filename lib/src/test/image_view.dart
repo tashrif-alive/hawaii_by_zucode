@@ -44,7 +44,7 @@ class _ImageViewState extends State<ImageView> {
 
         ),
       ),
-      child:isloading? CircularProgressIndicator(): Text(
+      child:isloading? const CircularProgressIndicator(): Text(
         'Upload-Logo',
         style: GoogleFonts.poppins(fontWeight: FontWeight.w400,color: Colors.black),
       ),
