@@ -158,7 +158,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.black,
+                            backgroundColor: Colors.black,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                   10.0), // Adjust border radius as needed

@@ -144,14 +144,14 @@ class AddHotelForm extends StatelessWidget {
                         Navigator.pop(context);
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
+                        backgroundColor: Colors.black,
+                         shape: RoundedRectangleBorder(
+                           borderRadius: BorderRadius.circular(12.0),
+                         ),
                       ),
                       child: Text(
                         'Add Hotel',
-                        style: GoogleFonts.poppins(fontWeight: FontWeight.w400),
+                        style: GoogleFonts.poppins(fontWeight: FontWeight.w400,color:Colors.white),
                       ),
                     ),
                   ),

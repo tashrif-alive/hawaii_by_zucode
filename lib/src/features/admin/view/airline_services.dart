@@ -32,7 +32,7 @@ class _AirLineServicesState extends State<AirLineServices> {
     {
       "image": "assets/icons/logos/flight_requ.png",
       "color": Colors.cyan,
-      "title": "Booking Request",
+      "title": "Flight Request",
       "screen": (){}
     },
   ];

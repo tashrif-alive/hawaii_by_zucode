@@ -109,7 +109,7 @@ class UserLoginScreen extends StatelessWidget {
                       onLogin(emailController.text, passwordController.text);
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
+                      backgroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),

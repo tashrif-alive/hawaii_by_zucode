@@ -58,7 +58,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
 
             child: TextButton(
               style: TextButton.styleFrom(
-                primary: Colors.white, // Text color
+                foregroundColor: Colors.white, // Text color
               ),
               onPressed: () {
                 print('Search query: ${_searchController.text}');

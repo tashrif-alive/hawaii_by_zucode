@@ -134,8 +134,7 @@ class LoginScreen extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.white, // Background color
-                        onPrimary: Colors.black, // Text color
+                        foregroundColor: Colors.black, backgroundColor: Colors.white, // Text color
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                           side: const BorderSide(

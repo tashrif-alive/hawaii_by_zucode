@@ -38,7 +38,7 @@ class _ImageViewState extends State<ImageView> {
         });
       },
       style: ElevatedButton.styleFrom(
-        primary: Colors.grey.shade50,
+        backgroundColor: Colors.grey.shade50,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
 

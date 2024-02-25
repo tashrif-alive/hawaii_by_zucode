@@ -54,7 +54,7 @@ class VerifySuccessScreen extends StatelessWidget {
                         Get.to(const VerifyEmailScreen());
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.black,
+                        backgroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
