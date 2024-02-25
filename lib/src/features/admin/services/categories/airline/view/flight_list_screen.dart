@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -43,18 +44,25 @@ class FlightListScreen extends StatelessWidget {
                     ),
                   );
                 },
-                child: Card(
-                  elevation: 1,
-                  child: ListTile(
-                    title: Text(data['airlineName'] ?? ''),
-                    subtitle: Text(
-                      DateFormat('MMMd, yyyy').format(DateTime.parse(data['date'])),
-                      style: GoogleFonts.poppins(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w300,
-                      ),
+                child: Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius:BorderRadius.circular(10),
+                      color: Colors.grey.shade50,
                     ),
-                    // Add more fields as needed
+                    // elevation: 1,
+                    child: ListTile(
+                      title: Text(data['airlineName'] ?? ''),
+                      subtitle: Text(
+                        DateFormat('MMMd, yyyy').format(DateTime.parse(data['date'])),
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                      // Add more fields as needed
+                    ),
                   ),
                 ),
               );

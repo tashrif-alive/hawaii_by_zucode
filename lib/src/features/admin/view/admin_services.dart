@@ -21,13 +21,13 @@ class AdminServicesScreen extends StatefulWidget {
 class _AdminServicesScreenState extends State<AdminServicesScreen> {
   final List<Map<String, dynamic>> services = [
     {
-      "icon": Icons.flight,
+      "icon": Icons.connecting_airports_outlined,
       "color": Colors.purple,
       "title": "Flight",
       "screen": const AirLineServices()
     },
     {
-      "icon": Icons.hotel,
+      "icon": Icons.business,
       "color": Colors.brown,
       "title": "Hotel",
       "screen": AddHotelForm()
@@ -39,8 +39,8 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
       "screen": AddBusView()
     },
     {
-      "icon": Icons.car_rental,
-      "color": Colors.deepOrange,
+      "icon": Icons.time_to_leave,
+      "color": Colors.orange,
       "title": "Cars",
       "screen":  AddDriverView()
     },

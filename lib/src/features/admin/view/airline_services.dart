@@ -89,7 +89,7 @@ class _AirLineServicesState extends State<AirLineServices> {
                       Get.to(airlineServices[index]['screen']);
                     },
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 8,vertical: 6),
+                      padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 6),
                       decoration: BoxDecoration(
                         color: airlineServices[index]['color'][50],
                         borderRadius: BorderRadius.circular(20),
