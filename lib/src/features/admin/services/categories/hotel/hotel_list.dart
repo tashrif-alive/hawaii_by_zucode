@@ -139,11 +139,12 @@ class HotelListScreen extends StatelessWidget {
                                 Text(
                                   '\$${data['offeredHotelCost']}',
                                   style: GoogleFonts.poppins(
-                                    fontSize: 11,
+                                    fontSize: 13,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.green,
                                   ),
                                 ),
+                                SizedBox(height: 8,),
                               ],
                             )
                           ],
