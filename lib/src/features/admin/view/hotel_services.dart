@@ -2,56 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hawaii_app/src/features/admin/services/categories/hotel/view/add_hotel_form.dart';
-import '../services/categories/bus/view/add_buses_screen.dart';
-import '../services/categories/rent_a_car/view/add_car_screen.dart';
-import '../services/categories/rent_a_car/view/add_driver_details screens.dart';
-import 'airline_services.dart';
-import 'hotel_services.dart';
 
-class AdminServicesScreen extends StatefulWidget {
-  const AdminServicesScreen({Key? key});
+import '../services/categories/hotel/hotel_list.dart';
+import '../widgets/search_bar_widget.dart';
+
+
+class HotelServices extends StatefulWidget {
+  const HotelServices({Key? key});
 
   @override
-  State<AdminServicesScreen> createState() => _AdminServicesScreenState();
+  State<HotelServices> createState() => _HotelServicesState();
 }
 
-class _AdminServicesScreenState extends State<AdminServicesScreen> {
-  final List<Map<String, dynamic>> services = [
+class _HotelServicesState extends State<HotelServices> {
+  final List<Map<String, dynamic>> hotelServices = [
     {
-      "icon": Icons.connecting_airports_rounded,
-      "color": Colors.purple,
-      "title": "Flight",
-      "screen": const AirLineServices()
-    },
-    {
-      "icon": Icons.business_rounded,
-      "color": Colors.brown,
-      "title": "Hotel",
-      "screen": const HotelServices()
-    },
-    {
-      "icon": Icons.directions_bus,
-      "color": Colors.cyan,
-      "title": "Bus",
-      "screen": AddBusView()
-    },
-    {
-      "icon": Icons.time_to_leave,
+      "image": "assets/icons/logos/flight_add.png",
       "color": Colors.orange,
-      "title": "Cars",
-      "screen":  AddDriverView()
+      "title": "Add Hotel",
+      "screen": AddHotelForm()
     },
     {
-      "icon": Icons.my_library_books,
-      "color": Colors.blueGrey,
-      "title": "Package",
-      "screen": AddCarScreen()
+      "image": "assets/icons/logos/hotel_manage.png",
+      "color": Colors.lightGreen,
+      "title": "Manage Hotels",
+      "screen": (){}
     },
     {
-      "icon": Icons.menu_book_sharp,
-      "color": Colors.green,
-      "title": "E-Visa",
-      "screen": const AirLineServices()
+      "image": "assets/icons/logos/flight_requ.png",
+      "color": Colors.cyan,
+      "title": "Reservations",
+      "screen": (){}
     },
   ];
 
@@ -62,7 +43,7 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
-          "Services",
+          "Hotel Services",
           style: GoogleFonts.poppins(
               fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),
         ),
@@ -86,46 +67,48 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
               Text(
                 "Services",
                 style: GoogleFonts.poppins(
-                    fontSize: 18, fontWeight: FontWeight.w700),
+                    fontSize: 16, fontWeight: FontWeight.w700),
               ),
               const SizedBox(
                 height: 12,
               ),
 
+              ///HotelServices
               GridView.builder(
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
-                  crossAxisSpacing: 18.0,
-                  mainAxisSpacing: 18.0,
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 15.0,
+                  mainAxisSpacing: 15.0,
                 ),
-                itemCount: services.length,
+                itemCount: hotelServices.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Get.to(services[index]['screen']);
+                      Get.to(hotelServices[index]['screen']);
                     },
                     child: Container(
-                      padding: const EdgeInsets.all(6),
+                      padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 6),
                       decoration: BoxDecoration(
-                        color: services[index]['color'][50],
+                        color: hotelServices[index]['color'][50],
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            services[index]['icon'],
-                            color: services[index]['color'],
-                            size: 30, // Adjust icon size here
+                          Image.asset(
+                            hotelServices[index]['image'],
+                            width: 70, // Adjust image width here
+                            height: 70,
+                            fit: BoxFit.cover,// Adjust image height here
                           ),
-                          const SizedBox(height: 3), // Adjust spacing here
+
                           Text(
-                            services[index]['title'],
+                            hotelServices[index]['title'],
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w500,
-                              color: services[index]['color'],
-                              fontSize: 12, // Adjust text size here
+                              color: hotelServices[index]['color'],
+                              fontSize: 11, // Adjust text size here
                             ),
                           ),
                         ],
@@ -136,12 +119,12 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
               ),
               const SizedBox(height: 12),
               const Divider(thickness: 1),
-              const SizedBox(height: 20),
               Text(
-                "Transactions",
-                style: GoogleFonts.poppins(
-                    fontSize: 18, fontWeight: FontWeight.w700),
-              ),
+                  "Available Hotels",
+                  style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700)),
+              const SizedBox(height: 12),
+              AdminSearchBarWidget(hintText: 'Search hotels', onSearch: (String value) {},),
+              const HotelListScreen()
             ],
           ),
         ),

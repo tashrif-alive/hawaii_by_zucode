@@ -6,6 +6,8 @@ import 'package:intl/intl.dart';
 import 'flight_details_screen.dart';
 
 class FlightListScreen extends StatelessWidget {
+  const FlightListScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {

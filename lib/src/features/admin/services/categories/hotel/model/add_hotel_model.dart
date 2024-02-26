@@ -3,17 +3,24 @@ class Hotel {
   final String hotelName;
   final String hotelType;
   final String location;
-  final String hotelCost;
-
-  //final String toPlace;
+  final String imgUrl;
+  final int regularHotelCost;
+  final int offeredHotelCost;
+  final int numberOfRooms;
+  final double occupancyRate;
+  final double rating;
 
   Hotel({
     required this.id,
     required this.hotelName,
     required this.hotelType,
     required this.location,
-    required this.hotelCost,
-    //required this.toPlace,
+    required this.imgUrl,
+    required this.regularHotelCost,
+    required this.offeredHotelCost,
+    required this.numberOfRooms,
+    required this.occupancyRate,
+    required this.rating,
   });
 
   Map<String, dynamic> toMap() {
@@ -22,8 +29,12 @@ class Hotel {
       'hotelName': hotelName,
       'hotelType': hotelType,
       'location': location,
-      'hotelCost': hotelCost,
-      // 'toPlace': toPlace,
+      'imgUrl': imgUrl,
+      'regularHotelCost': regularHotelCost,
+      'offeredHotelCost': offeredHotelCost,
+      'numberOfRooms': numberOfRooms,
+      'occupancyRate': occupancyRate,
+      'rating': rating,
     };
   }
 
@@ -33,8 +44,12 @@ class Hotel {
       hotelName: map['hotelName'],
       hotelType: map['hotelType'],
       location: map['location'],
-      hotelCost: map['hotelCost'],
-      //toPlace: map['toPlace'],
+      imgUrl: map['imgUrl'],
+      regularHotelCost: map['regularHotelCost'],
+      numberOfRooms: map['numberOfRooms'],
+      occupancyRate: map['occupancyRate'],
+      rating: map['rating'],
+      offeredHotelCost: map['offeredHotelCost'],
     );
   }
 }

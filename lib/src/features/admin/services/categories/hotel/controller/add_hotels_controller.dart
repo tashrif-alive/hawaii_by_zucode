@@ -10,8 +10,12 @@ class HotelController {
     String hotelName,
     String hotelType,
     String location,
-    String hotelCost,
-    // String toPlace,
+    String imgUrl,
+    int regularHotelCost,
+    int offeredHotelCost,
+    int numberOfRooms,
+    double occupancyRate,
+    double rating,
   ) async {
     try {
       String id = _generateRandomId();
@@ -21,7 +25,12 @@ class HotelController {
               hotelName: hotelName,
               hotelType: hotelType,
               location: location,
-              hotelCost: hotelCost,
+              imgUrl: imgUrl,
+              regularHotelCost: regularHotelCost,
+              offeredHotelCost: offeredHotelCost,
+              numberOfRooms: numberOfRooms,
+              occupancyRate: occupancyRate,
+              rating: occupancyRate,
             ).toMap(),
           );
     } catch (e) {

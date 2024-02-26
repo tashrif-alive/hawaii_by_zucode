@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hawaii_app/src/features/admin/services/categories/hotel/view/add_hotel_screen.dart';
 import '../services/categories/airline/view/add_flight_form.dart';
 import '../services/categories/airline/view/flight_list_screen.dart';
-import '../services/categories/bus/view/add_buses_screen.dart';
 import '../widgets/search_bar_widget.dart';
 
 
@@ -124,7 +122,7 @@ class _AirLineServicesState extends State<AirLineServices> {
                 "Available Flights",
                 style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700)),
               const SizedBox(height: 12),
-              const SearchBarWidget(),
+              AdminSearchBarWidget(hintText: 'Search flights', onSearch: (String value) {},),
               FlightListScreen()
             ],
           ),
