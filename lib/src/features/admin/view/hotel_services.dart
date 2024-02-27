@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../services/hotel/hotel_list.dart';
+import '../services/hotel/view/hotel_list.dart';
 import '../services/hotel/view/add_hotel_form.dart';
 import '../widgets/search_bar_widget.dart';
 

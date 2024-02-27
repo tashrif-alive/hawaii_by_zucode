@@ -29,46 +29,51 @@ class FlightListScreen extends StatelessWidget {
 
         return Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            children: snapshot.data!.docs.map((DocumentSnapshot document) {
-              Map<String, dynamic> data =
-              document.data() as Map<String, dynamic>;
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FlightDetailScreen(
-                        flightData: data,
+          child: Column(
+            children: [
+              Text('Total flight (${snapshot.data?.docs.length.toString()})'),
+              ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                  Map<String, dynamic> data =
+                  document.data() as Map<String, dynamic>;
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FlightDetailScreen(
+                            flightData: data,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius:BorderRadius.circular(10),
+                          color: Colors.grey.shade50,
+                        ),
+                        // elevation: 1,
+                        child: ListTile(
+                          title: Text(data['airlineName'] ?? ''),
+                          subtitle: Text(
+                            DateFormat('MMMd, yyyy').format(DateTime.parse(data['date'])),
+                            style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                          // Add more fields as needed
+                        ),
                       ),
                     ),
                   );
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius:BorderRadius.circular(10),
-                      color: Colors.grey.shade50,
-                    ),
-                    // elevation: 1,
-                    child: ListTile(
-                      title: Text(data['airlineName'] ?? ''),
-                      subtitle: Text(
-                        DateFormat('MMMd, yyyy').format(DateTime.parse(data['date'])),
-                        style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w300,
-                        ),
-                      ),
-                      // Add more fields as needed
-                    ),
-                  ),
-                ),
-              );
-            }).toList(),
+                }).toList(),
+              ),
+            ],
           ),
         );
       },

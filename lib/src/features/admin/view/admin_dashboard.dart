@@ -8,7 +8,7 @@ import '../../login/view/signin_screen.dart';
 import '../../user/user_profile_widget.dart';
 import '../services/airline/view/flight_list_screen.dart';
 import '../services/bus/view/bus_list.dart';
-import '../services/hotel/hotel_list.dart';
+import '../services/hotel/view/hotel_list.dart';
 import '../services/rent_a_car/view/driver_list_sceen.dart';
 
 class AdminDashboard extends StatefulWidget {
@@ -119,7 +119,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Carousel()),
+                  MaterialPageRoute(builder: (context) => const AliancesBannerCarousel()),
                 );
               },
               child: Text('carousel'),
