@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../utils/colors.dart';
+import '../../../../utils/sizes.dart';
+import 'gamelist.dart';
+
 
 class Poster extends StatefulWidget {
   const Poster({Key? key}) : super(key: key);
