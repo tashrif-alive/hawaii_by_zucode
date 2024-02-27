@@ -37,7 +37,7 @@ class _AliancesBannerScreenState extends State<AliancesBannerScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
-          "Airline Services",
+          "Airline ",
           style: GoogleFonts.poppins(
               fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),
         ),
@@ -59,7 +59,7 @@ class _AliancesBannerScreenState extends State<AliancesBannerScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Services",
+                "Upload Banner",
                 style: GoogleFonts.poppins(
                     fontSize: 16, fontWeight: FontWeight.w700),
               ),
@@ -114,7 +114,7 @@ class _AliancesBannerScreenState extends State<AliancesBannerScreen> {
               const SizedBox(height: 12),
               const Divider(thickness: 1),
               Text(
-                  "Available Flights",
+                  "All Banners",
                   style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700)),
               const SizedBox(height: 12),
               const AliancesBannerList()

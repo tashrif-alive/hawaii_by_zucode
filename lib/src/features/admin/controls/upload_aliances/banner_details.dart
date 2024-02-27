@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../utils/colors.dart';
 import '../../../../utils/sizes.dart';
+import '../../widgets/dot_indicator.dart';
 import 'gamelist.dart';
 
 
