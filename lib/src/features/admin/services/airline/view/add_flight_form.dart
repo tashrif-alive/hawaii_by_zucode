@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hawaii_app/src/features/admin/widgets/admin_textform_field.dart';
 import 'package:intl/intl.dart';
-import '../../../../../../test/image_view.dart';
+import '../../../../../test/image_view.dart';
 import '../controller/add_flight_controller.dart';
 
 class FlightFormView extends StatefulWidget {

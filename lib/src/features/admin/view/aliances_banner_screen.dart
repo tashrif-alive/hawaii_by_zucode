@@ -1,36 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../services/hotel/hotel_list.dart';
-import '../services/hotel/view/add_hotel_form.dart';
+import '../controls/upload_aliances/banner_list.dart';
+import '../controls/upload_aliances/upload_aliances_screen.dart';
+import '../services/airline/view/flight_list_screen.dart';
 import '../widgets/search_bar_widget.dart';
 
 
-class HotelServices extends StatefulWidget {
-  const HotelServices({Key? key});
+class AliancesBannerScreen extends StatefulWidget {
+  const AliancesBannerScreen({Key? key});
 
   @override
-  State<HotelServices> createState() => _HotelServicesState();
+  State<AliancesBannerScreen> createState() => _AliancesBannerScreenState();
 }
 
-class _HotelServicesState extends State<HotelServices> {
-  final List<Map<String, dynamic>> hotelServices = [
+class _AliancesBannerScreenState extends State<AliancesBannerScreen> {
+  final List<Map<String, dynamic>> AliancesBannerScreen = [
     {
       "image": "assets/icons/logos/flight_add.png",
       "color": Colors.orange,
-      "title": "Add Hotel",
-      "screen": AddHotelForm()
-    },
-    {
-      "image": "assets/icons/logos/hotel_manage.png",
-      "color": Colors.lightGreen,
-      "title": "Manage Hotels",
-      "screen": (){}
+      "title": "Add Banners",
+      "screen": const AliancesBannerFormView()
     },
     {
       "image": "assets/icons/logos/flight_requ.png",
       "color": Colors.cyan,
-      "title": "Reservations",
+      "title": "Manage Banners",
       "screen": (){}
     },
   ];
@@ -42,7 +37,7 @@ class _HotelServicesState extends State<HotelServices> {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
-          "Hotel Services",
+          "Airline Services",
           style: GoogleFonts.poppins(
               fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),
         ),
@@ -72,41 +67,41 @@ class _HotelServicesState extends State<HotelServices> {
                 height: 12,
               ),
 
-              ///HotelServices
+              ///AliancesBannerScreen
               GridView.builder(
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+                  crossAxisCount: 2,
                   crossAxisSpacing: 15.0,
                   mainAxisSpacing: 15.0,
                 ),
-                itemCount: hotelServices.length,
+                itemCount: AliancesBannerScreen.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Get.to(hotelServices[index]['screen']);
+                      Get.to(AliancesBannerScreen[index]['screen']);
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 6),
                       decoration: BoxDecoration(
-                        color: hotelServices[index]['color'][50],
+                        color: AliancesBannerScreen[index]['color'][50],
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            hotelServices[index]['image'],
+                            AliancesBannerScreen[index]['image'],
                             width: 70, // Adjust image width here
                             height: 70,
                             fit: BoxFit.cover,// Adjust image height here
                           ),
 
                           Text(
-                            hotelServices[index]['title'],
+                            AliancesBannerScreen[index]['title'],
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w500,
-                              color: hotelServices[index]['color'],
+                              color: AliancesBannerScreen[index]['color'],
                               fontSize: 11, // Adjust text size here
                             ),
                           ),
@@ -119,11 +114,10 @@ class _HotelServicesState extends State<HotelServices> {
               const SizedBox(height: 12),
               const Divider(thickness: 1),
               Text(
-                  "Available Hotels",
+                  "Available Flights",
                   style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700)),
               const SizedBox(height: 12),
-              AdminSearchBarWidget(hintText: 'Search hotels', onSearch: (String value) {},),
-              const HotelListScreen()
+              const AliancesBannerList()
             ],
           ),
         ),

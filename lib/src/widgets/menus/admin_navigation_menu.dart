@@ -5,6 +5,8 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:hawaii_app/src/features/admin/view/admin_dashboard.dart';
 import 'package:hawaii_app/src/features/admin/view/admin_services.dart';
 
+import '../../features/admin/view/admin_control_screen.dart';
+
 class AdminBottomBar extends StatefulWidget {
   static String routeName = 'AdminBottomBar';
   const AdminBottomBar({super.key});
@@ -87,7 +89,7 @@ class AdminBottomBarController extends GetxController {
   final screens = [
     const AdminDashboard(),
     const AdminServicesScreen(),
-    Container(color: Colors.purple,),
+    const AdminControlsScreen(),
     Container(color: Colors.white10,),
   ];
 }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hawaii_app/src/features/admin/services/categories/hotel/view/add_hotel_form.dart';
-import '../services/categories/bus/view/add_buses_screen.dart';
-import '../services/categories/rent_a_car/view/add_car_screen.dart';
-import '../services/categories/rent_a_car/view/add_driver_details screens.dart';
+import '../services/bus/view/add_buses_screen.dart';
+import '../services/rent_a_car/view/add_car_screen.dart';
+import '../services/rent_a_car/view/add_driver_details screens.dart';
 import 'airline_services.dart';
 import 'hotel_services.dart';
 

@@ -3,12 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hawaii_app/src/features/admin/services/categories/airline/view/flight_list_screen.dart';
-import 'package:hawaii_app/src/features/admin/services/categories/hotel/hotel_list.dart';
-import 'package:hawaii_app/src/features/admin/services/categories/rent_a_car/view/driver_list_sceen.dart';
 import '../../login/view/signin_screen.dart';
 import '../../user/user_profile_widget.dart';
-import '../services/categories/bus/view/bus_list.dart';
+import '../services/airline/view/flight_list_screen.dart';
+import '../services/bus/view/bus_list.dart';
+import '../services/hotel/hotel_list.dart';
+import '../services/rent_a_car/view/driver_list_sceen.dart';
 
 class AdminDashboard extends StatefulWidget {
   static String routeName = 'AdminDashboard';

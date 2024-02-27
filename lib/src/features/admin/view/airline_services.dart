@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../services/categories/airline/view/add_flight_form.dart';
-import '../services/categories/airline/view/flight_list_screen.dart';
+import '../services/airline/view/add_flight_form.dart';
+import '../services/airline/view/flight_list_screen.dart';
 import '../widgets/search_bar_widget.dart';
 
 
