@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hawaii_app/src/test/carousel.dart';
 import '../../login/view/signin_screen.dart';
 import '../../user/user_profile_widget.dart';
 import '../services/airline/view/flight_list_screen.dart';
@@ -113,6 +114,15 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 );
               },
               child: Text('View driver list'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Carousel()),
+                );
+              },
+              child: Text('carousel'),
             ),
 
           ],
