@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hawaii_app/src/features/admin/controls/upload_banners/carousel.dart';
 
 import '../components/alience_carousel.dart';
 import '../../../widgets/tabs/user_tab_bar.dart';
@@ -37,7 +38,8 @@ class _UserDashboardState extends State<UserDashboard> {
                     ),
                   ),
                   const DestinationBannerCarousel(),
-                  const AliancesBannerCarousel()
+                  const AliancesBannerCarousel(),
+                  const Poster()
                 ],
               ),
             ),
