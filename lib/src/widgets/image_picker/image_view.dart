@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'image_controller.dart';
 
 class ImageView extends StatefulWidget {

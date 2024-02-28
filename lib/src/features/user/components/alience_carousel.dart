@@ -24,18 +24,18 @@ class AliancesBannerCarousel extends StatelessWidget {
         }
 
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(2.0),
           child: CarouselSlider(
             options: CarouselOptions(
-              height: 160,
+              height: 100,
               aspectRatio: 16/9,
-              viewportFraction: 0.8,
+              viewportFraction: 1,
               initialPage: 0,
               enableInfiniteScroll: true,
               reverse: false,
               autoPlay: true,
               autoPlayInterval: const Duration(seconds: 3),
-              autoPlayAnimationDuration: const Duration(milliseconds: 800),
+              autoPlayAnimationDuration: const Duration(milliseconds: 700),
               autoPlayCurve: Curves.fastOutSlowIn,
               enlargeCenterPage: true,
               scrollDirection: Axis.horizontal,
@@ -43,11 +43,10 @@ class AliancesBannerCarousel extends StatelessWidget {
             items: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data = document.data() as Map<String, dynamic>;
               return Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(3.0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
-                    color: Colors.white,
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),

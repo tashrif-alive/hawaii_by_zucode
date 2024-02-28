@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class UserProfileWidget extends StatelessWidget {
+  const UserProfileWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
@@ -10,9 +12,9 @@ class UserProfileWidget extends StatelessWidget {
       // User is not logged in
       return Scaffold(
         appBar: AppBar(
-          title: Text('User Profile'),
+          title: const Text('Profile'),
         ),
-        body: Center(
+        body: const Center(
           child: Text('No user logged in'),
         ),
       );
@@ -20,22 +22,22 @@ class UserProfileWidget extends StatelessWidget {
       // User is logged in
       return Scaffold(
         appBar: AppBar(
-          title: Text('User Profile'),
+          title: const Text('Profile'),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Logged in as:'),
-              SizedBox(height: 8),
+              const Text('Logged in as:'),
+              const SizedBox(height: 8),
               Text('Email: ${user.email}'),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               ElevatedButton(
                 onPressed: () async {
                   await FirebaseAuth.instance.signOut();
                   // Perform any additional actions upon signing out
                 },
-                child: Text('Sign out'),
+                child: const Text('Sign out'),
               ),
             ],
           ),

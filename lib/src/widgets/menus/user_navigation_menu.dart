@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
+import '../../features/user/views/user_dashboard.dart';
+
 
 class NavigationMenu extends StatefulWidget {
   const NavigationMenu({super.key});
@@ -87,7 +89,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
-    Container(color: Colors.lightBlue,child: const Center(child: Text("Hi User"),),),
+    UserDashboard(),
     Container(color: Colors.lightBlue,child: const Center(child: Text("Hi User"),),),
     Container(color: Colors.lightBlue,child: const Center(child: Text("Hi User"),),),
     Container(color: Colors.lightBlue,child: const Center(child: Text("Hi User"),),),

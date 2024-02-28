@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../controls/upload_banners/upload_destination_banner_form.dart';
 import '../services/bus/view/add_buses_screen.dart';
 import '../services/rent_a_car/view/add_car_screen.dart';
 import '../services/rent_a_car/view/add_driver_details screens.dart';
 import 'airline_services.dart';
 import 'aliances_banner_screen.dart';
+import 'destination_banner_screen.dart';
 import 'hotel_services.dart';
 
 class AdminControlsScreen extends StatefulWidget {
@@ -21,14 +23,14 @@ class _AdminControlsScreenState extends State<AdminControlsScreen> {
       "icon": Icons.post_add_rounded,
       "color": Colors.indigo,
       "title": "Upload Banners",
-      "screen": const AliancesBannerScreen(),
+      "screen": const DestinationBannerScreen(),
       "cardColor": Colors.indigo.shade50,
     },
     {
       "icon": Icons.local_offer_rounded,
       "color": Colors.brown,
       "title": "Alliance Banners",
-      "screen": const HotelServices(),
+      "screen":  const AliancesBannerScreen(),
       "cardColor": Colors.brown.shade50,
     },
     {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hawaii_app/src/features/admin/widgets/admin_textform_field.dart';
-import '../../../../../test/image_view.dart';
+import '../../../../../widgets/image_picker/image_view.dart';
 import '../controller/add_hotels_controller.dart';
 
 class AddHotelForm extends StatefulWidget {

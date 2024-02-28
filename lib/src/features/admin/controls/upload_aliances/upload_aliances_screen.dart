@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hawaii_app/src/features/admin/controls/upload_aliances/upload_aliances_controller.dart';
-import '../../../../test/image_view.dart';
+
+import '../../../../widgets/image_picker/image_view.dart';
 
 
 class AliancesBannerFormView extends StatefulWidget {
@@ -16,7 +17,7 @@ class _AliancesBannerFormViewState extends State<AliancesBannerFormView> {
   final _aliancesBannerController = AliancesBannerController();
   final _formKey = GlobalKey<FormState>();
 
-  String _imgUrl = ''; // Image URL
+  String _imgUrl = '';
 
   void _submitForm(BuildContext context) async {
     if (_formKey.currentState!.validate()) {

@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../controls/upload_aliances/banner_list.dart';
+
 import '../controls/upload_aliances/upload_aliances_screen.dart';
-import '../services/airline/view/flight_list_screen.dart';
-import '../widgets/search_bar_widget.dart';
 
 
 class AliancesBannerScreen extends StatefulWidget {
@@ -15,18 +14,12 @@ class AliancesBannerScreen extends StatefulWidget {
 }
 
 class _AliancesBannerScreenState extends State<AliancesBannerScreen> {
-  final List<Map<String, dynamic>> AliancesBannerScreen = [
+  final List<Map<String, dynamic>> aliancesBannerScreen = [
     {
       "image": "assets/icons/logos/flight_add.png",
       "color": Colors.orange,
       "title": "Add Banners",
       "screen": const AliancesBannerFormView()
-    },
-    {
-      "image": "assets/icons/logos/flight_requ.png",
-      "color": Colors.cyan,
-      "title": "Manage Banners",
-      "screen": (){}
     },
   ];
 
@@ -68,40 +61,34 @@ class _AliancesBannerScreenState extends State<AliancesBannerScreen> {
               ),
 
               ///AliancesBannerScreen
-              GridView.builder(
+              ListView.builder(
                 shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 15.0,
-                  mainAxisSpacing: 15.0,
-                ),
-                itemCount: AliancesBannerScreen.length,
+                itemCount: aliancesBannerScreen.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Get.to(AliancesBannerScreen[index]['screen']);
+                      Get.to(aliancesBannerScreen[index]['screen']);
                     },
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 6),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                       decoration: BoxDecoration(
-                        color: AliancesBannerScreen[index]['color'][50],
+                        color: aliancesBannerScreen[index]['color'][50],
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Image.asset(
-                            AliancesBannerScreen[index]['image'],
-                            width: 70, // Adjust image width here
-                            height: 70,
-                            fit: BoxFit.cover,// Adjust image height here
+                            aliancesBannerScreen[index]['image'],
+                            width: 60,
+                            height: 60,
+                            fit: BoxFit.cover,
                           ),
-
                           Text(
-                            AliancesBannerScreen[index]['title'],
+                            aliancesBannerScreen[index]['title'],
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w500,
-                              color: AliancesBannerScreen[index]['color'],
+                              color: aliancesBannerScreen[index]['color'],
                               fontSize: 11, // Adjust text size here
                             ),
                           ),
@@ -117,7 +104,7 @@ class _AliancesBannerScreenState extends State<AliancesBannerScreen> {
                   "All Banners",
                   style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700)),
               const SizedBox(height: 12),
-              const AliancesBannerList()
+              const AliancesBannerList(),
             ],
           ),
         ),

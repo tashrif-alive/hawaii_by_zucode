@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hawaii_app/src/features/user/user_profile/profile_widget.dart';
-import 'package:iconsax/iconsax.dart';
 import '../../settings/user_settings/app_user_setting_screen.dart';
 
 class UserProfileScreen extends StatefulWidget {
@@ -30,7 +29,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             onPressed: () {
               Get.to(const UserSettings());
             },
-            icon: Icon(Icons.settings, color: Colors.black),
+            icon: const Icon(Icons.settings, color: Colors.black),
           ),
         ],
         backgroundColor: Colors.blueGrey.shade50,
@@ -38,7 +37,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           onPressed: () {
             // Add your navigation logic here
           },
-          icon: Icon(Icons.arrow_back_rounded, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_rounded, color: Colors.black),
         ),
       ),
       backgroundColor: Colors.blueGrey.shade50,

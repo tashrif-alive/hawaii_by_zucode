@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hawaii_app/src/features/admin/controls/upload_aliances/upload_aliances_controller.dart';
+import 'package:hawaii_app/src/features/admin/controls/upload_banners/upload_destination_banner_contoller.dart';
 
-class AliancesBannerList extends StatelessWidget {
-  const AliancesBannerList({Key? key});
+class ManageDestinationBannerList extends StatelessWidget {
+  const ManageDestinationBannerList({Key? key});
 
 
-///Alert_box
+  ///Alert_box
   void _showDeleteConfirmationDialog(BuildContext context, String id) {
     showDialog(
       context: context,
@@ -31,9 +32,9 @@ class AliancesBannerList extends StatelessWidget {
       },
     );
   }
-///Delete_method
+  ///Delete_method
   void _deleteBanner(BuildContext context, String id) {
-    AliancesBannerController().deleteAliancesBanner(id, (bool success) {
+    DestinationBannerController().deleteDestinationBanner(id, (bool success) {
       if (success) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -52,33 +53,35 @@ class AliancesBannerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: FirebaseFirestore.instance.collection('aliancesBanners').snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return Center(
-            child: Text('Error: ${snapshot.error}'),
-          );
-        }
+    return Scaffold(
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('destinationBanner').snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('Error: ${snapshot.error}'),
+            );
+          }
 
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
 
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            children: snapshot.data!.docs.map((DocumentSnapshot document) {
-              Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-              return _buildBannerItem(context, data, document.id);
-            }).toList(),
-          ),
-        );
-      },
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+                return _buildBannerItem(context, data, document.id);
+              }).toList(),
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -96,13 +99,13 @@ class AliancesBannerList extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.0),
             child: Image.network(
               data['imgUrl'] ?? '',
-              height: 100,
+              height: 120,
               width: double.infinity,
               fit: BoxFit.fill,
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.delete),
+            icon: const Icon(Icons.delete,color: Colors.red,),
             onPressed: () => _showDeleteConfirmationDialog(context, id),
           ),
         ],

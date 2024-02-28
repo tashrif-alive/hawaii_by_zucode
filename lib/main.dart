@@ -9,6 +9,7 @@ import 'package:hawaii_app/src/commons/dummy.dart';
 import 'package:hawaii_app/src/features/signup/view/signup_screen.dart';
 import 'package:hawaii_app/src/features/user/user_profile/user_profile%20screen.dart';
 import 'package:hawaii_app/src/widgets/menus/admin_navigation_menu.dart';
+import 'package:hawaii_app/src/widgets/menus/user_navigation_menu.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -12,7 +12,7 @@ class AdminLoginHeader extends StatelessWidget {
       children: [
         ///----------Header Section-----------///
 
-        Image.asset("assets/icons/logos/hawaii.png"),
+        Image.asset("assets/icons/logos/hawaii_logo.png"),
         Align(
           alignment: Alignment.topLeft,
           child: Text(
