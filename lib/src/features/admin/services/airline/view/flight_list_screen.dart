@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'flight_details_screen.dart';
@@ -52,42 +55,65 @@ class _FlightListScreenState extends State<FlightListScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: _searchController,
-                        decoration: InputDecoration(
-                          hintText: 'Search flights',
-                          hintStyle:
-                              TextStyle(color: Colors.black.withOpacity(0.5)),
-                          border: InputBorder.none,
-                        ),
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black87,
-                        ),
-                        onChanged: (value) {
-                          setState(() {});
-                        },
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: _searchController,
+                              decoration: InputDecoration(
+                                hintText: 'Search flights',
+                                hintStyle:
+                                    TextStyle(color: Colors.black.withOpacity(0.5)),
+                                border: InputBorder.none,
+                              ),
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black87,
+                              ),
+                              onChanged: (value) {
+                                setState(() {});
+                              },
+                            ),
+                          ),
+                          IconButton(
+                              icon: const Icon(Icons.search, color: Colors.black87),
+                              onPressed: () {
+                                // if (_searchController.text.isNotEmpty) {
+                                //   widget.onSearch(_searchController.text);
+                                if (kDebugMode) {
+                                  print(_searchController.text);
+                                } // Trigger search
+                              }),
+                        ],
                       ),
                     ),
-                    IconButton(
-                        icon: const Icon(Icons.search, color: Colors.black87),
-                        onPressed: () {
-                          // if (_searchController.text.isNotEmpty) {
-                          //   widget.onSearch(_searchController.text);
-                          print(_searchController.text); // Trigger search
-                        }),
-                  ],
-                ),
+                  ),
+                  const SizedBox(width: 10),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black87,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      padding: const EdgeInsets.all(8),
+                      child: SvgPicture.asset(
+                        'assets/icons/filter.svg',
+                        height: 31,
+                      ),
+                    ),
+                  )
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -122,26 +148,29 @@ class _FlightListScreenState extends State<FlightListScreen> {
                         // elevation: 1,
                         child: Row(
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10.0),
-                                color: Colors.white,
-                                // boxShadow: [
-                                //   BoxShadow(
-                                //     color: Colors.grey.withOpacity(0.2),
-                                //     spreadRadius: 1,
-                                //     blurRadius: 3,
-                                //     offset: const Offset(0, 3),
-                                //   ),
-                                // ],
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10.0),
-                                child: Image.network(
-                                  data['imgUrl'] ?? '',
-                                  height: 50,
-                                  width: 50,
-                                  fit: BoxFit.fill,
+                            Padding(
+                              padding: const EdgeInsets.all(6.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  color: Colors.white,
+                                  // boxShadow: [
+                                  //   BoxShadow(
+                                  //     color: Colors.grey.withOpacity(0.2),
+                                  //     spreadRadius: 1,
+                                  //     blurRadius: 3,
+                                  //     offset: const Offset(0, 3),
+                                  //   ),
+                                  // ],
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  child: Image.network(
+                                    data['imgUrl'] ?? '',
+                                    height: 50,
+                                    width: 50,
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                               ),
                             ),
@@ -154,7 +183,7 @@ class _FlightListScreenState extends State<FlightListScreen> {
                                     Text(
                                       '${data['airlineName']}',
                                       style: GoogleFonts.poppins(
-                                        fontSize: 13,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w400,
                                       ),
                                     ),
@@ -164,7 +193,7 @@ class _FlightListScreenState extends State<FlightListScreen> {
                                     Text(
                                       '${data['planeModel']}',
                                       style: GoogleFonts.poppins(
-                                        fontSize: 13,
+                                        fontSize: 12,
                                         fontWeight: FontWeight.w400,
                                       ),
                                     ),
