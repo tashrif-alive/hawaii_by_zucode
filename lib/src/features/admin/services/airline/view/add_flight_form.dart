@@ -44,6 +44,7 @@ class _FlightFormViewState extends State<FlightFormView> {
     'First Class'
   ];
 
+///submit_form
   void _submitForm(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
@@ -71,8 +72,7 @@ class _FlightFormViewState extends State<FlightFormView> {
       Navigator.pop(context);
     }
   }
-
-  // Method to show the date picker
+  /// Method to show the date picker
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -149,7 +149,7 @@ class _FlightFormViewState extends State<FlightFormView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 8.0, right: 8),
+                  padding: const EdgeInsets.only(left: 7.0, right: 7),
                   child: Text(
                     "Add Flight",
                     style: GoogleFonts.poppins(
@@ -358,7 +358,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                             hintText: 'Arrival Time',
                             hintStyle: GoogleFonts.poppins(
                                 fontSize: 14, fontWeight: FontWeight.w400),
-                            prefixIcon: Icon(Icons.access_time),
+                            prefixIcon: const Icon(Icons.access_time),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide.none,

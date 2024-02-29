@@ -113,7 +113,7 @@ class _FlightListScreenState extends State<FlightListScreen> {
                       );
                     },
                     child: Padding(
-                      padding: const EdgeInsets.all(2.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -122,34 +122,32 @@ class _FlightListScreenState extends State<FlightListScreen> {
                         // elevation: 1,
                         child: Row(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.2),
-                                      spreadRadius: 1,
-                                      blurRadius: 3,
-                                      offset: const Offset(0, 3),
-                                    ),
-                                  ],
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.network(
-                                    data['imgUrl'] ?? '',
-                                    height: 50,
-                                    width: 50,
-                                    fit: BoxFit.fill,
-                                  ),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: Colors.white,
+                                // boxShadow: [
+                                //   BoxShadow(
+                                //     color: Colors.grey.withOpacity(0.2),
+                                //     spreadRadius: 1,
+                                //     blurRadius: 3,
+                                //     offset: const Offset(0, 3),
+                                //   ),
+                                // ],
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10.0),
+                                child: Image.network(
+                                  data['imgUrl'] ?? '',
+                                  height: 50,
+                                  width: 50,
+                                  fit: BoxFit.fill,
                                 ),
                               ),
                             ),
+                            const SizedBox(width: 12,),
                             Column(crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
                                   children: [
@@ -160,9 +158,9 @@ class _FlightListScreenState extends State<FlightListScreen> {
                                         fontWeight: FontWeight.w400,
                                       ),
                                     ),
-                                    SizedBox(width: 8),
-                                    Icon(Icons.circle,size: 5,),
-                                    SizedBox(width: 8),
+                                    const SizedBox(width: 8),
+                                    const Icon(Icons.circle,size: 5,),
+                                    const SizedBox(width: 8),
                                     Text(
                                       '${data['planeModel']}',
                                       style: GoogleFonts.poppins(

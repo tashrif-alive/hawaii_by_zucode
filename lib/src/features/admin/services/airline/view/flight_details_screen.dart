@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
@@ -11,7 +13,26 @@ class FlightDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Flight Detail'),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.black,
+          ),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: Text(
+          'Flight Details',
+          style: GoogleFonts.poppins(
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            color: Colors.black,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -25,7 +46,7 @@ class FlightDetailScreen extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 1,
                   blurRadius: 3,
-                  offset: Offset(0, 1),
+                  offset: const Offset(0, 1),
                 ),
               ],
             ),
@@ -48,9 +69,9 @@ class FlightDetailScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            SizedBox(width: 8),
-                            Icon(Icons.circle,size: 5,),
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
+                            const Icon(Icons.circle,size: 5,),
+                            const SizedBox(width: 8),
                             Text(
                               '${flightData['planeModel']}',
                               style: GoogleFonts.poppins(
@@ -101,7 +122,7 @@ class FlightDetailScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 18,),
+                            const SizedBox(width: 18,),
                             Column(crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
@@ -128,7 +149,7 @@ class FlightDetailScreen extends StatelessWidget {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.15,height: 5,
-                              child: Divider(thickness: 1),
+                              child: const Divider(thickness: 1),
                             ),
                             Text(
                               '${flightData['stoppage']}',
