@@ -122,7 +122,7 @@ class _HotelServicesState extends State<HotelServices> {
                   "Available Hotels",
                   style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700)),
               const SizedBox(height: 12),
-              AdminSearchBarWidget(hintText: 'Search hotels', onSearch: (String value) {},),
+              // AdminSearchBarWidget(hintText: 'Search hotels', onSearch: (String value) {},),
               const HotelListScreen()
             ],
           ),
