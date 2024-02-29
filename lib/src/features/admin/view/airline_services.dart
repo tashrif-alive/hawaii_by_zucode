@@ -122,7 +122,7 @@ class _AirLineServicesState extends State<AirLineServices> {
                 "Available Flights ",
                 style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w700)),
               const SizedBox(height: 12),
-              AdminSearchBarWidget(hintText: 'Search flights', onSearch: (String value) {},),
+              // AdminSearchBarWidget(hintText: 'Search flights', onSearch: (String value) {},),
               const FlightListScreen()
             ],
           ),

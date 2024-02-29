@@ -6,10 +6,10 @@ class AdminSearchBarWidget extends StatefulWidget {
   final ValueChanged<String> onSearch;
 
   const AdminSearchBarWidget({
-    super.key,
+    Key? key,
     required this.hintText,
     required this.onSearch,
-  });
+  }) : super(key: key);
 
   @override
   State<AdminSearchBarWidget> createState() => _AdminSearchBarWidgetState();
@@ -27,20 +27,30 @@ class _AdminSearchBarWidgetState extends State<AdminSearchBarWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(15.0),
+        color: Colors.grey.shade200,
+        borderRadius: BorderRadius.circular(12),
       ),
-      child: TextField(
-        controller: _searchController,
-        decoration: InputDecoration(
-          hintText: widget.hintText,
-          hintStyle: TextStyle(color: Colors.black.withOpacity(0.5)),
-          border: InputBorder.none,
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 12.0, horizontal: 10.0),
-          suffixIcon: IconButton(
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: widget.hintText,
+                hintStyle: TextStyle(color: Colors.black.withOpacity(0.5)),
+                border: InputBorder.none,
+              ),
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: Colors.black87,
+              ),
+              onSubmitted: widget.onSearch,
+            ),
+          ),
+          IconButton(
             icon: const Icon(Icons.search, color: Colors.black87),
             onPressed: () {
               if (_searchController.text.isNotEmpty) {
@@ -49,14 +59,7 @@ class _AdminSearchBarWidgetState extends State<AdminSearchBarWidget> {
               }
             },
           ),
-        ),
-        textAlign: TextAlign.left,
-        style: GoogleFonts.poppins(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-          color: Colors.black87,
-        ),
-        onSubmitted: widget.onSearch,
+        ],
       ),
     );
   }
