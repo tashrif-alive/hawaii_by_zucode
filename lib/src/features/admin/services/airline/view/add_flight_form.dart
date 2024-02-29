@@ -142,7 +142,7 @@ class _FlightFormViewState extends State<FlightFormView> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 5),
           child: Form(
             key: _formKey,
             child: Column(
@@ -154,12 +154,9 @@ class _FlightFormViewState extends State<FlightFormView> {
                     "Add Flight",
                     style: GoogleFonts.poppins(
                       fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
+                      fontWeight: FontWeight.w700),
+                  )),
                 const SizedBox(height: 12),
-
                 ///AirLineName & Model
                 Row(
                   children: [
@@ -190,8 +187,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                     )),
                   ],
                 ),
-                SizedBox(height: 8),
-
+                const SizedBox(height: 8),
                 ///Destinations
                 Row(
                   children: [
@@ -222,8 +218,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                     )),
                   ],
                 ),
-                SizedBox(height: 8),
-
+                const SizedBox(height: 8),
                 ///Airports & terminals
                 Row(
                   children: [
@@ -254,7 +249,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                     )),
                   ],
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Row(
                   children: [
                     Expanded(
@@ -284,8 +279,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                     )),
                   ],
                 ),
-                SizedBox(height: 8),
-
+                const SizedBox(height: 8),
                 ///Date & Time
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -321,8 +315,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
-
+                const SizedBox(height: 8),
                 ///Departure & Arrival Time
                 Row(
                   children: [
@@ -335,7 +328,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                             hintText: 'Departure Time',
                             hintStyle: GoogleFonts.poppins(
                                 fontSize: 14, fontWeight: FontWeight.w400),
-                            prefixIcon: Icon(Icons.access_time),
+                            prefixIcon: const Icon(Icons.access_time),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide.none,
@@ -373,20 +366,13 @@ class _FlightFormViewState extends State<FlightFormView> {
                             filled: true,
                             fillColor: Colors.grey.shade50,
                           ),
-                          controller: TextEditingController(text: _toTime),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter arrival time';
-                            }
-                            return null;
-                          },
-                          onSaved: (newValue) => _toTime = newValue!,
+
                         ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 ///Duration & flight Cost
                 Row(
                   children: [
@@ -420,7 +406,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 AdminTextFormField(
                   hintText: 'Duration',
                   prefixIcon: Icons.watch_later_rounded,
@@ -432,19 +418,21 @@ class _FlightFormViewState extends State<FlightFormView> {
                   },
                   onSaved: (newValue) => _duration = newValue!,
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
+                ///Stoppage
                 AdminTextFormField(
-                  hintText: 'Others',
+                  hintText: 'Stoppage',
                   prefixIcon: Icons.expand_circle_down,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter Others';
+                      return 'Please enter Stoppage';
                     }
                     return null;
                   },
                   onSaved: (newValue) => _stoppage = newValue!,
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
+                ///Flight_class
                 DropdownButtonFormField<String>(
                   value: _flightClassValue,
                   decoration: InputDecoration(
@@ -475,7 +463,8 @@ class _FlightFormViewState extends State<FlightFormView> {
                     });
                   },
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
+                ///Others
                 AdminTextFormField(
                   hintText: 'Baggage',
                   prefixIcon: Icons.backpack,
@@ -487,7 +476,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                   },
                   onSaved: (newValue) => _baggage = newValue!,
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 /// Checkbox for Refundable
                 Row(
                   children: [
@@ -527,7 +516,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 ///Upload Image
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -535,7 +524,7 @@ class _FlightFormViewState extends State<FlightFormView> {
                     _imgUrl = url;
                   }),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 /// Add Flight Button
                 Padding(
                   padding: const EdgeInsets.all(8.0),
