@@ -50,7 +50,7 @@ class _UserDashboardState extends State<UserDashboard> {
     List<Widget> tabContent = [
       const SingleChildScrollView(child: FlightListScreen()),
       const SingleChildScrollView(child: HotelListScreen()),
-      SingleChildScrollView(child: BusListScreen()),
+      const BusListScreen(),
     ];
 
     return Scaffold(
@@ -116,8 +116,8 @@ class _UserDashboardState extends State<UserDashboard> {
                       }),
                     ),
                   ),
-                  Container(
-                    height: 350, // Adjust the height as needed
+                  SizedBox(
+                    height: 350,
                     child: PageView(
                       controller: pageController,
                       onPageChanged: (index) {
@@ -143,7 +143,7 @@ class _UserDashboardState extends State<UserDashboard> {
               ),
             ),
             const AliancesBannerCarousel(),
-            //ServicesTabs(),
+
           ],
         ),
       ),
