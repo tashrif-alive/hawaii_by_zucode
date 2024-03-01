@@ -47,11 +47,9 @@ class _UserDashboardState extends State<UserDashboard> {
       "assets/icons/logos/buses.png",
       "assets/icons/logos/cabs.png",
     ];
-
-    // Dummy content for each tab
     List<Widget> tabContent = [
-      SingleChildScrollView(child: FlightListScreen()),
-      SingleChildScrollView(child: HotelListScreen()),
+      const SingleChildScrollView(child: FlightListScreen()),
+      const SingleChildScrollView(child: HotelListScreen()),
       SingleChildScrollView(child: BusListScreen()),
     ];
 
@@ -119,7 +117,7 @@ class _UserDashboardState extends State<UserDashboard> {
                     ),
                   ),
                   Container(
-                    height: 250, // Adjust the height as needed
+                    height: 350, // Adjust the height as needed
                     child: PageView(
                       controller: pageController,
                       onPageChanged: (index) {
