@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: blackSwatch,
       ),
-      home: const AdminBottomBar(),
+      home: const NavigationMenu(),
     );
   }
 }

@@ -42,4 +42,36 @@ class HotelController {
     Random random = Random();
     return random.nextInt(1000000).toString();
   }
+
+  Future<void> updateHotel(
+    String id,
+    String hotelName,
+    String hotelType,
+    String location,
+    String imgUrl,
+    int regularHotelCost,
+    int offeredHotelCost,
+    int numberOfRooms,
+    double occupancyRate,
+    double rating,
+  ) async {
+    try {
+      await hotels.doc(id).update(
+            Hotel(
+              id: id,
+              hotelName: hotelName,
+              hotelType: hotelType,
+              location: location,
+              imgUrl: imgUrl,
+              regularHotelCost: regularHotelCost,
+              offeredHotelCost: offeredHotelCost,
+              numberOfRooms: numberOfRooms,
+              occupancyRate: occupancyRate,
+              rating: rating,
+            ).toMap(),
+          );
+    } catch (e) {
+      print("Error updating Hotel: $e");
+    }
+  }
 }

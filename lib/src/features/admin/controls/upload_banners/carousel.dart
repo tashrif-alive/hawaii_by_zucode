@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../../utils/colors.dart';
@@ -5,7 +6,7 @@ import '../../../../utils/sizes.dart';
 import '../../widgets/dot_indicator.dart';
 
 class Poster extends StatefulWidget {
-  const Poster({super.key});
+  const Poster({Key? key});
 
   @override
   State<Poster> createState() => _PosterState();
@@ -40,18 +41,17 @@ class _PosterState extends State<Poster> {
               }
 
               final bannerList =
-                  snapshot.data!.docs.map((DocumentSnapshot document) {
+              snapshot.data!.docs.map((DocumentSnapshot document) {
                 Map<String, dynamic> data =
-                    document.data() as Map<String, dynamic>;
+                document.data() as Map<String, dynamic>;
                 return data['imgUrl'] ?? '';
               }).toList();
-              return ImageCarousel(bannerList:bannerList);
+              return ImageCarousel(bannerList: bannerList);
 
             },
           ),
         ),
         SizedBox(height: getProportionateScreenHeight(10)),
-
       ],
     );
   }
@@ -59,14 +59,45 @@ class _PosterState extends State<Poster> {
 
 class ImageCarousel extends StatefulWidget {
   const ImageCarousel({super.key, required this.bannerList});
-final List bannerList;
+
+  final List bannerList;
 
   @override
   State<ImageCarousel> createState() => _ImageCarouselState();
 }
 
 class _ImageCarouselState extends State<ImageCarousel> {
-  int currentPage =0;
+  late final PageController _pageController;
+  late final Timer _timer;
+  int currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+    _timer = Timer.periodic(Duration(seconds: 3), (timer) {
+      if (_pageController.hasClients) {
+        if (currentPage < widget.bannerList.length - 1) {
+          currentPage++;
+        } else {
+          currentPage = 0;
+        }
+        _pageController.animateToPage(
+          currentPage,
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    _timer.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -75,6 +106,7 @@ class _ImageCarouselState extends State<ImageCarousel> {
           width: MediaQuery.of(context).size.width,
           height: 190,
           child: PageView.builder(
+            controller: _pageController,
             onPageChanged: (value) {
               setState(() {
                 currentPage = value;

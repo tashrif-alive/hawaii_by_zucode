@@ -7,8 +7,8 @@ import 'package:iconsax/iconsax.dart';
 class UserAppBar extends StatefulWidget implements PreferredSizeWidget {
   const UserAppBar({
     super.key,
-    // required this.onPressed,
-    required this.image, required this.onPressed,
+    required this.image,
+    required this.onPressed,
   });
 
   final VoidCallback onPressed;
@@ -18,8 +18,7 @@ class UserAppBar extends StatefulWidget implements PreferredSizeWidget {
   State<UserAppBar> createState() => _UserAppBarState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-
+Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 class _UserAppBarState extends State<UserAppBar> {
@@ -27,40 +26,42 @@ class _UserAppBarState extends State<UserAppBar> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Image.asset(
-              widget.image,
-              // 'assets/icons/logos/hawaii_logo.png',
-              height: 50,
-              width: MediaQuery.of(context).size.width * 0.20,
+      child: Padding(
+        padding: const EdgeInsets.only(top:25,left: 8.0,right: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Image.asset(
+                widget.image,
+                height: 50,
+                width: MediaQuery.of(context).size.width * 0.20,
+              ),
             ),
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              IconButton(
-                icon: const Icon(
-                  Icons.message,
-                  color: Colors.black87,
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.message,
+                    color: Colors.black87,
+                  ),
+                  onPressed: widget.onPressed,
                 ),
-                onPressed: widget.onPressed,
-              ),
-              IconButton(
-                icon: const Icon(
-                  Iconsax.user,
-                  color: Colors.black87,
+                IconButton(
+                  icon: const Icon(
+                    Iconsax.user,
+                    color: Colors.black87,
+                  ),
+                  onPressed: () {
+                    Get.to(() => const LoginScreen());
+                  },
                 ),
-                onPressed: () {
-                  Get.to(() => const LoginScreen());
-                },
-              ),
-            ],
-          )
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

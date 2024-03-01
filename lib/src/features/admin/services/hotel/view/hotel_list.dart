@@ -15,12 +15,12 @@ class HotelListScreen extends StatefulWidget {
 
 class _HotelListScreenState extends State<HotelListScreen> {
   late TextEditingController _searchController;
+
   @override
   void initState() {
     super.initState();
     _searchController = TextEditingController();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _HotelListScreenState extends State<HotelListScreen> {
                           decoration: InputDecoration(
                             hintText: 'Search flights',
                             hintStyle:
-                            TextStyle(color: Colors.black.withOpacity(0.5)),
+                                TextStyle(color: Colors.black.withOpacity(0.5)),
                             border: InputBorder.none,
                           ),
                           style: GoogleFonts.poppins(
@@ -85,7 +85,8 @@ class _HotelListScreenState extends State<HotelListScreen> {
         ),
         StreamBuilder(
           stream: FirebaseFirestore.instance.collection('hotels').snapshots(),
-          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) {
               return Center(
                 child: Text('Error: ${snapshot.error}'),
@@ -98,9 +99,8 @@ class _HotelListScreenState extends State<HotelListScreen> {
               );
             }
 
-
             List<DocumentSnapshot> filteredHotels =
-            snapshot.data!.docs.where((document) {
+                snapshot.data!.docs.where((document) {
               String hotelName = document['hotelName'].toString().toLowerCase();
               String location = document['location'].toString().toLowerCase();
               String searchText = _searchController.text.toLowerCase();
@@ -110,7 +110,8 @@ class _HotelListScreenState extends State<HotelListScreen> {
 
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -122,14 +123,16 @@ class _HotelListScreenState extends State<HotelListScreen> {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     children: filteredHotels.map((DocumentSnapshot document) {
-                      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+                      Map<String, dynamic> data =
+                          document.data() as Map<String, dynamic>;
                       return InkWell(
                         onTap: () {
                           // Navigate to detailed hotel page
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HotelDetailScreen(data: data),
+                              builder: (context) =>
+                                  HotelDetailScreen(data: data),
                             ),
                           );
                         },
@@ -158,11 +161,16 @@ class _HotelListScreenState extends State<HotelListScreen> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 8,),
+                                const SizedBox(
+                                  height: 8,
+                                ),
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8.0,),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8.0,
+                                  ),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         data['hotelName'],
@@ -171,26 +179,33 @@ class _HotelListScreenState extends State<HotelListScreen> {
                                           fontWeight: FontWeight.w400,
                                         ),
                                       ),
-
                                       Row(
                                         children: [
                                           const Icon(
                                             Icons.share,
                                             size: 18,
                                           ),
-                                          const SizedBox(width: 8,),
+                                          const SizedBox(
+                                            width: 8,
+                                          ),
                                           Icon(Icons.favorite,
-                                              color: Colors.blueGrey.shade200, size: 18),
+                                              color: Colors.blueGrey.shade200,
+                                              size: 18),
                                         ],
                                       ),
                                     ],
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           const Icon(
                                             Icons.location_on_rounded,
@@ -205,9 +220,9 @@ class _HotelListScreenState extends State<HotelListScreen> {
                                               color: Colors.black,
                                             ),
                                           ),
-                                          SizedBox(width: 4),
-                                          Icon(Icons.circle, size: 5),
-                                          SizedBox(width: 4),
+                                          const SizedBox(width: 4),
+                                          const Icon(Icons.circle, size: 5),
+                                          const SizedBox(width: 4),
                                           Text(
                                             '${data['hotelType']}',
                                             style: GoogleFonts.poppins(
@@ -216,7 +231,11 @@ class _HotelListScreenState extends State<HotelListScreen> {
                                               color: Colors.black,
                                             ),
                                           ),
-                                          Icon(Icons.star, size: 15,color: Colors.blueGrey.shade200,),
+                                          Icon(
+                                            Icons.star,
+                                            size: 18,
+                                            color: Colors.amber.shade200,
+                                          ),
                                         ],
                                       ),
                                       Column(
@@ -225,10 +244,14 @@ class _HotelListScreenState extends State<HotelListScreen> {
                                             '\$${data['regularHotelCost']}',
                                             style: GoogleFonts.poppins(
                                               fontSize: 8,
-                                              fontWeight: FontWeight.w400,
+                                              fontWeight: FontWeight.bold,
                                               color: Colors.red,
+                                              decoration: TextDecoration.lineThrough, // Add line-through effect
+                                              decorationColor: Colors.white, // Set color for line-through
                                             ),
                                           ),
+
+
                                           Text(
                                             '\$${data['offeredHotelCost']}',
                                             style: GoogleFonts.poppins(
@@ -237,7 +260,7 @@ class _HotelListScreenState extends State<HotelListScreen> {
                                               color: Colors.green,
                                             ),
                                           ),
-                                          SizedBox(height: 8,),
+                                          const SizedBox(height: 8),
                                         ],
                                       )
                                     ],
