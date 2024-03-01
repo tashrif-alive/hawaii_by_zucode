@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hawaii_app/src/features/admin/services/airline/view/flight_list_screen.dart';
+import 'package:hawaii_app/src/features/admin/services/bus/view/bus_list.dart';
+import 'package:hawaii_app/src/features/admin/services/hotel/view/hotel_list.dart';
 import 'package:hawaii_app/src/features/admin/services/rent_a_car/view/driver_list_sceen.dart';
 import 'package:hawaii_app/src/features/user/components/destination_poster.dart';
 import '../components/alience_carousel.dart';
 import '../../../widgets/tabs/user_tab_bar.dart';
 
-
 class UserDashboard extends StatefulWidget {
-  const UserDashboard({super.key});
+  const UserDashboard({Key? key}) : super(key: key);
 
   @override
   State<UserDashboard> createState() => _UserDashboardState();
@@ -46,6 +48,13 @@ class _UserDashboardState extends State<UserDashboard> {
       "assets/icons/logos/cabs.png",
     ];
 
+    // Dummy content for each tab
+    List<Widget> tabContent = [
+      SingleChildScrollView(child: FlightListScreen()),
+      SingleChildScrollView(child: HotelListScreen()),
+      SingleChildScrollView(child: BusListScreen()),
+    ];
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: UserAppBar(
@@ -63,11 +72,8 @@ class _UserDashboardState extends State<UserDashboard> {
                 children: [
                   SizedBox(
                     height: 50,
-                    child: ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: images.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (ctx, index) {
+                    child: Row(
+                      children: List.generate(images.length, (index) {
                         return GestureDetector(
                           onTap: () {
                             setState(() {
@@ -93,9 +99,7 @@ class _UserDashboardState extends State<UserDashboard> {
                                   : BorderRadius.circular(12),
                               border: current == index
                                   ? Border.all(
-                                color: Colors.black,
-                                width: 2.5,
-                              )
+                                  color: Colors.black, width: 2.5)
                                   : null,
                             ),
                             child: Center(
@@ -111,48 +115,19 @@ class _UserDashboardState extends State<UserDashboard> {
                             ),
                           ),
                         );
-                      },
+                      }),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 30),
                     height: 250, // Adjust the height as needed
-                    child: ListView.builder(
-                      itemCount: items.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            // Navigate to the DriverList screen when tapping on a tab button
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DriverListScreen(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 8),
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: Colors.black,
-                                width: 1,
-                              ),
-                            ),
-                            child: Text(
-                              items[index],
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        );
+                    child: PageView(
+                      controller: pageController,
+                      onPageChanged: (index) {
+                        setState(() {
+                          current = index;
+                        });
                       },
+                      children: tabContent,
                     ),
                   ),
                 ],
