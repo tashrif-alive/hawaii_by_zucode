@@ -118,7 +118,7 @@ class FlightDetailScreen extends StatelessWidget {
                                   flightData['imgUrl'] ?? '',
                                   height: 50,
                                   width: 50,
-                                  fit: BoxFit.cover,
+                                  fit: BoxFit.fill,
                                 ),
                               ),
                             ),

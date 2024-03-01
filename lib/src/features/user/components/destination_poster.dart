@@ -1,18 +1,18 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../../../utils/colors.dart';
-import '../../../../utils/sizes.dart';
-import '../../widgets/dot_indicator.dart';
+import '../../../utils/colors.dart';
+import '../../../utils/sizes.dart';
+import '../../admin/widgets/dot_indicator.dart';
 
-class Poster extends StatefulWidget {
-  const Poster({Key? key});
+class DestinationPoster extends StatefulWidget {
+  const DestinationPoster({Key? key});
 
   @override
-  State<Poster> createState() => _PosterState();
+  State<DestinationPoster> createState() => _DestinationPosterState();
 }
 
-class _PosterState extends State<Poster> {
+class _DestinationPosterState extends State<DestinationPoster> {
   int currentPage = 0;
 
   @override
@@ -20,7 +20,7 @@ class _PosterState extends State<Poster> {
     return Column(
       children: [
         SizedBox(
-          height: 220,
+          height: 205,
           width: double.infinity,
           child: StreamBuilder(
             stream: FirebaseFirestore.instance
@@ -75,7 +75,7 @@ class _ImageCarouselState extends State<ImageCarousel> {
   void initState() {
     super.initState();
     _pageController = PageController();
-    _timer = Timer.periodic(Duration(seconds: 3), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
       if (_pageController.hasClients) {
         if (currentPage < widget.bannerList.length - 1) {
           currentPage++;
@@ -84,8 +84,9 @@ class _ImageCarouselState extends State<ImageCarousel> {
         }
         _pageController.animateToPage(
           currentPage,
-          duration: Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 500),
           curve: Curves.easeInOut,
+
         );
       }
     });
@@ -146,7 +147,7 @@ class _ImageCarouselState extends State<ImageCarousel> {
                         color: Colors.transparent,
                       ),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(height: getProportionateScreenHeight(7)),
                           Text(
@@ -170,9 +171,11 @@ class _ImageCarouselState extends State<ImageCarousel> {
                               color: Colors.white,
                             ),
                           ),
+
                         ],
                       ),
                     ),
+
                   ],
                 ),
               );

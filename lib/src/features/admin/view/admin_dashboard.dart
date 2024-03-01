@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hawaii_app/src/features/admin/controls/upload_banners/carousel.dart';
+import 'package:hawaii_app/src/features/user/components/destination_poster.dart';
 import 'package:hawaii_app/src/features/user/components/alience_carousel.dart';
 import '../../login/view/signin_screen.dart';
 import '../../user/user_profile_widget.dart';
@@ -125,7 +125,6 @@ class _AdminDashboardState extends State<AdminDashboard> {
               },
               child: Text('carousel'),
             ),
-            const Poster()
 
           ],
         ),

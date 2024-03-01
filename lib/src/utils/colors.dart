@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hawaii_app/src/utils/sizes.dart';
 
 
-const kPrimaryColor = Color(0xFF7A14E8);
+const kPrimaryColor = Colors.black;
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,

@@ -3,10 +3,10 @@ import '../../../utils/colors.dart';
 
 class DotIndicator extends StatelessWidget {
   const DotIndicator({
-    Key? key,
+    super.key,
     required this.currentPage,
     required this.index,
-  }) : super(key: key);
+  });
 
   final int currentPage;
   final int? index;
@@ -28,10 +28,10 @@ class DotIndicator extends StatelessWidget {
 
 class HorizontalDotIndicator extends StatelessWidget {
   const HorizontalDotIndicator({
-    Key? key,
+    super.key,
     required this.currentPage,
     required this.index,
-  }) : super(key: key);
+  });
 
   final int currentPage;
   final int? index;
