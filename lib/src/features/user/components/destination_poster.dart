@@ -75,7 +75,7 @@ class _ImageCarouselState extends State<ImageCarousel> {
   void initState() {
     super.initState();
     _pageController = PageController();
-    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 8), (timer) {
       if (_pageController.hasClients) {
         if (currentPage < widget.bannerList.length - 1) {
           currentPage++;
