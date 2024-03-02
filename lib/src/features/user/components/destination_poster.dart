@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/sizes.dart';
 import '../../admin/widgets/dot_indicator.dart';
@@ -41,13 +42,12 @@ class _DestinationPosterState extends State<DestinationPoster> {
               }
 
               final bannerList =
-              snapshot.data!.docs.map((DocumentSnapshot document) {
+                  snapshot.data!.docs.map((DocumentSnapshot document) {
                 Map<String, dynamic> data =
-                document.data() as Map<String, dynamic>;
+                    document.data() as Map<String, dynamic>;
                 return data['imgUrl'] ?? '';
               }).toList();
               return ImageCarousel(bannerList: bannerList);
-
             },
           ),
         ),
@@ -86,7 +86,6 @@ class _ImageCarouselState extends State<ImageCarousel> {
           currentPage,
           duration: const Duration(milliseconds: 500),
           curve: Curves.easeInOut,
-
         );
       }
     });
@@ -132,50 +131,68 @@ class _ImageCarouselState extends State<ImageCarousel> {
                 ),
                 child: Row(
                   children: [
-                    Container(
-                      width: getProportionateScreenWidth(270),
-                      margin: EdgeInsets.only(
-                        left: getProportionateScreenWidth(5),
-                        top: getProportionateScreenHeight(15),
-                        bottom: getProportionateScreenHeight(15),
-                      ),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: getProportionateScreenWidth(20),
-                        vertical: getProportionateScreenWidth(15),
-                      ),
-                      decoration: const BoxDecoration(
-                        color: Colors.transparent,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(height: getProportionateScreenHeight(7)),
-                          Text(
-                            "Playpillars".toUpperCase(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                              height: 1.5,
-                              fontSize: getProportionateScreenWidth(24),
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(height: getProportionateScreenHeight(6)),
-                          Text(
-                            "top up diamond".toUpperCase(),
-                            style: TextStyle(
-                              fontSize: getProportionateScreenHeight(10),
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
+                    Expanded(
 
-                        ],
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          left: getProportionateScreenWidth(5),
+                          top: getProportionateScreenHeight(15),
+                          bottom: getProportionateScreenHeight(15),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(20),
+                          vertical: getProportionateScreenWidth(15),
+                        ),
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(height: getProportionateScreenHeight(7)),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "search".toLowerCase(),
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white70,
+                                    letterSpacing: 2.0,
+                                  ),
+                                ),
+                                const SizedBox(width: 5,),
+                                const Icon(Icons.circle,size: 5,color: Colors.white70),
+                                const SizedBox(width: 5,),
+                                Text(
+                                  "fly".toLowerCase(),
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white70,
+                                    letterSpacing: 2.0,
+                                  ),
+                                ),
+                                const SizedBox(width: 5,),
+                                const Icon(Icons.circle,size: 5,color: Colors.white70),
+                                const SizedBox(width: 5,),
+                                Text(
+                                  "go".toLowerCase(),
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white70,
+                                    letterSpacing: 2.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-
                   ],
                 ),
               );
