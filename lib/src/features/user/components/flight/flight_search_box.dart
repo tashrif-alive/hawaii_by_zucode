@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AdminSearchBarWidget extends StatefulWidget {
+class FlightSearchBox extends StatefulWidget {
   final String hintText;
   final ValueChanged<String> onSearch;
 
-  const AdminSearchBarWidget({
+  const FlightSearchBox({
     super.key,
     required this.hintText,
     required this.onSearch,
   });
 
   @override
-  State<AdminSearchBarWidget> createState() => _AdminSearchBarWidgetState();
+  State<FlightSearchBox> createState() => _FlightSearchBoxState();
 }
 
-class _AdminSearchBarWidgetState extends State<AdminSearchBarWidget> {
+class _FlightSearchBoxState extends State<FlightSearchBox> {
   final TextEditingController _searchController = TextEditingController();
 
   @override

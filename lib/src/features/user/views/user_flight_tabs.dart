@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/destination_poster.dart';
+import '../components/flight/flight_search_box.dart';
 
 class UserFlightTab extends StatefulWidget {
   const UserFlightTab({super.key});
@@ -12,11 +13,12 @@ class UserFlightTab extends StatefulWidget {
 class _UserFlightTabState extends State<UserFlightTab> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 12),
-          DestinationPoster()
+          const SizedBox(height: 12),
+          const DestinationPoster(),
+          FlightSearchBox(hintText: '', onSearch: (String value) {  },)
         ],
       ),
     );
