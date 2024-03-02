@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+import '../components/alience_carousel.dart';
 import '../components/destination_poster.dart';
 import '../components/flight/flight_search_box.dart';
+import '../components/other_services_bar.dart';
 
 class UserFlightTab extends StatefulWidget {
   const UserFlightTab({Key? key}) : super(key: key);
@@ -11,7 +14,7 @@ class UserFlightTab extends StatefulWidget {
 }
 
 class _UserFlightTabState extends State<UserFlightTab> {
-///Search
+  ///Search
   void _handleSearch(Map<String, String> searchData) {
     setState(() {
       from = searchData['from'] ?? '';
@@ -25,9 +28,6 @@ class _UserFlightTabState extends State<UserFlightTab> {
     // Add your search logic here
   }
 
-
-
-
   String from = '';
   String to = '';
   String date = '';
@@ -36,18 +36,46 @@ class _UserFlightTabState extends State<UserFlightTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
+
+          ///DestinationPoster
           const DestinationPoster(),
-          FlightSearchBox(
-            hintText: 'Search for flights...',
-            onSearch: _handleSearch,
+
+          ///FlightSearchBox
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8),
+            child: FlightSearchBox(
+              hintText: 'Search for flights...',
+              onSearch: _handleSearch,
+            ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(top: 15.0,bottom: 8),
+            child: const ExtraServicesBar(),
+          ),
+
+          ///Offer_adds
+          const SizedBox(
+            height: 12,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Text(
+              'Why Book hawaii?',
+              style: GoogleFonts.poppins(
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          const AliancesBannerCarousel(),
         ],
       ),
     );
   }
-
-
 }

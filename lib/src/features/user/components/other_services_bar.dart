@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:hawaii_app/src/features/admin/services/hotel/view/add_hotel_form.dart';
+import '../../../widgets/bar/mid_bar_widgets.dart';
+
+class ExtraServicesBar extends StatelessWidget {
+  const ExtraServicesBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 70,
+      child: Container(
+        color: Colors.white,
+        padding: const EdgeInsets.all(2),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ExtraServicesBarWidget(
+                iconData: Icons.flight,
+                text: "Flight\nStatus",
+                onTap: () => Get.to(() => AddHotelForm()),
+              ),
+              ExtraServicesBarWidget(
+                iconData: Icons.time_to_leave,
+                text: "Airport\nCab",
+                onTap: () => Get.to(() => AddHotelForm()),
+              ),
+              ExtraServicesBarWidget(
+                iconData: FontAwesomeIcons.book,
+                text: "Packages",
+                onTap: () => Get.to(() => AddHotelForm()),
+              ),
+              ExtraServicesBarWidget(
+                iconData: Icons.bar_chart,
+                text: "Fare\nAlerts",
+                onTap: () {},
+              ),
+              ExtraServicesBarWidget(
+                iconData: FontAwesomeIcons.accusoft,
+                text: "Apply\nVisa",
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

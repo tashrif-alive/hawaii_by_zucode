@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hawaii_app/src/features/user/components/flight/search_flight_screen.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart';
 
 class FlightSearchBox extends StatefulWidget {
@@ -32,8 +30,6 @@ class _FlightSearchBoxState extends State<FlightSearchBox> {
   void dispose() {
     _fromController.dispose();
     _toController.dispose();
-    // _dateController.dispose();
-    //_classController.dispose();
     super.dispose();
   }
 
@@ -55,12 +51,12 @@ class _FlightSearchBoxState extends State<FlightSearchBox> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(left: 18.0,right: 18),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.grey.shade50,
+            //color: Colors.grey.shade50,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.grey.shade400)),
+            border: Border.all(color: Colors.grey.shade200)),
         child: Column(
           children: [
             Row(
@@ -73,26 +69,27 @@ class _FlightSearchBoxState extends State<FlightSearchBox> {
                       prefixIcon: const Icon(Icons.flight_takeoff),
                       hintText: 'Enter Origin',
                       hintStyle:
-                          TextStyle(color: Colors.black.withOpacity(0.5)),
-                      enabledBorder: OutlineInputBorder(
+                       GoogleFonts.poppins(
+                        fontSize: 13, fontWeight: FontWeight.w600,color:Colors.black),
+                      enabledBorder:  OutlineInputBorder(
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(12),
                           topRight: Radius.circular(0),
                         ),
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(12),
                           topRight: Radius.circular(0),
                         ),
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
                       ),
                     ),
                     style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black87,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
                     ),
                   ),
                 ),
@@ -103,26 +100,27 @@ class _FlightSearchBoxState extends State<FlightSearchBox> {
                       hintText: 'Enter Destination',
                       prefixIcon: const Icon(Icons.flight_land),
                       hintStyle:
-                          TextStyle(color: Colors.black.withOpacity(0.5)),
-                      enabledBorder: OutlineInputBorder(
+                       GoogleFonts.poppins(
+                        fontSize: 13, fontWeight: FontWeight.w600,color: Colors.black),
+                      enabledBorder:  OutlineInputBorder(
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(0),
                           topRight: Radius.circular(12),
                         ),
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(0),
                           topRight: Radius.circular(12),
                         ),
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
                       ),
                     ),
                     style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black87,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
                     ),
                   ),
                 ),
@@ -134,21 +132,21 @@ class _FlightSearchBoxState extends State<FlightSearchBox> {
                 GestureDetector(
                   onTap: () => _selectDate(context),
                   child: InputDecorator(
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.date_range),
+                    decoration:  InputDecoration(
+                      prefixIcon: Icon(Icons.date_range),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(0),
                           topRight: Radius.circular(0),
                         ),
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: const BorderRadius.only(
+                        borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(0),
                           topRight: Radius.circular(0),
                         ),
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color: Colors.grey.shade200),
                       ),
                     ),
                     child: Row(
@@ -157,7 +155,7 @@ class _FlightSearchBoxState extends State<FlightSearchBox> {
                         Text(
                           DateFormat("E,dMMM").format(_selectedDate),
                           style: GoogleFonts.poppins(
-                              fontSize: 12, fontWeight: FontWeight.w400),
+                              fontSize: 13, fontWeight: FontWeight.w600),
                         ),
                         const Icon(Icons.arrow_drop_down),
                       ],
@@ -166,30 +164,31 @@ class _FlightSearchBoxState extends State<FlightSearchBox> {
                 ),
               ],
             ),
+            ///flight_Class
             DropdownButtonFormField<String>(
               value: _flightClassValue,
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.airplane_ticket_outlined),
+                prefixIcon: const Icon(Iconsax.user_octagon),
                 iconColor: Colors.grey,
                 hintText: "Flight Class",
                 hintStyle: GoogleFonts.poppins(
                   fontWeight: FontWeight.w400,
-                  fontSize: 12,
+                  fontSize: 13,
                 ),
                 contentPadding: const EdgeInsets.symmetric(vertical: 16),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: const BorderRadius.only(
+                enabledBorder:  OutlineInputBorder(
+                  borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(0),
                     topRight: Radius.circular(0),
                   ),
-                  borderSide: BorderSide(color: Colors.grey.shade400),
+                  borderSide: BorderSide(color: Colors.grey.shade200),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: const BorderRadius.only(
+                focusedBorder:  OutlineInputBorder(
+                  borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(0),
                     topRight: Radius.circular(0),
                   ),
-                  borderSide: BorderSide(color: Colors.grey.shade400),
+                  borderSide: BorderSide(color: Colors.grey.shade200),
                 ),
               ),
               items: _flightClassOptions.map((String value) {
@@ -214,14 +213,13 @@ class _FlightSearchBoxState extends State<FlightSearchBox> {
                     'to': _toController.text,
                     'date': _selectedDate.toString(),
                     'class': _flightClassValue.toString(),
-
                   };
                   widget.onSearch(searchData);
                   Get.to(FlightSearchResults(searchData: searchData,));
-                  print(searchData); // Trigger search
+                  print(searchData);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
+                  backgroundColor: Colors.black87,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(0),
@@ -231,19 +229,23 @@ class _FlightSearchBoxState extends State<FlightSearchBox> {
                     ),
                   ),
                 ),
-                child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Icon(Icons.search, color: Colors.white70),
+                    const SizedBox(width: 12,),
                     Text(
                       'Search Flights',
                       style: GoogleFonts.poppins(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
+                        color: Colors.white70, // Set text color here as well
                       ),
                     )
                   ],
                 ),
               ),
+
             )
           ],
         ),
