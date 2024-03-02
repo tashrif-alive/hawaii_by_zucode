@@ -11,7 +11,7 @@ class AdminLoginScreen extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
   final Function(String, String) onLogin;
 
-  AdminLoginScreen({required this.onLogin});
+  AdminLoginScreen({super.key, required this.onLogin});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class AdminLoginScreen extends StatelessWidget {
                   prefixIcon: const Icon(Icons.mail_outlined),
                   iconColor: Colors.grey,
                   hintText: "Email",
-                  contentPadding: EdgeInsets.symmetric(vertical: 16),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16),
                   // Adjusting the vertical padding
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -56,11 +56,11 @@ class AdminLoginScreen extends StatelessWidget {
                 controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock_outlined),
+                  prefixIcon: const Icon(Icons.lock_outlined),
 
                   iconColor: Colors.black54,
                   hintText: "Password",
-                  contentPadding: EdgeInsets.symmetric(vertical: 16),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 16),
                   // Adjusting the vertical padding
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -68,7 +68,7 @@ class AdminLoginScreen extends StatelessWidget {
                   ),
                   fillColor: Colors.grey.shade50,
                   filled: true,
-                  suffixIcon: Icon(Icons.remove_red_eye_rounded),
+                  suffixIcon: const Icon(Icons.remove_red_eye_rounded),
                 ),
               ),
               const SizedBox(
@@ -135,13 +135,13 @@ class AdminLoginScreen extends StatelessWidget {
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          side: BorderSide(color: Colors.black),
+                          side: const BorderSide(color: Colors.black),
                         ),
                       ),
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.grey.shade50),
                     ),
-                    child: Text('Create a new account'),
+                    child: const Text('Create a new account'),
                   ),
                 ),
               ),
