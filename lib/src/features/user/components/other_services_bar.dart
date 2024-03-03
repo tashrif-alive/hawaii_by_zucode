@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hawaii_app/src/features/admin/services/hotel/view/add_hotel_form.dart';
 import '../../../widgets/bar/mid_bar_widgets.dart';
+import '../../admin/services/hotel/view/hotel_info_form.dart';
 
 class ExtraServicesBar extends StatelessWidget {
   const ExtraServicesBar({super.key});
@@ -13,12 +14,14 @@ class ExtraServicesBar extends StatelessWidget {
     return SizedBox(
       height: 70,
       child: Container(
-        color: Colors.white,
+
+        color: Colors.white70,
         padding: const EdgeInsets.all(2),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ExtraServicesBarWidget(
                 iconData: Icons.flight,
@@ -28,7 +31,7 @@ class ExtraServicesBar extends StatelessWidget {
               ExtraServicesBarWidget(
                 iconData: Icons.time_to_leave,
                 text: "Airport\nCab",
-                onTap: () => Get.to(() => AddHotelForm()),
+                onTap: () => Get.to(() => const HotelInformationForm()),
               ),
               ExtraServicesBarWidget(
                 iconData: FontAwesomeIcons.book,

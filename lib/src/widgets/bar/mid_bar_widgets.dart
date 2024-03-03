@@ -30,12 +30,12 @@ class ExtraServicesBarWidget extends StatelessWidget {
                   iconData,
                   color: Colors.black87,
                 ),
-                const SizedBox(height: 5),
+                // const SizedBox(height: 5),
                 Center(
                   child: Text(
                     text,
                     style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w300, fontSize: 11),
+                        fontWeight: FontWeight.w400, fontSize: 9),
                     textAlign: TextAlign.center,
                   ),
                 ),

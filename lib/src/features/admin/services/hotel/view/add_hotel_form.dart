@@ -6,13 +6,14 @@ import '../../../../../widgets/image_picker/image_view.dart';
 import '../controller/add_hotels_controller.dart';
 
 class AddHotelForm extends StatefulWidget {
+  const AddHotelForm({super.key});
+
   @override
   State<AddHotelForm> createState() => _AddHotelFormState();
 }
 
 class _AddHotelFormState extends State<AddHotelForm> {
   final _hotelController = HotelController();
-
   final _formKey = GlobalKey<FormState>();
 
   String _hotelName = '';

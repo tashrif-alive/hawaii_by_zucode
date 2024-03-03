@@ -3,6 +3,7 @@ import 'package:hawaii_app/src/features/admin/services/bus/view/bus_list.dart';
 import 'package:hawaii_app/src/features/admin/services/hotel/view/hotel_list.dart';
 import 'package:hawaii_app/src/features/user/views/user_flight_tabs.dart';
 import '../../../widgets/tabs/user_tab_bar.dart';
+import '../../admin/services/hotel/view/hotel_info_form.dart';
 
 class UserDashboard extends StatefulWidget {
   const UserDashboard({super.key});
@@ -46,6 +47,7 @@ class _UserDashboardState extends State<UserDashboard> {
       const UserFlightTab(),
       const SingleChildScrollView(child: HotelListScreen()),
       const BusListScreen(),
+       const HotelInformationForm()
     ];
 
     return Scaffold(
