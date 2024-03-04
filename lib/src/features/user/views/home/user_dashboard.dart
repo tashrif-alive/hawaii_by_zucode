@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hawaii_app/src/features/admin/services/bus/view/bus_list.dart';
 import 'package:hawaii_app/src/features/admin/services/hotel/view/hotel_list.dart';
-import 'package:hawaii_app/src/features/user/views/user_flight_tabs.dart';
-import '../../../widgets/tabs/user_tab_bar.dart';
-import '../../admin/services/hotel/view/hotel_info_form.dart';
+import 'package:hawaii_app/src/features/user/views/home/user_flight_tabs.dart';
+import 'package:hawaii_app/src/features/user/views/home/user_hotels_tabs.dart';
+
+import '../../../../widgets/tabs/user_tab_bar.dart';
+import '../../../admin/services/hotel/view/hotel_info_form.dart';
+
 
 class UserDashboard extends StatefulWidget {
   const UserDashboard({super.key});
@@ -45,7 +48,7 @@ class _UserDashboardState extends State<UserDashboard> {
     ];
     List<Widget> tabContent = [
       const UserFlightTab(),
-      const SingleChildScrollView(child: HotelListScreen()),
+      const UserHotelTab(),
       const BusListScreen(),
        const HotelInformationForm()
     ];

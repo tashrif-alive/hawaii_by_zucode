@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../components/alience_carousel.dart';
-import '../components/destination_poster.dart';
-import '../components/flight/flight_fare_list.dart';
-import '../components/flight/flight_search_box.dart';
-import '../components/other_services_bar.dart';
+import '../../components/alience_carousel.dart';
+import '../../components/destination_poster.dart';
+import '../../components/flight/flight_fare_list.dart';
+import '../../components/flight/flight_search_box.dart';
+import '../../components/other_services_bar.dart';
 
 class UserFlightTab extends StatefulWidget {
   const UserFlightTab({super.key});

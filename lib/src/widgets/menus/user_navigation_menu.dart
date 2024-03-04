@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-
-import '../../features/user/components/flight/flight_fare_list.dart';
 import '../../features/user/user_profile/user_profile screen.dart';
-import '../../features/user/views/user_dashboard.dart';
+import '../../features/user/views/home/user_dashboard.dart';
+import '../../features/user/views/user_trip/user_trip_screen.dart';
 
 
 class NavigationMenu extends StatefulWidget {
@@ -86,13 +84,11 @@ class _NavigationMenuState extends State<NavigationMenu> {
 
 //..................Navigation_Controller....................
 
-
-
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     const UserDashboard(),
-    const FlightFareList(),
+     UserTripScreen(),
     Container(color: Colors.lightBlue,child: const Center(child: Text("Hi User"),),),
     const UserProfileScreen()
 

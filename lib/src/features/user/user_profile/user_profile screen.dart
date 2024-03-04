@@ -47,12 +47,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             ),
           ],
           backgroundColor: Colors.blueGrey.shade50,
-          leading: IconButton(
-            onPressed: () {
-              // Add your navigation logic here
-            },
-            icon: const Icon(Icons.arrow_back_rounded, color: Colors.black),
-          ),
         ),
         backgroundColor: Colors.blueGrey.shade50,
         body: Container(
