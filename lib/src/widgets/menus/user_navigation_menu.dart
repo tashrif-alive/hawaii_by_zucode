@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 import '../../features/user/components/flight/flight_fare_list.dart';
+import '../../features/user/user_profile/user_profile screen.dart';
 import '../../features/user/views/user_dashboard.dart';
 
 
@@ -22,7 +23,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
     return Scaffold(
       bottomNavigationBar: Obx(
         () => NavigationBar(
-          height: 70,
+          height: 65,
           elevation: 1,
           backgroundColor: Colors.grey.shade50,
           surfaceTintColor: Colors.red,
@@ -32,47 +33,47 @@ class _NavigationMenuState extends State<NavigationMenu> {
           destinations:  [
             NavigationDestination(
               icon: SvgPicture.asset(
-                'assets/icons/home.svg',
-                height: 40, // Replace with the desired height
+                'assets/icons/home_active.svg',
+                height: 30,
               ),
               selectedIcon: SvgPicture.asset(
-                'assets/icons/home_active.svg',
-                height: 40, // Replace with the desired height
+                'assets/icons/home.svg',
+                height: 30,
               ),
               label: "Home",
             ),
             NavigationDestination(
               icon: SvgPicture.asset(
                 'assets/icons/trip.svg',
-                height:40, // Replace with the desired height
+                height:30,
               ),
               selectedIcon: SvgPicture.asset(
                 'assets/icons/trip_active.svg',
-                height: 40, // Replace with the desired height
+                height: 30,
               ),
               label: "My Trip",
             ),
             NavigationDestination(
               icon: SvgPicture.asset(
-                'assets/icons/contact.svg',
-                height: 40, // Replace with the desired height
+                'assets/icons/text_regular.svg',
+                height: 30,
               ),
               selectedIcon: SvgPicture.asset(
-                'assets/icons/contact_active.svg',
-                height: 40, // Replace with the desired height
+                'assets/icons/text.svg',
+                height: 30,
               ),
               label: "Contact Us",
             ),
             NavigationDestination(
               icon: SvgPicture.asset(
-                'assets/icons/more.svg',
-                height: 40, // Replace with the desired width
+                'assets/icons/user_regular.svg',
+                height: 30,
               ),
               selectedIcon: SvgPicture.asset(
-                'assets/icons/more_active.svg',
-                height: 40, // Replace with the desired height
+                'assets/icons/user.svg',
+                height: 30,
               ),
-              label: "More",
+              label: "User",
             ),
           ],
 
@@ -90,10 +91,10 @@ class _NavigationMenuState extends State<NavigationMenu> {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
-    UserDashboard(),
-    FlightFareList(),
+    const UserDashboard(),
+    const FlightFareList(),
     Container(color: Colors.lightBlue,child: const Center(child: Text("Hi User"),),),
-    Container(color: Colors.lightBlue,child: const Center(child: Text("Hi User"),),),
+    const UserProfileScreen()
 
   ];
 }

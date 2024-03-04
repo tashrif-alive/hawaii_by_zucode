@@ -18,7 +18,7 @@ class HotelDetailScreen extends StatelessWidget {
           children: [
             Text('Location: ${data['location']}'),
             Text('Type: ${data['hotelType']}'),
-            Text('Cost: ${data['hotelCost']}'),
+            Text('Cost: ${data['offeredHotelCost']}'),
             Text('ID: ${data['id']}'),
             // Add more fields as needed
           ],

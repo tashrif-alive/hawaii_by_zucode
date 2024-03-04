@@ -49,15 +49,7 @@ class _UserAppBarState extends State<UserAppBar> {
                   ),
                   onPressed: widget.onPressed,
                 ),
-                IconButton(
-                  icon: const Icon(
-                    Iconsax.user,
-                    color: Colors.black87,
-                  ),
-                  onPressed: () {
-                    Get.to(() => const LoginScreen());
-                  },
-                ),
+
               ],
             )
           ],
