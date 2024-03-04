@@ -16,8 +16,8 @@ class _HotelInformationFormState extends State<HotelInformationForm> {
   final _formKey = GlobalKey<FormState>();
 
   String _name = '';
-  String _location = '';
-  double _rating = 0;
+  final String _location = '';
+  final double _rating = 0;
   List<String> _facilities = [];
   List<String> _access = [];
   List<String> _roomAmenities = [];
@@ -68,7 +68,7 @@ class _HotelInformationFormState extends State<HotelInformationForm> {
             fontWeight: FontWeight.w700,
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Wrap(
           spacing: 6,
           runSpacing: 1,
@@ -144,10 +144,14 @@ class _HotelInformationFormState extends State<HotelInformationForm> {
                   },
                   onSaved: (value) => _name = value!,
                 ),
-SizedBox(height: 8,),
+                const SizedBox(
+                  height: 8,
+                ),
+
                 ///Facilities
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
                   child: _buildCheckboxList(
                     'Facilities',
                     [
@@ -161,10 +165,11 @@ SizedBox(height: 8,),
                     _facilities,
                   ),
                 ),
+
                 ///Access
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
                   child: _buildCheckboxList(
                     'Access',
                     [
@@ -177,10 +182,11 @@ SizedBox(height: 8,),
                     _access,
                   ),
                 ),
+
                 ///Safety & security
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
                   child: _buildCheckboxList(
                     'Safety & security',
                     [
@@ -194,6 +200,7 @@ SizedBox(height: 8,),
                     _safetySecurity,
                   ),
                 ),
+
                 ///Room amenities
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -228,6 +235,7 @@ SizedBox(height: 8,),
                     _roomAmenities,
                   ),
                 ),
+
                 ///Bathroom
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -245,6 +253,7 @@ SizedBox(height: 8,),
                     _bathRoom,
                   ),
                 ),
+
                 ///Family & Kids
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -257,6 +266,7 @@ SizedBox(height: 8,),
                     _family,
                   ),
                 ),
+
                 ///Transport & transfers
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -272,6 +282,7 @@ SizedBox(height: 8,),
                     _transport,
                   ),
                 ),
+
                 ///Internet access
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -284,6 +295,7 @@ SizedBox(height: 8,),
                     _internetServices,
                   ),
                 ),
+
                 ///Activities & Sports
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -299,6 +311,7 @@ SizedBox(height: 8,),
                     _sports,
                   ),
                 ),
+
                 ///Services & conveniences
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -325,6 +338,7 @@ SizedBox(height: 8,),
                     _servicesAndConveniences,
                   ),
                 ),
+
                 ///Safety & Cleanliness
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -353,6 +367,7 @@ SizedBox(height: 8,),
                     _meds,
                   ),
                 ),
+
                 ///Languages
                 Padding(
                   padding: const EdgeInsets.symmetric(
