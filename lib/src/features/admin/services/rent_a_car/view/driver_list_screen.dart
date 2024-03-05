@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'diver_details_screen.dart';
 
 class DriverListScreen extends StatelessWidget {
+  const DriverListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

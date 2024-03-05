@@ -62,7 +62,7 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
         elevation: 0,
         title: Text(
           "Services",
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.ubuntu(
             fontSize: 16,
             fontWeight: FontWeight.w700,
             color: Colors.black,
@@ -79,8 +79,8 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
             children: [
               Text(
                 "Services",
-                style: GoogleFonts.poppins(
-                  fontSize: 18,
+                style: GoogleFonts.ubuntu(
+                  fontSize: 15,
                   fontWeight: FontWeight.w700,
                 ),
               ),
@@ -128,12 +128,13 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
               const Divider(thickness: 1),
               const SizedBox(height: 20),
               Text(
-                "Transactions",
-                style: GoogleFonts.poppins(
-                  fontSize: 18,
+                "Companies",
+                style: GoogleFonts.ubuntu(
+                  fontSize: 15,
                   fontWeight: FontWeight.w700,
                 ),
               ),
+
             ],
           ),
         ),

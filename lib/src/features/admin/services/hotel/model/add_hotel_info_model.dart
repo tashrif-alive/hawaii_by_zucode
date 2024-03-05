@@ -4,6 +4,7 @@ class HotelInformation {
   final String location;
   final double rating;
   final List<String> facilities;
+  final List<String> rooms;
   final List<String> access;
   final List<String> roomAmenities;
   final List<String> safetySecurity;
@@ -20,6 +21,7 @@ class HotelInformation {
     required this.id,
     required this.name,
     required this.location,
+    required this.rooms,
     required this.rating,
     required this.facilities,
     required this.access,
@@ -41,6 +43,7 @@ class HotelInformation {
       'name': name,
       'location': location,
       'rating': rating,
+      'rooms' : rooms,
       'facilities': facilities,
       'access': access,
       'roomAmenities': roomAmenities,
@@ -63,6 +66,7 @@ class HotelInformation {
       location: map['location'],
       rating: map['rating'].toDouble(),
       facilities: List<String>.from(map['facilities'] ?? []),
+      rooms: List<String>.from(map['rooms'] ?? []),
       access: List<String>.from(map['access'] ?? []),
       roomAmenities: List<String>.from(map['roomAmenities'] ?? []),
       safetySecurity: List<String>.from(map['safetySecurity'] ?? []),

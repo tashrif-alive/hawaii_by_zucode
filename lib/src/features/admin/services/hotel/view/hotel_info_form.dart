@@ -16,8 +16,9 @@ class _HotelInformationFormState extends State<HotelInformationForm> {
   final _formKey = GlobalKey<FormState>();
 
   String _name = '';
-  final String _location = '';
+  late  String _location = '';
   final double _rating = 0;
+  final List<String> _rooms = [];
   final List<String> _facilities = [];
   final List<String> _access = [];
   final List<String> _roomAmenities = [];
@@ -39,6 +40,7 @@ class _HotelInformationFormState extends State<HotelInformationForm> {
         _name,
         _location,
         _rating,
+        _rooms,
         _facilities,
         _access,
         _roomAmenities,
@@ -76,7 +78,7 @@ class _HotelInformationFormState extends State<HotelInformationForm> {
               .map((option) => FilterChip(
                     label: Text(
                       option,
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.ubuntu(
                           fontWeight: FontWeight.w400, fontSize: 10),
                     ),
                     selected: selectedList.contains(option),
@@ -103,7 +105,7 @@ class _HotelInformationFormState extends State<HotelInformationForm> {
       appBar: AppBar(
         title: Text(
           'Add Hotel Information',
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.ubuntu(
             fontSize: 16,
             fontWeight: FontWeight.w700,
             color: Colors.black,
@@ -129,25 +131,83 @@ class _HotelInformationFormState extends State<HotelInformationForm> {
               children: [
                 Text(
                   "Hotel Details",
-                  style: GoogleFonts.poppins(
-                      fontSize: 18, fontWeight: FontWeight.w700),
+                  style: GoogleFonts.ubuntu(
+                      fontSize: 15, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 15),
-                AdminTextFormField(
-                  hintText: 'Hotel Name',
-                  prefixIcon: Icons.business_rounded,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter the hotel name';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) => _name = value!,
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: AdminTextFormField(
+                    hintText: 'Hotel Name',
+                    prefixIcon: Icons.business_rounded,
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Please enter the hotel name';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) => _name = value!,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: AdminTextFormField(
+                    hintText: 'Address',
+                    prefixIcon: Icons.location_on_rounded,
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Please enter the hotel name';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) => _location = value!,
+                  ),
                 ),
                 const SizedBox(
                   height: 8,
                 ),
 
+                ///Rooms
+                Padding(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                  child: _buildCheckboxList(
+                    'Rooms',
+                    [
+                      'Standard Room',
+                      'Standard Room',
+                      'Standard Room',
+                      'Standard Room',
+                      'Standard Room',
+                      'One King Standard',
+                      'One King Standard',
+                      'One King Standard',
+                      'One King Standard',
+                      'One King Standard',
+                      '2 Single Standard',
+                      '2 Single Standard',
+                      '2 Single Standard',
+                      '2 Single Standard',
+                      '2 Single Standard',
+                      '2 Single Bed Standard Highway view',
+                      '2 Single Bed Standard Highway view',
+                      '2 Single Bed Standard Highway view',
+                      '2 Single Bed Standard Highway view',
+                      '2 Single Bed Standard Highway view',
+                      '1 king Bed Standard Highway view',
+                      '1 king Bed Standard Highway view',
+                      '1 king Bed Standard Highway view',
+                      '1 king Bed Standard Highway view',
+                      '1 king Bed Standard Highway view',
+                      '1 king Bed Premium',
+                      '1 king Bed Premium',
+                      '1 king Bed Premium',
+                      '1 king Bed Premium',
+                      '1 king Bed Premium',
+                    ],
+                    _facilities,
+                  ),
+                ),
                 ///Facilities
                 Padding(
                   padding:
