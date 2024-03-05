@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:hawaii_app/src/features/user/components/hotel/search_hotel_screen.dart';
-import 'package:intl/intl.dart';
+
 
 class HotelSearchBox extends StatefulWidget {
   final ValueChanged<Map<String, String>> onSearch;

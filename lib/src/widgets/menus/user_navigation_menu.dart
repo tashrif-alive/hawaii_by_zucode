@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../features/user/user_profile/user_profile screen.dart';
+import '../../features/user/views/contact_us/contact_us.dart';
 import '../../features/user/views/home/user_dashboard.dart';
+import '../../features/user/views/user_profile/user_profile screen.dart';
 import '../../features/user/views/user_trip/user_trip_screen.dart';
 
 
@@ -89,7 +90,7 @@ class NavigationController extends GetxController {
   final screens = [
     const UserDashboard(),
      UserTripScreen(),
-    Container(color: Colors.lightBlue,child: const Center(child: Text("Hi User"),),),
+    const ContactUs(),
     const UserProfileScreen()
 
   ];

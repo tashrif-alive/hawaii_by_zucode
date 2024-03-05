@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/airline/view/add_flight_form.dart';
 import '../services/airline/view/flight_list_screen.dart';
+import '../services/airline/view/manage_flight_list.dart';
 
 
 class AirLineServices extends StatefulWidget {
@@ -18,13 +19,13 @@ class _AirLineServicesState extends State<AirLineServices> {
       "image": "assets/icons/logos/flight_add.png",
       "color": Colors.orange,
       "title": "Add Flight",
-      "screen": FlightFormView()
+      "screen": const FlightFormView()
     },
     {
       "image": "assets/icons/logos/manage_flight.png",
       "color": Colors.lightGreen,
       "title": "Manage Flights",
-      "screen": (){}
+      "screen": const ManageFlightListScreen()
     },
     {
       "image": "assets/icons/logos/flight_requ.png",

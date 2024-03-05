@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hawaii_app/src/features/user/user_profile/profile_widget.dart';
-import 'package:hawaii_app/src/features/user/user_profile/update_profile.dart';
 
+import '../../user/views/user_profile/profile_widget.dart';
+import '../../user/views/user_profile/update_profile.dart';
 class UserSettings extends StatefulWidget {
   const UserSettings({super.key});
 

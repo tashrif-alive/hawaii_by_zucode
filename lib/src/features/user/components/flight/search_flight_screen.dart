@@ -12,8 +12,9 @@ class FlightSearchResults extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flight Search Results'),
+        title: const Text('Available flights'),
       ),
+      backgroundColor: Colors.white,
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('flights').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -58,7 +59,7 @@ class FlightSearchResults extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text('Search Results (${filteredFlights.length})',
+                  child: Text('Available flights (${filteredFlights.length})',
                       style: GoogleFonts.poppins(
                           fontSize: 12, fontWeight: FontWeight.w300)),
                 ),
@@ -117,15 +118,17 @@ class FlightSearchResults extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        'From: ${data['fromPlace']}',
+                                        '${data['airlineName']}',
                                         style: GoogleFonts.poppins(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w400,
                                         ),
                                       ),
-                                      const SizedBox(width: 8),
+                                      const SizedBox(width: 5),
+                                      const Icon(Icons.circle,size: 5,),
+                                      const SizedBox(width: 5),
                                       Text(
-                                        'To: ${data['toPlace']}',
+                                        '${data['planeModel']}',
                                         style: GoogleFonts.poppins(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w400,
@@ -142,7 +145,7 @@ class FlightSearchResults extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    'Class: ${data['flightClass']}',
+                                    '${data['flightClass']}',
                                     style: GoogleFonts.poppins(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w300,

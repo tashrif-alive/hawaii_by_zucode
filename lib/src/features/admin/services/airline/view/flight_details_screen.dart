@@ -69,9 +69,9 @@ class FlightDetailScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                            const SizedBox(width: 8),
+                            const SizedBox(width: 5),
                             const Icon(Icons.circle,size: 5,),
-                            const SizedBox(width: 8),
+                            const SizedBox(width: 5),
                             Text(
                               '${flightData['planeModel']}',
                               style: GoogleFonts.poppins(

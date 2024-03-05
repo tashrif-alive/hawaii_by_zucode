@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:hawaii_app/src/features/admin/view/admin_dashboard.dart';
-import 'package:hawaii_app/src/features/login/view/signin_screen.dart';
-import 'package:hawaii_app/src/features/login/controllers/user_login_controller.dart';
-import 'package:hawaii_app/src/features/login/view/user_login_screen.dart';
-import 'package:hawaii_app/src/commons/dummy.dart';
-import 'package:hawaii_app/src/features/signup/view/signup_screen.dart';
-import 'package:hawaii_app/src/features/user/user_profile/user_profile%20screen.dart';
 import 'package:hawaii_app/src/widgets/menus/admin_navigation_menu.dart';
 import 'package:hawaii_app/src/widgets/menus/user_navigation_menu.dart';
 
@@ -44,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: blackSwatch,
       ),
-      home: const NavigationMenu(),
+      home: const AdminBottomBar(),
     );
   }
 }

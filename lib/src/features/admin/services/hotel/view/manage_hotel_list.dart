@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../model/add_hotel_model.dart';
 import 'edit_hotel_list.dart';
@@ -26,8 +27,9 @@ class _ManageHotelListScreenState extends State<ManageHotelListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('Manage Hotel List'),
+      appBar: AppBar(centerTitle: true,
+        title: Text('Manage List',style: GoogleFonts.poppins(
+            fontSize: 16, fontWeight: FontWeight.w600)),
       ),
       body: Column(
         children: [
@@ -77,7 +79,7 @@ class _ManageHotelListScreenState extends State<ManageHotelListScreen> {
           Expanded(
             child: StreamBuilder(
               stream:
-              FirebaseFirestore.instance.collection('hotels').snapshots(),
+                  FirebaseFirestore.instance.collection('hotels').snapshots(),
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasError) {
@@ -93,11 +95,11 @@ class _ManageHotelListScreenState extends State<ManageHotelListScreen> {
                 }
 
                 List<DocumentSnapshot> filteredHotels =
-                snapshot.data!.docs.where((document) {
+                    snapshot.data!.docs.where((document) {
                   String hotelName =
-                  document['hotelName'].toString().toLowerCase();
+                      document['hotelName'].toString().toLowerCase();
                   String location =
-                  document['location'].toString().toLowerCase();
+                      document['location'].toString().toLowerCase();
                   String searchText = _searchController.text.toLowerCase();
                   return hotelName.contains(searchText) ||
                       location.contains(searchText);
@@ -108,7 +110,7 @@ class _ManageHotelListScreenState extends State<ManageHotelListScreen> {
                   itemBuilder: (context, index) {
                     DocumentSnapshot document = filteredHotels[index];
                     Map<String, dynamic> data =
-                    document.data() as Map<String, dynamic>;
+                        document.data() as Map<String, dynamic>;
                     return InkWell(
                       onTap: () {
                         // Navigate to detailed hotel page
@@ -120,192 +122,191 @@ class _ManageHotelListScreenState extends State<ManageHotelListScreen> {
                         );
                       },
                       child: Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 18.0,vertical: 5),
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.grey.shade50,
                           ),
                           child: Row(
-                            //crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: Colors.white,
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(8),
-                                      bottomLeft: Radius.circular(8)),
-                                  child: Image.network(
-                                    data['imgUrl'] ?? '',
-                                    height: 120,
-                                    width:
-                                    MediaQuery.of(context).size.width * .4,
-                                    fit: BoxFit.fill,
+                              Row(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      color: Colors.white,
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(8),
+                                          bottomLeft: Radius.circular(8)),
+                                      child: Image.network(
+                                        data['imgUrl'] ?? '',
+                                        height: 100,
+                                        width:
+                                            MediaQuery.of(context).size.width * .4,
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                  const SizedBox(width: 8),
+                                  Align(alignment: AlignmentDirectional.topStart,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              data['hotelName'],
+                                              style: GoogleFonts.poppins(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                            const SizedBox(width: 4),
+                                            const Icon(Icons.circle, size: 5),
+                                            const SizedBox(width: 4),
+                                            Text(
+                                              '${data['hotelType']}',
+                                              style: GoogleFonts.poppins(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                            Icon(
+                                              Icons.star,
+                                              size: 18,
+                                              color: Colors.amber.shade200,
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                          children: [
+                                            const Icon(
+                                              Icons.location_on_rounded,
+                                              color: Colors.black87,
+                                              size: 15,
+                                            ),
+                                            Text(
+                                              '${data['location']}',
+                                              style: GoogleFonts.poppins(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.black,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '\$${data['regularHotelCost']}',
+                                                style: GoogleFonts.poppins(
+                                                  fontSize: 8,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.red,
+                                                ),
+                                              ),
+                                              Text(
+                                                '\$${data['offeredHotelCost']}',
+                                                style: GoogleFonts.poppins(
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.green,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
-                              const SizedBox(height: 8),
-                              Padding(
-                                padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Column(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          data['hotelName'],
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                        const SizedBox(width: 4),
-                                        const Icon(Icons.circle, size: 5),
-                                        const SizedBox(width: 4),
-                                        Text(
-                                          '${data['hotelType']}',
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          size: 18,
-                                          color: Colors.amber.shade200,
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
-                                      children: [
-                                        const Icon(
-                                          Icons.location_on_rounded,
-                                          color: Colors.black87,
-                                          size: 15,
-                                        ),
-                                        Text(
-                                          '${data['location']}',
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.black,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          icon:
-                                          const Icon(Icons.edit, size: 18),
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        EditHotelForm(
-                                                          hotel: Hotel(
-                                                            id: document.id,
-                                                            hotelName: data['hotelName'],
-                                                            hotelType: data['hotelType'],
-                                                            location: data['location'],
-                                                            imgUrl: data['imgUrl'],
-                                                            regularHotelCost: data['regularHotelCost'],
-                                                            offeredHotelCost: data['offeredHotelCost'],
-                                                            numberOfRooms: data['numberOfRooms'],
-                                                            occupancyRate: data['occupancyRate'],
-                                                            rating: data['rating'],
-                                                          ),
-                                                        )));
-                                          },
-                                        ),
-                                        IconButton(
-                                          icon: const Icon(Icons.delete,
-                                              size: 18),
-                                          onPressed: () {
-                                            // Perform delete operation
-                                            showDialog(
-                                              context: context,
-                                              builder: (BuildContext context) {
-                                                return AlertDialog(
-                                                  title: const Text(
-                                                      'Delete Hotel'),
-                                                  content: const Text(
-                                                      'Are you sure you want to delete this hotel?'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: const Text(
-                                                          'Cancel'),
-                                                    ),
-                                                    TextButton(
-                                                      onPressed: () {
-                                                        /// Delete the hotel data from Firestore
-                                                        FirebaseFirestore
-                                                            .instance
-                                                            .collection(
-                                                            'hotels')
-                                                            .doc(document.id)
-                                                            .delete()
-                                                            .then((value) {
-                                                          Navigator.pop(
-                                                              context);
-                                                        }).catchError((error) {});
-                                                      },
-                                                      child: Text('Delete'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
 
-                              padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Text(
-                                          '\$${data['regularHotelCost']}',
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 8,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.red,
-                                          ),
-                                        ),
-                                        Text(
-                                          '\$${data['offeredHotelCost']}',
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.green,
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  IconButton(
+                                    icon: const Icon(Icons.edit, size: 18),
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EditHotelForm(
+                                                    hotel: Hotel(
+                                                      id: document.id,
+                                                      hotelName:
+                                                          data['hotelName'],
+                                                      hotelType:
+                                                          data['hotelType'],
+                                                      location:
+                                                          data['location'],
+                                                      imgUrl: data['imgUrl'],
+                                                      regularHotelCost: data[
+                                                          'regularHotelCost'],
+                                                      offeredHotelCost: data[
+                                                          'offeredHotelCost'],
+                                                      numberOfRooms:
+                                                          data['numberOfRooms'],
+                                                      occupancyRate:
+                                                          data['occupancyRate'],
+                                                      rating: data['rating'],
+                                                    ),
+                                                  )));
+                                    },
+                                  ),
+                                  IconButton(
+                                    icon: const Icon(Icons.delete, size: 18),
+                                    onPressed: () {
+                                      // Perform delete operation
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: const Text('Delete Hotel'),
+                                            content: const Text(
+                                                'Are you sure you want to delete this hotel?'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text('Cancel'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  /// Delete the hotel data from Firestore
+                                                  FirebaseFirestore.instance
+                                                      .collection('hotels')
+                                                      .doc(document.id)
+                                                      .delete()
+                                                      .then((value) {
+                                                    Navigator.pop(context);
+                                                  }).catchError((error) {});
+                                                },
+                                                child: Text('Delete'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ],
                               ),
                             ],
                           ),

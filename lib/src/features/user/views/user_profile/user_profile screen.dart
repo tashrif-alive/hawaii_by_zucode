@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hawaii_app/src/features/user/user_profile/profile_widget.dart';
-import '../../login/view/signin_screen.dart';
-import '../../settings/user_settings/app_user_setting_screen.dart';
+import '../../../login/view/signin_screen.dart';
+import '../../../settings/user_settings/app_user_setting_screen.dart';
+import 'profile_widget.dart';
 
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({super.key});

@@ -17,40 +17,40 @@ class AdminServicesScreen extends StatefulWidget {
 class _AdminServicesScreenState extends State<AdminServicesScreen> {
   final List<Map<String, dynamic>> services = [
     {
-      "icon": Icons.connecting_airports_rounded,
-      "color": Colors.purple,
+      "backgroundImage": const AssetImage('assets/icons/category/flight_icon.png'),
       "title": "Flight",
-      "screen": const AirLineServices()
+      "screen": const AirLineServices(),
+      "color": Colors.black,
     },
     {
-      "icon": Icons.business_rounded,
-      "color": Colors.brown,
+      "backgroundImage": const AssetImage('assets/icons/category/hotel_icon.png'),
       "title": "Hotel",
-      "screen": const HotelServices()
+      "screen": const HotelServices(),
+      "color": Colors.black,
     },
     {
-      "icon": Icons.directions_bus,
-      "color": Colors.cyan,
+      "backgroundImage": const AssetImage('assets/icons/category/bus_icon.png'),
       "title": "Bus",
-      "screen": AddBusView()
+      "screen": AddBusView(),
+      "color": Colors.black,
     },
     {
-      "icon": Icons.time_to_leave,
-      "color": Colors.orange,
+      "backgroundImage": const AssetImage('assets/icons/category/cab_icon.png'),
       "title": "Cars",
-      "screen":  AddDriverView()
+      "screen": AddDriverView(),
+      "color": Colors.black,
     },
     {
-      "icon": Icons.my_library_books,
-      "color": Colors.blueGrey,
+      "backgroundImage": const AssetImage('assets/icons/category/package.png'),
       "title": "Package",
-      "screen": AddCarScreen()
+      "screen": AddCarScreen(),
+      "color": Colors.black,
     },
     {
-      "icon": Icons.menu_book_sharp,
-      "color": Colors.green,
+      "backgroundImage": const AssetImage('assets/icons/category/App icon-02.png'),
       "title": "E-Visa",
-      "screen": const AirLineServices()
+      "screen": const AirLineServices(),
+      "color": Colors.black,
     },
   ];
 
@@ -63,17 +63,12 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
         title: Text(
           "Services",
           style: GoogleFonts.poppins(
-              fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+            color: Colors.black,
+          ),
         ),
         centerTitle: true,
-        leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: const Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.black,
-            )),
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -85,18 +80,20 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
               Text(
                 "Services",
                 style: GoogleFonts.poppins(
-                    fontSize: 18, fontWeight: FontWeight.w700),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
               const SizedBox(
                 height: 12,
               ),
-
               GridView.builder(
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
+                  crossAxisCount: 3,
                   crossAxisSpacing: 18.0,
                   mainAxisSpacing: 18.0,
+                  childAspectRatio: 4/3
                 ),
                 itemCount: services.length,
                 itemBuilder: (context, index) {
@@ -105,29 +102,23 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
                       Get.to(services[index]['screen']);
                     },
                     child: Container(
-                      padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
-                        color: services[index]['color'][50],
                         borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: services[index]['backgroundImage'],
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            services[index]['icon'],
+                      child: Padding(
+                        padding: EdgeInsets.all(15),
+                        child: Text(
+                          services[index]['title'],
+                          style: GoogleFonts.ubuntu(
+                            fontWeight: FontWeight.w600,
                             color: services[index]['color'],
-                            size: 30, // Adjust icon size here
+                            fontSize: 12, // Adjust text size here
                           ),
-                          const SizedBox(height: 3), // Adjust spacing here
-                          Text(
-                            services[index]['title'],
-                            style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w500,
-                              color: services[index]['color'],
-                              fontSize: 12, // Adjust text size here
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                   );
@@ -139,7 +130,9 @@ class _AdminServicesScreenState extends State<AdminServicesScreen> {
               Text(
                 "Transactions",
                 style: GoogleFonts.poppins(
-                    fontSize: 18, fontWeight: FontWeight.w700),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ],
           ),

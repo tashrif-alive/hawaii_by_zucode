@@ -7,32 +7,28 @@ import 'package:hawaii_app/src/features/user/views/user_trip/user_booked_flight_
 import 'package:hawaii_app/src/features/user/views/user_trip/user_booked_hotel_trip.dart';
 
 class UserTripScreen extends StatelessWidget {
-   UserTripScreen({Key? key});
+  UserTripScreen({Key? key});
 
   final List<Map<String, dynamic>> services = [
     {
-      "icon": Icons.connecting_airports_rounded,
-      "color": Colors.purple,
       "title": "Flight",
-      "screen": const UserBookedFlightScreen()
+      "screen": const UserBookedFlightScreen(),
+      "backgroundImage": const AssetImage('assets/icons/category/flight_icon.png'),
     },
     {
-      "icon": Icons.business_rounded,
-      "color": Colors.brown,
       "title": "Hotel",
-      "screen": const UserBookedHotelScreen()
+      "screen": const UserBookedHotelScreen(),
+      "backgroundImage": const AssetImage('assets/icons/category/hotel_icon.png'),
     },
     {
-      "icon": Icons.directions_bus,
-      "color": Colors.cyan,
       "title": "Bus",
-      "screen": const UserBookedBusScreen()
+      "screen": const UserBookedBusScreen(),
+      "backgroundImage": const AssetImage('assets/icons/category/bus_icon.png'),
     },
     {
-      "icon": Icons.time_to_leave,
-      "color": Colors.orange,
       "title": "Cabs",
-      "screen":  const UserBookedCabsScreen()
+      "screen": const UserBookedCabsScreen(),
+      "backgroundImage": const AssetImage('assets/icons/category/cab_icon.png'),
     },
   ];
 
@@ -59,12 +55,12 @@ class UserTripScreen extends StatelessWidget {
               const SizedBox(
                 height: 12,
               ),
-
               GridView.builder(
                 shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate:
+                const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 1.8/ 2,
+                  childAspectRatio: 2.5 / 2,
                   crossAxisSpacing: 18.0,
                   mainAxisSpacing: 18.0,
                 ),
@@ -75,29 +71,23 @@ class UserTripScreen extends StatelessWidget {
                       Get.to(services[index]['screen']);
                     },
                     child: Container(
-                      padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
-                        color: services[index]['color'][50],
                         borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: services[index]['backgroundImage'],
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            services[index]['icon'],
-                            color: services[index]['color'],
-                            size: 30, // Adjust icon size here
+                      child: Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: Text(
+                          services[index]['title'],
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                            fontSize: 14,
                           ),
-                          const SizedBox(height: 3), // Adjust spacing here
-                          Text(
-                            services[index]['title'],
-                            style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w500,
-                              color: services[index]['color'],
-                              fontSize: 12, // Adjust text size here
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                   );

@@ -3,10 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hawaii_app/src/features/user/components/destination_poster.dart';
 import 'package:hawaii_app/src/features/user/components/alience_carousel.dart';
 import '../../login/view/signin_screen.dart';
-import '../../user/user_profile_widget.dart';
+
 import '../services/airline/view/flight_list_screen.dart';
 import '../services/bus/view/bus_list.dart';
 import '../services/hotel/view/hotel_list.dart';
@@ -25,7 +24,6 @@ class _AdminDashboardState extends State<AdminDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: const AdminAppBar(),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
@@ -71,41 +69,33 @@ class _AdminDashboardState extends State<AdminDashboard> {
                 ),
               ),
             ),
+
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => UserProfileWidget()),
+                  MaterialPageRoute(builder: (context) => const FlightListScreen()),
                 );
               },
-              child: Text('View Profile'),
+              child: const Text('View flight list'),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => FlightListScreen()),
+                  MaterialPageRoute(builder: (context) => const HotelListScreen()),
                 );
               },
-              child: Text('View flight list'),
+              child: const Text('View hotel list'),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HotelListScreen()),
+                  MaterialPageRoute(builder: (context) => const BusListScreen()),
                 );
               },
-              child: Text('View hotel list'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => BusListScreen()),
-                );
-              },
-              child: Text('View buses list'),
+              child: const Text('View buses list'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -114,7 +104,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                   MaterialPageRoute(builder: (context) => DriverListScreen()),
                 );
               },
-              child: Text('View driver list'),
+              child: const Text('View driver list'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -123,7 +113,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                   MaterialPageRoute(builder: (context) => const AliancesBannerCarousel()),
                 );
               },
-              child: Text('carousel'),
+              child: const Text('carousel'),
             ),
 
           ],

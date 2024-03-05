@@ -5,7 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class UpdateUserProfile extends StatelessWidget {
-  const UpdateUserProfile({Key? key}) : super(key: key);
+  const UpdateUserProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +23,12 @@ class UpdateUserProfile extends StatelessWidget {
           onPressed: () {
             Get.back();
           },
-          icon: Icon(Icons.arrow_back_rounded, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_rounded, color: Colors.black),
         ),
       ),
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -60,7 +60,7 @@ class UpdateUserProfile extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Center(
               child: SizedBox(
                 height: 45,

@@ -18,18 +18,18 @@ class _HotelInformationFormState extends State<HotelInformationForm> {
   String _name = '';
   final String _location = '';
   final double _rating = 0;
-  List<String> _facilities = [];
-  List<String> _access = [];
-  List<String> _roomAmenities = [];
-  List<String> _safetySecurity = [];
-  List<String> _bathRoom = [];
-  List<String> _family = [];
-  List<String> _transport = [];
-  List<String> _internetServices = [];
-  List<String> _sports = [];
-  List<String> _servicesAndConveniences = [];
-  List<String> _meds = [];
-  List<String> _languages = [];
+  final List<String> _facilities = [];
+  final List<String> _access = [];
+  final List<String> _roomAmenities = [];
+  final List<String> _safetySecurity = [];
+  final List<String> _bathRoom = [];
+  final List<String> _family = [];
+  final List<String> _transport = [];
+  final List<String> _internetServices = [];
+  final List<String> _sports = [];
+  final List<String> _servicesAndConveniences = [];
+  final List<String> _meds = [];
+  final List<String> _languages = [];
 
   void _submitForm(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
