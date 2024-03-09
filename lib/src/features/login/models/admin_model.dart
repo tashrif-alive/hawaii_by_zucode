@@ -1,4 +1,3 @@
-// admin_model.dart
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -16,12 +15,12 @@ class AdminLoginModel {
       // Check if the user is an admin
       final userSnapshot = await _firestore.collection('admin').doc(userCredential.user!.uid).get();
       if (!userSnapshot.exists) {
-        return 'User is not an admin'; // Return error if the user is not an admin
+        return 'User is not an admin';
       }
 
-      return null; // No error, successful login
+      return null;
     } catch (e) {
-      return e.toString(); // Return error message
+      return e.toString();
     }
   }
 }

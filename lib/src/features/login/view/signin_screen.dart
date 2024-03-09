@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hawaii_app/src/widgets/menus/admin_navigation_menu.dart';
 import 'package:hawaii_app/src/widgets/menus/user_navigation_menu.dart';
 import '../../signup/view/signup_screen.dart';
@@ -86,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                          child: const Text('Login as User'),
+                          child:  Text('Login as User',style: GoogleFonts.ubuntu(fontSize:12)),
                         ),
                       ),
                       const SizedBox(width: 8),
@@ -118,7 +119,7 @@ class LoginScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                          child: const Text('Login as Admin'),
+                          child:  Text('Login as Admin',style: GoogleFonts.ubuntu(fontSize:12),),
                         ),
                       ),
                     ],
@@ -143,7 +144,7 @@ class LoginScreen extends StatelessWidget {
                           ), // Border color
                         ),
                       ),
-                      child: const Text('Create a new account'),
+                      child:  Text('Create a new account',style: GoogleFonts.ubuntu(fontSize:14)),
                     ),
                   ),
                 ],

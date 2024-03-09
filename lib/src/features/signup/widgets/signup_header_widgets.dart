@@ -13,7 +13,7 @@ class SignUpHeaderWidgets extends StatelessWidget {
         Center(
           child: SizedBox(
               height: 80,
-              child: Image.asset("assets/icons/logos/hawaii.png")),
+              child: Image.asset("assets/icons/logos/hawaii_logo.png")),
         ),
         Align(
           alignment: Alignment.topLeft,
