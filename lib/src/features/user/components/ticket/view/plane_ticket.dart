@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../../../widgets/buttons/seat_widget.dart';
+
 class PlaneTicket extends StatefulWidget {
   const PlaneTicket({super.key});
 
@@ -9,6 +11,41 @@ class PlaneTicket extends StatefulWidget {
 }
 
 class _PlaneTicketState extends State<PlaneTicket> {
+  var seatInfo = [
+    [0, 1, 2, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [1, 1, 1, 1],
+    [1, 1, 1, 1],
+    [1, 1, 1, 1],
+    [1, 1, 0, 1],
+    [0, 0, 0, 0],
+    [0, 0, 1, 1],
+    [1, 0, 0, 1],
+  ];
+
+  seaTonTap (int row,int column){
+    print('seatopTap$row$column ${seatInfo[row] [column]}');
+    if(
+    seatInfo[row][column]==1
+    ){
+      setState(() {
+        seatInfo[row][column]=2;
+      });
+    }
+   else if (
+    seatInfo[row][column]==2
+    ){
+      setState(() {
+        seatInfo[row][column]=1;
+      });
+    }
+    // setState(() {
+    //   seatInfo[row][column]=2;
+    // });
+    print('seatopTap$row$column ${seatInfo[row] [column]}');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -224,556 +261,10 @@ class _PlaneTicketState extends State<PlaneTicket> {
                           ),
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.grey.shade50,
-                            ),
-                            height: 40,
-                            width: 40,
-                            child: Center(
-                              child: Text('1',
-                                  style: GoogleFonts.ubuntu(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black)),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.grey.shade50,
-                            ),
-                            height: 40,
-                            width: 40,
-                            child: Center(
-                              child: Text('2',
-                                  style: GoogleFonts.ubuntu(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black)),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.grey.shade50,
-                            ),
-                            height: 40,
-                            width: 40,
-                            child: Center(
-                              child: Text('3',
-                                  style: GoogleFonts.ubuntu(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black)),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.grey.shade50,
-                            ),
-                            height: 40,
-                            width: 40,
-                            child: Center(
-                              child: Text('4',
-                                  style: GoogleFonts.ubuntu(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black)),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.grey.shade50,
-                            ),
-                            height: 40,
-                            width: 40,
-                            child: Center(
-                              child: Text('5',
-                                  style: GoogleFonts.ubuntu(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black)),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.grey.shade50,
-                            ),
-                            height: 40,
-                            width: 40,
-                            child: Center(
-                              child: Text('6',
-                                  style: GoogleFonts.ubuntu(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black)),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.grey.shade50,
-                            ),
-                            height: 40,
-                            width: 40,
-                            child: Center(
-                              child: Text('7',
-                                  style: GoogleFonts.ubuntu(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black)),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.grey.shade50,
-                            ),
-                            height: 40,
-                            width: 40,
-                            child: Center(
-                              child: Text('8',
-                                  style: GoogleFonts.ubuntu(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black)),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.grey.shade50,
-                            ),
-                            height: 40,
-                            width: 40,
-                            child: Center(
-                              child: Text('9',
-                                  style: GoogleFonts.ubuntu(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black)),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.grey.shade50,
-                            ),
-                            height: 40,
-                            width: 40,
-                            child: Center(
-                              child: Text('10',
-                                  style: GoogleFonts.ubuntu(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black)),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.0),
-                              color: Colors.black12,
-                            ),
-                            height: 40,
-                            width: 40,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
+                      for (int i = 0; i < seatInfo.length; i++) ...[
+                        Seat(sL: i, info:seatInfo[i],seaTonTap:seaTonTap),
+                        const SizedBox(height: 8),
+                      ],
                     ],
                   ),
                 ),
