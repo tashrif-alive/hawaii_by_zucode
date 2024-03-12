@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../services/airline/view/airline_info_upload.dart';
 import '../services/bus/controller/bus_co_info_controller.dart';
 import '../services/bus/view/bus_company_info.dart';
 import '../services/hotel/view/hotel_info_form.dart';
@@ -43,7 +44,7 @@ class _AdminMoreScreenState extends State<AdminMoreScreen> {
       "color": Colors.purple,
       "cardColor": Colors.purple.shade50,
       "title": "Airlines",
-      "screen": (){},
+      "screen": const AirlineInfoUpload(),
     },
     {
       "icon": Icons.account_box,

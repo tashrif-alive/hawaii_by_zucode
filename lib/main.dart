@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hawaii_app/src/widgets/menus/admin_navigation_menu.dart';
+import 'package:hawaii_app/src/widgets/menus/user_navigation_menu.dart';
 
 
 void main() async {
