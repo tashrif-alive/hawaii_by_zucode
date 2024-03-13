@@ -5,7 +5,7 @@ import '../../../../../widgets/image_picker/image_view.dart';
 import '../controller/airline_info_controller.dart';
 
 class AirlineInfoUpload extends StatefulWidget {
-  const AirlineInfoUpload({Key? key}) : super(key: key);
+  const AirlineInfoUpload({super.key});
 
   @override
   _AirlineInfoUploadState createState() => _AirlineInfoUploadState();
@@ -43,50 +43,49 @@ class _AirlineInfoUploadState extends State<AirlineInfoUpload> {
   }
 
   Widget _buildCheckboxList(
-      String title,
-      List<String> options,
-      List<String> selectedList,
-      ) {
+    String title,
+    List<String> options,
+    List<String> selectedList,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
-          style: GoogleFonts.poppins(
-            fontSize: 15,
+          style: GoogleFonts.ubuntu(
+            fontSize: 12,
             fontWeight: FontWeight.w700,
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         Wrap(
           spacing: 6,
           runSpacing: 1,
           children: options
               .map((option) => FilterChip(
-            label: Text(
-              option,
-              style: GoogleFonts.ubuntu(
-                fontWeight: FontWeight.w400,
-                fontSize: 10,
-              ),
-            ),
-            selected: selectedList.contains(option),
-            onSelected: (isSelected) {
-              setState(() {
-                if (isSelected) {
-                  selectedList.add(option);
-                } else {
-                  selectedList.remove(option);
-                }
-              });
-            },
-          ))
+                    label: Text(
+                      option,
+                      style: GoogleFonts.ubuntu(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 10,
+                      ),
+                    ),
+                    selected: selectedList.contains(option),
+                    onSelected: (isSelected) {
+                      setState(() {
+                        if (isSelected) {
+                          selectedList.add(option);
+                        } else {
+                          selectedList.remove(option);
+                        }
+                      });
+                    },
+                  ))
               .toList(),
         ),
       ],
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -104,14 +103,16 @@ class _AirlineInfoUploadState extends State<AirlineInfoUpload> {
           ),
         ),
       ),
+      backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Form(
           key: _formKey,
           child: ListView(
             children: [
               Padding(
-                padding: const EdgeInsets.all(5.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
                 child: Row(
                   children: [
                     Expanded(
@@ -123,7 +124,8 @@ class _AirlineInfoUploadState extends State<AirlineInfoUpload> {
                           }
                           return null;
                         },
-                        onSaved: (newValue) => _airline = newValue!, prefixIcon: Icons.flight,
+                        onSaved: (newValue) => _airline = newValue!,
+                        prefixIcon: Icons.flight,
                       ),
                     ),
                     const SizedBox(width: 5),
@@ -136,34 +138,42 @@ class _AirlineInfoUploadState extends State<AirlineInfoUpload> {
                           }
                           return null;
                         },
-                        onSaved: (newValue) => _airPlaneModel = newValue!, prefixIcon: Icons.airplane_ticket,
+                        onSaved: (newValue) => _airPlaneModel = newValue!,
+                        prefixIcon: Icons.airplane_ticket,
                       ),
                     ),
                   ],
                 ),
               ),
-              AdminTextFormField(
-                hintText: 'Address',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter address';
-                  }
-                  return null;
-                },
-                onSaved: (newValue) => _address = newValue!, prefixIcon: Icons.location_on_rounded,
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: AdminTextFormField(
+                  hintText: 'Address',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter address';
+                    }
+                    return null;
+                  },
+                  onSaved: (newValue) => _address = newValue!,
+                  prefixIcon: Icons.location_on_rounded,
+                ),
               ),
-              SizedBox(
-                child: Text(
-                  "Upload Airline logo",
-                  style: GoogleFonts.ubuntu(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black,
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: SizedBox(
+                  child: Text(
+                    "Upload Airline logo",
+                    style: GoogleFonts.ubuntu(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: ImageView(
                   onUploadSuccess: (String url) {
                     setState(() {
@@ -172,15 +182,20 @@ class _AirlineInfoUploadState extends State<AirlineInfoUpload> {
                   },
                 ),
               ),
-              AdminTextFormField(
-                hintText: 'Baggage',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter baggage';
-                  }
-                  return null;
-                },
-                onSaved: (newValue) => _facilities = newValue!, prefixIcon: Icons.backpack,
+
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: AdminTextFormField(
+                  hintText: 'Baggage',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter baggage';
+                    }
+                    return null;
+                  },
+                  onSaved: (newValue) => _facilities = newValue!,
+                  prefixIcon: Icons.backpack,
+                ),
               ),
 
               Padding(
@@ -260,8 +275,6 @@ class _AirlineInfoUploadState extends State<AirlineInfoUpload> {
                 ),
               ),
 
-              const SizedBox(height: 8),
-
               /// Checkbox for Refundable
               Row(
                 children: [
@@ -277,8 +290,8 @@ class _AirlineInfoUploadState extends State<AirlineInfoUpload> {
                           },
                         ),
                         Text('Refundable',
-                            style: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400)),
+                            style: GoogleFonts.ubuntu(
+                                fontSize: 12, fontWeight: FontWeight.w400)),
                       ],
                     ),
                   ),
@@ -294,8 +307,8 @@ class _AirlineInfoUploadState extends State<AirlineInfoUpload> {
                           },
                         ),
                         Text('Insurance',
-                            style: GoogleFonts.poppins(
-                                fontSize: 14, fontWeight: FontWeight.w400)),
+                            style: GoogleFonts.ubuntu(
+                                fontSize: 12, fontWeight: FontWeight.w400)),
                       ],
                     ),
                   ),
@@ -304,7 +317,17 @@ class _AirlineInfoUploadState extends State<AirlineInfoUpload> {
               const SizedBox(height: 8),
               ElevatedButton(
                 onPressed: _submitForm,
-                child: const Text('Add Airline'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Text(
+                  'Add Airline',
+                  style: GoogleFonts.ubuntu(
+                      fontSize: 13, fontWeight: FontWeight.w500),
+                ),
               ),
             ],
           ),

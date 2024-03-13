@@ -37,7 +37,7 @@ class _ImageViewState extends State<ImageView> {
         });
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.grey.shade50,
+        backgroundColor: Colors.black87,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
 
@@ -45,7 +45,7 @@ class _ImageViewState extends State<ImageView> {
       ),
       child:isloading? const CircularProgressIndicator(): Text(
         'Upload-Logo',
-        style: GoogleFonts.poppins(fontWeight: FontWeight.w400,color: Colors.black),
+        style: GoogleFonts.ubuntu(fontWeight: FontWeight.w400,color: Colors.white),
       ),
     );
   }
